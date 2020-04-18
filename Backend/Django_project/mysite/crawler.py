@@ -129,4 +129,4 @@ def parse_blog():
 if __name__=='__main__':
     blog_data_dict = parse_blog()
     for item in blog_data_dict:
-        Subject(year=item['year'], category=item['pobtnm'], code=item['sbjtclss'], title=item['clssnm'], credit=['pnt'], etc=item['remk']).save()
+        Subject(year=item['year'], category=item['pobtnm'], code=item['sbjtclss'], title=item['clssnm'], credit=item['pnt'], etc=item['remk']).save()
