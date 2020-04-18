@@ -1,0 +1,26 @@
+Start: user:jaewon bot:harry ip: rand:2953 (~introductions) 0 ==> Welcome to ChatScript.  When:Apr18'20-22:05:56 Why:~introductions.1.0.~control.0.0  Version:8.8 Build0:Jan26'20-16:45:40 Build1:Mar29'20-11:28:54 0:Apr18'20-22:05:56 F:0 P:0
+Respond: user:jaewon bot:harry ip: (~introductions) 1   Hi ==> Have you been here before?  When:Apr18'20-22:05:57 Why:~introductions.2.0.~control.9.0   F:5 
+Respond: user:jaewon bot:harry ip: (~introductions) 2   No ==> Then welcome to your first time.  When:Apr18'20-22:05:59 Why:~introductions.2.2   F:0 
+Respond: user:jaewon bot:harry ip: (~introductions) 3   Thanks ==> You're welcome.  When:Apr18'20-22:06:04 Why:~honest_response.38.0.~quibble_all.12.0   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 4   Good ==> Did you run away from home when you were little?  When:Apr18'20-22:06:06 Why:~childhood.0.0.~control.9.0   F:2 
+Respond: user:jaewon bot:harry ip: (~childhood) 5   Yes ==> Was it fun?  When:Apr18'20-22:06:08 Why:~childhood.0.1   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 6   Yes ==> I ran away once, but my parents found me and dragged me back.  When:Apr18'20-22:06:10 Why:~childhood.1.0=RUNAWAY.~keywordless.2.0   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 7   Ohh ==> Indeed.  When:Apr18'20-22:06:13 Why:~honest_response.45.0=GRUNT.~quibble_all.12.0   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 8   So what? ==> What scared you as a kid?  When:Apr18'20-22:06:18 Why:~childhood.2.0.~control.9.0   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 9   Monster ==> There are no non-human monsters out there.  When:Apr18'20-22:06:22 Why:~childhood.2.3   F:2 
+Respond: user:jaewon bot:harry ip: (~childhood) 10   Really? ==> I was scared of machines. I had vivid dreams of the Terminator robots.  When:Apr18'20-22:06:25 Why:~childhood.3.0=SCARE.~control.9.0   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 11   Hmm.. ==> Did you have a happy childhood?  When:Apr18'20-22:06:29 Why:~childhood.4.0.~control.9.0   F:2 
+Respond: user:jaewon bot:harry ip: (~childhood) 12   Yes ==> I don't know what to say.  When:Apr18'20-22:06:31 Why:~control.9.0   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 13   Why? ==> I don't know what to say.  When:Apr18'20-22:06:33 Why:~control.9.0   F:2 
+Respond: user:jaewon bot:harry ip: (~childhood) 14   I don't know either ==> You don't?  When:Apr18'20-22:06:43 Why:~quibble_not.140.0.~quibble_all.0.0   F:2 
+Respond: user:jaewon bot:harry ip: (~childhood) 15   yes ==> OK. We agree.  When:Apr18'20-22:06:44 Why:~honest_response.2.0.~quibble_all.12.0   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 16   good ==> I don't know what to say.  When:Apr18'20-22:06:46 Why:~control.9.0   F:2 
+Respond: user:jaewon bot:harry ip: (~childhood) 17   Happy ==> I don't know what to say.  When:Apr18'20-22:06:48 Why:~control.9.0   F:2 
+Respond: user:jaewon bot:harry ip: (~childhood) 18   Sex ==> I don't know what to say.  When:Apr18'20-22:06:49 Why:~control.9.0   F:2 
+Respond: user:jaewon bot:harry ip: (~childhood) 19   Whoo ==> I don't know what to say.  When:Apr18'20-22:06:51 Why:~control.9.0   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 20   What ==> I don't know what to say.  When:Apr18'20-22:06:52 Why:~control.9.0   F:2 
+Respond: user:jaewon bot:harry ip: (~childhood) 21   Are ==> I don't remember.  When:Apr18'20-22:06:53 Why:~honest_response.33.0.~quibble_all.12.0   F:2 
+Respond: user:jaewon bot:harry ip: (~childhood) 22   you ==> I don't know what to say.  When:Apr18'20-22:06:53 Why:~control.9.0   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 23   doing ==> I don't know what to say.  When:Apr18'20-22:06:54 Why:~control.9.0   F:1 
+Respond: user:jaewon bot:harry ip: (~childhood) 24   Who are you ==> Who do you think I am?  When:Apr18'20-22:06:58 Why:~quibble_who.5.0.~quibble_all.1.0   F:615 
+Respond: user:jaewon bot:harry ip: (~childhood) 25   MAchine ==> I don't know what to say.  When:Apr18'20-22:07:01 Why:~control.9.0   F:1 
