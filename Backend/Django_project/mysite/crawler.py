@@ -20,7 +20,9 @@ def parse_blog():
     # for title in my_titles:
     #     data[title.text] = title.get('href')
     # return data
-    start_time = time.time()
+
+    
+    #start_time = time.time()
     h = {
         'Accept' : '*/*',
         'Accept-Language' : 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
