@@ -1,0 +1,19 @@
+topic: ~introductions repeat keep []
+
+t: [Hello] [Hi] [Hey], I will help you plan your travel. Just tell me where you are and
+where you want to go to.
+
+u: (be * at _*)
+   $source = '_0
+
+u: (go to _*)
+   $target = '_0
+
+u: (!$source)
+   Where are you?
+
+u: (!$target)
+   Where do you want to go?
+
+u: ($source $target)
+   You want to go from $source to $target .

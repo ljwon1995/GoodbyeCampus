@@ -1,0 +1,54 @@
+﻿ChatScript Version 8.8  compiled Nov 29 2018 14:35:45
+
+----Reading file simplecontrol.top
+Reading outputmacro: ^stockpile
+Reading table ^tbl:defaultbot
+Reading topic ~control
+
+----Reading file stockpile.top
+Reading concept ~places
+Reading concept ~resources
+Reading concept ~carts
+Reading concept ~trains
+Reading concept ~ships
+Reading concept ~vehiclekinds
+Reading table ^tbl:capacity
+Reading outputmacro: ^connect_by_land
+Reading outputmacro: ^connect_by_rail
+Reading outputmacro: ^connect_by_sea
+Reading outputmacro: ^addresource
+Reading dualmacro: ^connected_by_land
+Reading dualmacro: ^connected_by_rail
+Reading dualmacro: ^connected_by_sea
+Reading dualmacro: ^is_at
+Reading patternmacro: ^has_cargo_space
+Reading dualmacro: ^iscart
+Reading dualmacro: ^istrain
+Reading dualmacro: ^isship
+Reading dualmacro: ^has_some_resource
+Reading patternmacro: ^has_desired_resource
+Reading outputmacro: ^take_resource
+Reading outputmacro: ^replace_resource
+Reading outputmacro: ^place_vehicle
+Reading outputmacro: ^create_vehicle
+Reading outputmacro: ^load_cargo
+Reading outputmacro: ^unload_cargo
+Reading outputmacro: ^unload_all_but
+Reading outputmacro: ^can_travel
+Reading outputmacro: ^move_vehicle
+Reading topic ~defineworld
+Reading plan ^ferryoneload
+Reading plan ^acquire
+
+----Reading file simpletopic.top
+Reading outputmacro: ^showworld
+Reading outputmacro: ^make_reality
+Reading topic ~introductions
+Error opening utf8writeappend file TOPIC/BUILD1/plans1.txt: No such file or directory
+   in missingLabel.txt at 0: 
+    No errors or warnings
+
+
+
+Finished compile
+

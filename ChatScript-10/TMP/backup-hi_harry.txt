@@ -1,0 +1,25 @@
+﻿USERS/topic_hi_harry.txt
+jul2116 Apr05'20-20:44:23 0 0 |
+1 0 0 DY 0 3 3 0 # start, input#, no rejoinder, #0topics, #1topics, layer2
+~introductions #pending
+~introductions + 1 0Fb#y ia 0 0 0 
+#`end topics
+$shutup=1
+$singleresponse=1
+$botprompt=HARRY: 
+$userprompt=hi: >
+$cs_control_main=~control
+$cs_token=75726583
+$cs_login=Hi
+$cs_bot=Harry
+$cs_randindex=2070
+$cs_trace=0
+$cs_time=0
+#`end variables
+0 #set flags
+#`end fact sets
+#`end user facts 0
+#context 
+#`end user
+ 안녕하세요 저는 GoodBye Campus 입니다. 저는 여러분들의 졸업을 위해 태어났어요! 저는 여러분이 졸업이 가능한 지 판단할 수 있답니다!
+#`end chatbot

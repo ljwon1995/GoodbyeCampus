@@ -1,0 +1,21 @@
+﻿ChatScript Version 8.8  compiled Nov 29 2018 14:35:45
+
+----Reading file simplecontrol.top
+Reading outputmacro: ^harry
+Reading table ^tbl:defaultbot
+Reading topic ~control
+Reading topic ~xpostprocess
+
+----Reading file tutorial.top
+Reading topic ~introductions
+*** Warning-  Undefined set or topic ~keywordless line 92 in simplecontrol.top
+*** Warning-  Undefined set or topic ~quibble_all line 100 in simplecontrol.top
+
+WARNING SUMMARY: 
+  line 3 of : Undefined set or topic ~keywordless line 92 in simplecontrol.top
+  line 4 of : Undefined set or topic ~quibble_all line 100 in simplecontrol.top
+2 serious warnings, 0 function warnings, 0 spelling warnings, 0 case warnings, 0 substitution warnings
+    
+
+Finished compile
+

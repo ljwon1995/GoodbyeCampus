@@ -1,0 +1,23 @@
+﻿I don't know what to say.I don't know what to say.I don't know what to say.I don't know what to say.I don't know what to say.I don't know what to say.I don't know what to say.I don't know what to say.아이디가 맞나요?비밀번호가 oh 이 맞나요?I don't know what to say.I don't know what to say.I don't know what to say.I don't know what to say.I don't know what to say.I don't know what to say.아이디가 맞나요?알겠습니다. 다음으로 비밀번호를 입력해주세요비밀번호가 ㅁㄴㅇㄹ 이 맞나요?I don't know what to say.I don't know what to say.Hi, again.I don't know what to say.I don't know what to say.System startup Trip Mon Apr 06 16:37:18 2020
+ChatScript Version 8.8  compiled Nov 29 2018 14:35:45
+
+WARNING SUMMARY: 
+  line 3 of : Undefined set or topic ~keywordless line 92 in simplecontrol.top
+  line 4 of : Undefined set or topic ~quibble_all line 100 in simplecontrol.top
+2 serious warnings, 0 function warnings, 0 spelling warnings, 0 case warnings, 0 substitution warnings
+    
+
+Finished compile
+
+System startup createsystem Mon Apr 06 16:37:19 2020
+Server ChatScript EVSERVER Version 8.8 pid: 2999 64 bit MACH compiled Nov 29 2018 14:35:45 host=local
+Params:   dict:2097151 fact:800000 text:100000kb hash:50000 
+          buffer:80x80kb cache:1x5000kb userfacts:100 outputlimit:80000 loglimit:80000
+Build0:  dict=68367  fact=129359  heap=1152512 Compiled:Jan26'20-16:45:40 by version 10.0 "0"
+Build1:  dict=7  fact=1  heap=127928 Compiled:Apr06'20-16:37:18 by version 8.8 "Trip"
+Used 58MB: dict 269,374 (23705kb) hashdepths 244.1227.3418.5966.7944.8603.7777.5934.4011.2404.1318.661.286.138.41.20.7.1.1. words 269374 unusedbuckets 244 fact 215,668 (10352kb) heap 12540kb
+           buffer (6400kb) cache (5000kb)
+Free 115MB: dict 1,827,776 fact 584,332 stack/heap 87,459KB 
+
+    *** Server WIDE OPEN to :command use.
+Hello, talk to me!

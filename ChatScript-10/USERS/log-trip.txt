@@ -1,0 +1,99 @@
+﻿Start: user:trip bot:harry ip: rand:3684 (~introductions) 0 ==> Hello, talk to me!  When:Apr06'20-16:40:23 Why:~introductions.0.0.~control.0.0  Version:8.8 Build0:Jan26'20-16:45:40 Build1:Apr06'20-16:39:02 0:Apr06'20-16:40:23 F:0 P:0
+Respond: user:trip bot:harry ip: (~introductions) 1   Hi ==> I don't know what to say.  When:Apr06'20-16:40:27 Why:~control.9.0.~control.9.0   F:2 
+Command: :build Trip
+Start: user:trip bot:harry ip: rand:3687 (~introductions) 1 ==> Hi, say something to me!  When:Apr06'20-16:40:34 Why:~introductions.0.0.~control.0.0  Version:8.8 Build0:Jan26'20-16:45:40 Build1:Apr06'20-16:40:31 0:Apr06'20-16:40:23 F:0 P:Apr06'20-16:40:27
+Respond: user:trip bot:harry ip: (~introductions) 2   Ohh ==> Hey, speak to me!  When:Apr06'20-16:40:39 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 3   a ==> Hi, talk to me!  When:Apr06'20-16:40:41 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 4   a ==> I don't know what to say.  When:Apr06'20-16:40:42 Why:~control.9.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 5   a ==> Hello, speak to me!  When:Apr06'20-16:40:43 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 6   a ==> Hi, speak to me!  When:Apr06'20-16:40:44 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 7   a ==> I don't know what to say.  When:Apr06'20-16:40:44 Why:~control.9.0.~control.9.0   F:1 
+Command: :build Trip
+Start: user:trip bot:harry ip: rand:3691 (~introductions) 7 ==> Hello Hi Hey, talk speak "say something" to me!  When:Apr06'20-16:42:02 Why:~introductions.0.0.~control.0.0  Version:8.8 Build0:Jan26'20-16:45:40 Build1:Apr06'20-16:42:00 0:Apr06'20-16:40:23 F:0 P:Apr06'20-16:40:44
+Respond: user:trip bot:harry ip: (~introductions) 8   oh ==> I don't know what to say.  When:Apr06'20-16:42:08 Why:~control.9.0.~control.9.0   F:1 
+Command: :build Trip
+Start: user:trip bot:harry ip: rand:3694 (~introductions) 8 ==> Hi, speak to me!  When:Apr06'20-16:43:24 Why:~introductions.0.0.~control.0.0  Version:8.8 Build0:Jan26'20-16:45:40 Build1:Apr06'20-16:43:21 0:Apr06'20-16:40:23 F:0 P:Apr06'20-16:42:08
+Respond: user:trip bot:harry ip: (~introductions) 9   a ==> Hi, speak to me!  When:Apr06'20-16:43:24 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 10   a ==> Hi, speak to me!  When:Apr06'20-16:43:25 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 11   a ==> Hi, say something to me!  When:Apr06'20-16:43:25 Why:~introductions.0.0.~control.9.0   F:2 
+Respond: user:trip bot:harry ip: (~introductions) 12   a ==> Hey, speak to me!  When:Apr06'20-16:43:25 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 13   a ==> Hi, speak to me!  When:Apr06'20-16:43:26 Why:~introductions.0.0.~control.9.0   F:0 
+Respond: user:trip bot:harry ip: (~introductions) 14   a ==> Hi, speak to me!  When:Apr06'20-16:43:26 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 15   a ==> Hi, talk to me!  When:Apr06'20-16:43:26 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 16   a ==> Hello, talk to me!  When:Apr06'20-16:43:27 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 17   a ==> Hello, speak to me!  When:Apr06'20-16:43:27 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 18   a ==> Hi, say something to me!  When:Apr06'20-16:43:27 Why:~introductions.0.0.~control.9.0   F:0 
+Respond: user:trip bot:harry ip: (~introductions) 19   a ==> Hey, talk to me!  When:Apr06'20-16:43:28 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 20   a ==> Hello, say something to me!  When:Apr06'20-16:43:28 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 21   a ==> Hey, say something to me!  When:Apr06'20-16:43:28 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 22   a ==> Hey, say something to me!  When:Apr06'20-16:43:29 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 23   a ==> Hey, say something to me!  When:Apr06'20-16:43:29 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 24   a ==> Hey, say something to me!  When:Apr06'20-16:43:29 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 25   a ==> Hey, say something to me!  When:Apr06'20-16:43:30 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 26   a ==> Hey, speak to me!  When:Apr06'20-16:43:30 Why:~introductions.0.0.~control.9.0   F:0 
+Respond: user:trip bot:harry ip: (~introductions) 27   a ==> Hi, speak to me!  When:Apr06'20-16:43:31 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 28   a ==> Hi, talk to me!  When:Apr06'20-16:43:31 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 29   a ==> Hello, say something to me!  When:Apr06'20-16:43:31 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 30   a ==> Hey, say something to me!  When:Apr06'20-16:43:32 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 31   a ==> Hey, speak to me!  When:Apr06'20-16:43:32 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 32   a ==> Hi, talk to me!  When:Apr06'20-16:43:32 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 33   a ==> Hello, speak to me!  When:Apr06'20-16:43:33 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 34   a ==> Hi, speak to me!  When:Apr06'20-16:43:33 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 35   a ==> Hi, speak to me!  When:Apr06'20-16:43:33 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 36   a ==> Hi, talk to me!  When:Apr06'20-16:43:33 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 37   a ==> Hello, talk to me!  When:Apr06'20-16:43:34 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 38     ==> Hello, talk to me!  When:Apr06'20-16:43:34 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 39   s ==> Hi, say something to me!  When:Apr06'20-16:43:34 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 40   dfa ==> Hey, talk to me!  When:Apr06'20-16:43:34 Why:~introductions.0.0.~control.9.0   F:5 
+Respond: user:trip bot:harry ip: (~introductions) 41   sd ==> Hello, say something to me!  When:Apr06'20-16:43:34 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 42   fa ==> Hey, speak to me!  When:Apr06'20-16:43:34 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 43   dsf ==> Hi, talk to me!  When:Apr06'20-16:43:35 Why:~introductions.0.0.~control.9.0   F:6 
+Respond: user:trip bot:harry ip: (~introductions) 44   asd ==> Hello, talk to me!  When:Apr06'20-16:43:35 Why:~introductions.0.0.~control.9.0   F:6 
+Respond: user:trip bot:harry ip: (~introductions) 45   fa ==> Hello, talk to me!  When:Apr06'20-16:43:35 Why:~introductions.0.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 46   sdf ==> Hello, say something to me!  When:Apr06'20-16:43:35 Why:~introductions.0.0.~control.9.0   F:7 
+Respond: user:trip bot:harry ip: (~introductions) 47   a ==> Hey, talk to me!  When:Apr06'20-16:43:36 Why:~introductions.0.0.~control.9.0   F:1 
+Command: :build Trip
+Start: user:trip bot:harry ip: rand:3740 (~introductions) 47 ==> I don't know what to say.  When:Apr06'20-16:44:19 Why:~control.9.0.~control.9.0  Version:8.8 Build0:Jan26'20-16:45:40 Build1:Apr06'20-16:44:16 0:Apr06'20-16:40:23 F:1586159006-3.0.0.1.9.0 P:Apr06'20-16:43:36
+Command: :built Trip
+Respond: user:trip bot:harry ip: (~introductions) 48   :built Trip ==> I don't know what to say.  When:Apr06'20-16:44:43 Why:~control.9.0.~control.9.0   F:39 
+Command: :build Trip
+Start: user:trip bot:harry ip: rand:3741 (~introductions) 48 ==> I don't know what to say.  When:Apr06'20-16:44:53 Why:~control.9.0.~control.9.0  Version:8.8 Build0:Jan26'20-16:45:40 Build1:Apr06'20-16:44:50 0:Apr06'20-16:40:23 F:1586159006-3.0.0.1.9.0 P:Apr06'20-16:44:43
+Command: :build Trip reset
+Start: user:trip bot:harry ip: rand:3686 (~introductions) 0 ==> Hello, speak to me!  When:Apr06'20-16:45:04 Why:~introductions.0.0.~control.0.0  Version:8.8 Build0:Jan26'20-16:45:40 Build1:Apr06'20-16:45:01 0:Apr06'20-16:40:23 F:1586159006-3.0.0.1.9.0 P:Apr06'20-16:44:43
+Respond: user:trip bot:harry ip: (~introductions) 1   Hi ==> I don't know what to say.  When:Apr06'20-16:45:09 Why:~control.9.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 2   What are you ==> I am a bot.  When:Apr06'20-16:45:12 Why:~introductions.1.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 3   what are u ==> I am a bot.  When:Apr06'20-16:45:16 Why:~introductions.1.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 4   what  ==> Good question.  When:Apr06'20-16:45:17 Why:~introductions.3.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 5   what is the ==> Good question.  When:Apr06'20-16:45:20 Why:~introductions.3.0.~control.9.0   F:2 
+Respond: user:trip bot:harry ip: (~introductions) 6   where si ==> Good question.  When:Apr06'20-16:45:23 Why:~introductions.3.0.~control.9.0   F:2 
+Respond: user:trip bot:harry ip: (~introductions) 7   how ==> I don't know what to say.  When:Apr06'20-16:45:24 Why:~control.9.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 8   how does ==> I don't know what to say.  When:Apr06'20-16:45:26 Why:~control.9.0.~control.9.0   F:2 
+Respond: user:trip bot:harry ip: (~introductions) 9   Where do you live ==> I live on your computer.  When:Apr06'20-16:45:30 Why:~introductions.2.0.~control.9.0   F:2 
+Respond: user:trip bot:harry ip: (~introductions) 10   wehre does you live ==> I live on your computer.  When:Apr06'20-16:45:33 Why:~introductions.2.0.~control.9.0   F:21 
+Respond: user:trip bot:harry ip: (~introductions) 11   where did you live ==> I live on your computer.  When:Apr06'20-16:45:39 Why:~introductions.2.0.~control.9.0   F:2 
+Respond: user:trip bot:harry ip: (~introductions) 12   live ==> I don't know what to say.  When:Apr06'20-16:45:41 Why:~control.9.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 13   live ==> I don't know what to say.  When:Apr06'20-16:45:42 Why:~control.9.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 14   do you live ==> I don't know what to say.  When:Apr06'20-16:45:44 Why:~control.9.0.~control.9.0   F:2 
+Command: :build Trip reset
+Start: user:trip bot:harry ip: rand:3685 (~introductions) 0 ==> Hello, I will help you plan your travel. Just tell me where you want to go.  When:Apr06'20-17:02:22 Why:~introductions.0.0.~control.0.0  Version:8.8 Build0:Jan26'20-16:45:40 Build1:Apr06'20-17:02:19 0:Apr06'20-16:40:23 F:1586159006-3.0.0.1.9.0 P:Apr06'20-16:45:44
+Respond: user:trip bot:harry ip: (~introductions) 1   Home ==> I don't know what to say.  When:Apr06'20-17:02:25 Why:~control.9.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 2   home ==> I don't know what to say.  When:Apr06'20-17:02:32 Why:~control.9.0.~control.9.0   F:2 
+Respond: user:trip bot:harry ip: (~introductions) 3   I want to go to home ==> OK, you want to go to home.  When:Apr06'20-17:02:36 Why:~introductions.1.0.~control.9.0   F:3 
+Command: :build Trip
+Start: user:trip bot:harry ip: rand:3688 (~introductions) 3 ==> Hi, I will help you plan your travel. Just tell me where you are and where you want to go to.  When:Apr06'20-17:10:32 Why:~introductions.0.0.~control.0.0  Version:8.8 Build0:Jan26'20-16:45:40 Build1:Apr06'20-17:10:29 0:Apr06'20-16:40:23 F:1586159006-3.0.0.1.9.0 P:Apr06'20-17:02:36
+Respond: user:trip bot:harry ip: (~introductions) 4   I'm at gome ==> Where do you want to go?  When:Apr06'20-17:10:36 Why:~introductions.4.0.~control.9.0   F:2 
+Respond: user:trip bot:harry ip: (~introductions) 5   Nowhere ==> Where do you want to go?  When:Apr06'20-17:10:44 Why:~introductions.4.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 6   No where ==> Where do you want to go?  When:Apr06'20-17:10:50 Why:~introductions.4.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 7   home ==> Where do you want to go?  When:Apr06'20-17:10:53 Why:~introductions.4.0.~control.9.0   F:2 
+Respond: user:trip bot:harry ip: (~introductions) 8   what the.. ==> Where do you want to go?  When:Apr06'20-17:10:55 Why:~introductions.4.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 9   gome ==> Where do you want to go?  When:Apr06'20-17:11:05 Why:~introductions.4.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 10   gome ==> Where do you want to go?  When:Apr06'20-17:11:06 Why:~introductions.4.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 11   I want to go home ==> Where do you want to go?  When:Apr06'20-17:11:16 Why:~introductions.4.0.~control.9.0   F:2 
+Respond: user:trip bot:harry ip: (~introductions) 12   I want to go to home ==> You want to go from go me to home.  When:Apr06'20-17:11:26 Why:~introductions.5.0.~control.9.0   F:3 
+Respond: user:trip bot:harry ip: (~introductions) 13   what ==> You want to go from go me to home.  When:Apr06'20-17:11:38 Why:~introductions.5.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 14   want ==> You want to go from go me to home.  When:Apr06'20-17:11:43 Why:~introductions.5.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 15   source ==> You want to go from go me to home.  When:Apr06'20-17:11:47 Why:~introductions.5.0.~control.9.0   F:1 
+Respond: user:trip bot:harry ip: (~introductions) 16   quit ==> You want to go from go me to home.  When:Apr06'20-22:19:25 Why:~introductions.5.0.~control.9.0   F:16 
+Respond: user:trip bot:harry ip: (~introductions) 17   quit: ==> You want to go from go me to home.  When:Apr06'20-22:19:26 Why:~introductions.5.0.~control.9.0   F:1 
+Command: :quit
+Exiting ChatScript via Quit

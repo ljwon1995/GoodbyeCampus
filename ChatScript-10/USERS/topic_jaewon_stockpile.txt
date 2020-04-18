@@ -1,0 +1,53 @@
+USERS/topic_jaewon_stockpile.txt
+jul2116 Apr06'20-22:20:07 Apr06'20-22:21:46 0 |
+1 7 0 DY 0 3 3 0 # start, input#, no rejoinder, #0topics, #1topics, layer2
+~introductions #pending
+#`end topics
+$cs_randindex=2953
+$cs_bot=Stockpile
+$cs_login=jaewon
+$cs_token=0
+$cs_control_main=~control
+$userprompt=jaewon: >
+$botprompt=STOCKPILE: 
+$cs_trace=0
+$cs_time=0
+#`end variables
+0 #set flags
+#`end fact sets
+( location0 sea_connect location1 )
+( location1 sea_connect location0 )
+( location0 sea_connect location2 )
+( location2 sea_connect location0 )
+( location1 land_connect location2 )
+( location2 land_connect location1 )
+( location0 stone 1 x10000000 )
+( location1 stone 5 x10000000 )
+( location2 stone 3 x10000000 )
+( ship1 space 50 x10000000 )
+( ship1 vehicle location0 x10000000 )
+( cart1 vehicle location2 x10000000 )
+( cart1 space 0 x10000000 )
+( cart1 stone 1 x10000000 )
+( train1 space 10 x10000000 )
+( train1 vehicle location2 x10000000 )
+#`end user facts 16
+#context 
+ what
+ what is this
+ add stuff to world
+ pile location0 stone 1
+ pile location0 stone one
+ add stone to world
+ show
+#`end user
+ Legal commands are:\n\"pile where  what quantity\" - move stuff around in world\n\"place where what quantity\" - add stuff to world\n\"show\" - describe state of world\n    where can be:  location0 locatio
+ \nCurrent world:\nlocation0: stone 1\n     ship1 : \n     connected by sea to location2 \n     connected by sea to location1 \nlocation1: stone 5\n     connected by land to location2 \n     connected
+ Illegal command: what\n\"pile where  what quantity\" - move stuff around in world\n\"place where what quantity\" - add stuff to world\n\"show\" - describe state of world\n    what can be:  stone wood \n   
+ Illegal command: what is this\n\"pile where  what quantity\" - move stuff around in world\n\"place where what quantity\" - add stuff to world\n\"show\" - describe state of world\n    what can be:  stone wo
+ Illegal command: add stuff to world\n\"pile where  what quantity\" - move stuff around in world\n\"place where what quantity\" - add stuff to world\n\"show\" - describe state of world\n    what can be:  st
+ Unable to achieve goal.
+ Unable to achieve goal.
+ Illegal command: add stone to world\n\"pile where  what quantity\" - move stuff around in world\n\"place where what quantity\" - add stuff to world\n\"show\" - describe state of world\n    what can be:  st
+ \nCurrent world:\nlocation0: stone 1\n     ship1 : \n     connected by sea to location2 \n     connected by sea to location1 \nlocation1: stone 5\n     connected by land to location2 \n     connected
+#`end chatbot

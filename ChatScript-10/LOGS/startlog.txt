@@ -1,0 +1,147 @@
+﻿System startup createsystem Sat Apr 04 09:12:05 2020
+System startup createsystem Sat Apr 04 09:13:55 2020
+System startup createsystem Sat Apr 04 09:30:07 2020
+System startup mine Sat Apr 04 09:30:14 2020
+System startup createsystem Sat Apr 04 09:30:18 2020
+System startup mine Sat Apr 04 09:31:30 2020
+System startup createsystem Sat Apr 04 09:31:30 2020
+System startup mine Sat Apr 04 09:32:46 2020
+System startup createsystem Sat Apr 04 09:32:47 2020
+System startup createsystem Sat Apr 04 09:33:28 2020
+System startup mine Sat Apr 04 09:35:30 2020
+System startup createsystem Sat Apr 04 09:35:31 2020
+System startup createsystem Sat Apr 04 09:44:10 2020
+System startup mine Sat Apr 04 09:45:38 2020
+System startup createsystem Sat Apr 04 09:45:39 2020
+System startup mine Sat Apr 04 09:46:05 2020
+System startup createsystem Sat Apr 04 09:46:10 2020
+System startup mine Sat Apr 04 09:46:43 2020
+System startup createsystem Sat Apr 04 09:46:43 2020
+System startup mine Sat Apr 04 09:47:14 2020
+System startup createsystem Sat Apr 04 09:47:14 2020
+System startup mine Sat Apr 04 09:47:56 2020
+System startup createsystem Sat Apr 04 09:47:57 2020
+System startup mine Sat Apr 04 09:48:25 2020
+System startup createsystem Sat Apr 04 09:48:26 2020
+System startup mine Sat Apr 04 09:49:54 2020
+System startup createsystem Sat Apr 04 09:49:55 2020
+System startup mine Sat Apr 04 09:50:47 2020
+System startup createsystem Sat Apr 04 09:50:47 2020
+System startup mine Sat Apr 04 09:51:04 2020
+System startup createsystem Sat Apr 04 09:51:04 2020
+System startup createsystem Sat Apr 04 09:52:45 2020
+System startup mine Sat Apr 04 09:52:54 2020
+System startup createsystem Sat Apr 04 09:52:54 2020
+System startup mine Sat Apr 04 09:53:14 2020
+System startup createsystem Sat Apr 04 09:53:15 2020
+System startup mine Sat Apr 04 09:53:29 2020
+System startup createsystem Sat Apr 04 09:53:30 2020
+System startup mine Sat Apr 04 09:53:55 2020
+System startup createsystem Sat Apr 04 09:53:56 2020
+System startup mine Sat Apr 04 09:54:11 2020
+System startup createsystem Sat Apr 04 09:54:12 2020
+System startup mine Sat Apr 04 09:54:24 2020
+System startup createsystem Sat Apr 04 09:54:25 2020
+System startup mine Sat Apr 04 09:54:36 2020
+System startup createsystem Sat Apr 04 09:54:37 2020
+System startup mine Sat Apr 04 09:54:56 2020
+System startup createsystem Sat Apr 04 09:54:56 2020
+System startup mine Sat Apr 04 09:55:11 2020
+System startup createsystem Sat Apr 04 09:55:11 2020
+System startup mine Sat Apr 04 09:55:35 2020
+System startup createsystem Sat Apr 04 09:55:36 2020
+System startup mine reset Sat Apr 04 09:57:53 2020
+System startup createsystem Sat Apr 04 09:57:53 2020
+System startup mine reset Sat Apr 04 09:58:10 2020
+System startup createsystem Sat Apr 04 09:58:11 2020
+System startup mine Sat Apr 04 09:58:31 2020
+System startup createsystem Sat Apr 04 09:58:32 2020
+System startup mine Sat Apr 04 09:58:50 2020
+System startup createsystem Sat Apr 04 09:58:50 2020
+System startup mine Sat Apr 04 09:59:01 2020
+System startup createsystem Sat Apr 04 09:59:21 2020
+System startup createsystem Sat Apr 04 09:59:48 2020
+System startup mine Sat Apr 04 09:59:58 2020
+System startup createsystem Sat Apr 04 09:59:58 2020
+System startup mine Sat Apr 04 10:00:09 2020
+System startup createsystem Sat Apr 04 10:00:10 2020
+System startup mine Sat Apr 04 10:00:21 2020
+System startup createsystem Sat Apr 04 10:00:21 2020
+System startup mine Sat Apr 04 10:00:30 2020
+System startup createsystem Sat Apr 04 10:00:31 2020
+System startup mine Sat Apr 04 10:00:46 2020
+System startup createsystem Sat Apr 04 10:00:47 2020
+System startup mine Sat Apr 04 10:01:30 2020
+System startup createsystem Sat Apr 04 10:01:31 2020
+System startup mine reset Sat Apr 04 10:02:08 2020
+System startup createsystem Sat Apr 04 10:02:08 2020
+System startup mine Sat Apr 04 10:02:21 2020
+System startup createsystem Sat Apr 04 10:02:22 2020
+System startup mine Sat Apr 04 10:02:27 2020
+System startup createsystem Sat Apr 04 10:02:27 2020
+System startup mine reset Sat Apr 04 10:02:33 2020
+System startup createsystem Sat Apr 04 10:02:33 2020
+System startup mine Sat Apr 04 10:02:48 2020
+System startup createsystem Sat Apr 04 10:02:49 2020
+System startup mine reset Sat Apr 04 10:02:54 2020
+System startup createsystem Sat Apr 04 10:02:54 2020
+System startup mine reset Sat Apr 04 10:03:21 2020
+System startup createsystem Sat Apr 04 10:03:21 2020
+System startup mine reset Sat Apr 04 10:03:53 2020
+System startup createsystem Sat Apr 04 10:03:53 2020
+System startup mine reset Sat Apr 04 10:04:30 2020
+System startup createsystem Sat Apr 04 10:04:31 2020
+System startup mine Sat Apr 04 10:05:01 2020
+System startup createsystem Sat Apr 04 10:05:01 2020
+System startup mine reset Sat Apr 04 10:05:16 2020
+System startup createsystem Sat Apr 04 10:05:16 2020
+System startup mine reset Sat Apr 04 10:06:49 2020
+System startup createsystem Sat Apr 04 10:06:49 2020
+System startup mine reset Sat Apr 04 10:09:21 2020
+System startup createsystem Sat Apr 04 10:09:38 2020
+System startup mine reset Sat Apr 04 10:09:44 2020
+System startup createsystem Sat Apr 04 10:09:44 2020
+System startup mine Sat Apr 04 10:10:16 2020
+System startup createsystem Sat Apr 04 10:10:17 2020
+System startup mine reset Sat Apr 04 10:10:22 2020
+System startup createsystem Sat Apr 04 10:10:23 2020
+System startup mine reset Sat Apr 04 10:11:06 2020
+System startup createsystem Sat Apr 04 10:11:06 2020
+System startup createsystem Sun Apr 05 20:39:24 2020
+System startup createsystem Sun Apr 05 20:44:19 2020
+System startup mine reset Sun Apr 05 20:44:28 2020
+System startup createsystem Sun Apr 05 20:44:29 2020
+System startup createsystem Sun Apr 05 20:44:40 2020
+System startup createsystem Sun Apr 05 21:15:03 2020
+System startup Harry reset Sun Apr 05 21:15:14 2020
+System startup createsystem Sun Apr 05 21:15:15 2020
+System startup createsystem Mon Apr 06 16:36:45 2020
+System startup Trip Mon Apr 06 16:37:18 2020
+System startup createsystem Mon Apr 06 16:37:19 2020
+System startup createsystem Mon Apr 06 16:38:41 2020
+System startup Trip Mon Apr 06 16:38:49 2020
+System startup createsystem Mon Apr 06 16:38:50 2020
+System startup Trip reset Mon Apr 06 16:39:02 2020
+System startup createsystem Mon Apr 06 16:39:02 2020
+System startup createsystem Mon Apr 06 16:39:58 2020
+System startup createsystem Mon Apr 06 16:40:18 2020
+System startup Trip Mon Apr 06 16:40:31 2020
+System startup createsystem Mon Apr 06 16:40:31 2020
+System startup Trip Mon Apr 06 16:42:00 2020
+System startup createsystem Mon Apr 06 16:42:00 2020
+System startup Trip Mon Apr 06 16:43:21 2020
+System startup createsystem Mon Apr 06 16:43:21 2020
+System startup Trip Mon Apr 06 16:44:16 2020
+System startup createsystem Mon Apr 06 16:44:17 2020
+System startup Trip Mon Apr 06 16:44:50 2020
+System startup createsystem Mon Apr 06 16:44:50 2020
+System startup Trip reset Mon Apr 06 16:45:01 2020
+System startup createsystem Mon Apr 06 16:45:01 2020
+System startup Trip reset Mon Apr 06 17:02:19 2020
+System startup createsystem Mon Apr 06 17:02:19 2020
+System startup Trip Mon Apr 06 17:10:29 2020
+System startup createsystem Mon Apr 06 17:10:30 2020
+System startup createsystem Mon Apr 06 22:19:33 2020
+System startup createsystem Mon Apr 06 22:19:40 2020
+System startup stockpile Mon Apr 06 22:20:04 2020
+System startup createsystem Mon Apr 06 22:20:04 2020

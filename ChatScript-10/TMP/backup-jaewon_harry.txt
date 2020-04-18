@@ -1,0 +1,29 @@
+﻿USERS/topic_jaewon_harry.txt
+jul2116 Apr04'20-10:09:44 Apr06'20-16:39:13 1586088998-13.45.0.15.12.0 |
+1 2 0 DY 0 3 3 0 # start, input#, no rejoinder, #0topics, #1topics, layer2
+~introductions #pending
+~introductions + 1 R@g9 ia 0 0 0 
+#`end topics
+$shutup=1
+$singleresponse=1
+$botprompt=HARRY: 
+$userprompt=jaewon: >
+$cs_control_main=~control
+$cs_token=75726583
+$cs_login=jaewon
+$cs_bot=Harry
+$cs_randindex=2953
+$cs_trace=0
+$cs_time=0
+#`end variables
+0 #set flags
+#`end fact sets
+#`end user facts 0
+#context 
+ hi
+ why?
+#`end user
+ Hello, talk to me!
+ I don't know what to say.
+ I don't know what to say.
+#`end chatbot

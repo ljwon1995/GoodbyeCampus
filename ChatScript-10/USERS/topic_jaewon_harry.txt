@@ -1,0 +1,30 @@
+USERS/topic_jaewon_harry.txt
+jul2116 Apr04'20-10:09:44 Apr06'20-16:39:13 1586088998-13.45.0.15.12.0 |
+3 2 0 DY 0 3 3 0 # start, input#, no rejoinder, #0topics, #1topics, layer2
+~introductions #pending
+~introductions + 1 bWw@zIs*Ok3 ia 2 0 0 
+#`end topics
+$cs_randindex=2953
+$cs_bot=Harry
+$cs_login=jaewon
+$cs_token=75726583
+$cs_control_main=~control
+$userprompt=jaewon: >
+$botprompt=HARRY: 
+$singleresponse=1
+$shutup=1
+$cs_trace=0
+$cs_time=0
+#`end variables
+0 #set flags
+#`end fact sets
+#`end user facts 0
+#context 
+ hi
+ why?
+#`end user
+ Hello, talk to me!
+ I don't know what to say.
+ I don't know what to say.
+ Hi, I will help you plan your travel. Just tell me where you are and where you want to go to.
+#`end chatbot

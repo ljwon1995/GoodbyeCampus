@@ -1,0 +1,11 @@
+﻿bad compile 4 - called myexit at Sat Apr 04 09:59:34 2020
+failed to connect to server
+ 4 - called myexit at Sun Apr 05 20:15:10 2020
+failed to connect to server
+ 4 - called myexit at Sun Apr 05 20:17:47 2020
+failed to connect to server
+ 4 - called myexit at Sun Apr 05 20:43:29 2020
+failed to connect to server
+ 4 - called myexit at Sun Apr 05 20:43:47 2020
+failed to connect to server
+ 4 - called myexit at Sun Apr 05 21:00:02 2020

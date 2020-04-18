@@ -1,0 +1,62 @@
+USERS/topic_trip_harry.txt
+jul2116 Apr06'20-16:40:23 Apr06'20-22:19:26 1586159006-3.0.0.1.9.0 |
+4 17 0 DY 0 3 3 0 # start, input#, no rejoinder, #0topics, #1topics, layer2
+~introductions #pending
+~introductions + 1 bWw@zIs*Ok3 ia h 0 0 
+#`end topics
+$shutup=1
+$singleresponse=1
+$botprompt=HARRY: 
+$userprompt=trip: >
+$cs_control_main=~control
+$cs_token=75726583
+$cs_login=trip
+$cs_bot=Harry
+$cs_randindex=3684
+$source=go me
+$target=home
+$cs_trace=0
+$cs_time=0
+#`end variables
+0 #set flags
+#`end fact sets
+#`end user facts 0
+#context 
+ Home
+ home
+ I want to go to home
+ I'm at gome
+ Nowhere
+ No where
+ home
+ what the..
+ gome
+ gome
+ I want to go home
+ I want to go to home
+ what
+ want
+ source
+ quit
+ quit:
+#`end user
+ Hello, I will help you plan your travel. Just tell me where you want to go.
+ I don't know what to say.
+ I don't know what to say.
+ OK, you want to go to home.
+ Hi, I will help you plan your travel. Just tell me where you are and where you want to go to.
+ Where do you want to go?
+ Where do you want to go?
+ Where do you want to go?
+ Where do you want to go?
+ Where do you want to go?
+ Where do you want to go?
+ Where do you want to go?
+ Where do you want to go?
+ You want to go from go me to home.
+ You want to go from go me to home.
+ You want to go from go me to home.
+ You want to go from go me to home.
+ You want to go from go me to home.
+ You want to go from go me to home.
+#`end chatbot

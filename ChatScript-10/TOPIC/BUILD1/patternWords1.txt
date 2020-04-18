@@ -1,0 +1,9 @@
+﻿location0
+location1
+location2
+cart1
+train1
+ship1
+direct_sv
+direct_vo
+direct_v
