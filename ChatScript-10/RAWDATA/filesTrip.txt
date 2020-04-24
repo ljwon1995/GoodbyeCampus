@@ -1,8 +1,0 @@
-RAWDATA/HARRY/simplecontrol.top	
-RAWDATA/TRIP/tutorial.top
-
-
-
-
-
-

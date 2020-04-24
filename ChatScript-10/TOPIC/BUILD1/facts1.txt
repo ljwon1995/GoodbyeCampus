@@ -1,7 +1,0 @@
-﻿$cs_trace=0
-$cs_time=0
-#`end variables
-( stockpile defaultbot defaultbot x100000 )
-( 1 space ~carts x100000 )
-( 10 space ~trains x100000 )
-( 50 space ~ships x100000 )
