@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 from django.http import HttpResponseRedirect, Http404
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 import datetime
 import socket
 
@@ -11,6 +12,7 @@ def index(request):
     return HttpResponse(str)
 
 
+@csrf_exempt
 def api(request, message):
 
         HOST = 'ec2-3-21-126-101.us-east-2.compute.amazonaws.com'
