@@ -41,9 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'elections',
     'parsed_data',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',     # 추가
+    'django.middleware.common.CommonMiddleware', # 추가    
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -72,6 +75,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
+
+CORS_ORIGIN_WHITELIST = (
+    'http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:3000',
+    'http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8000',
+    'http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888',
+)
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 
 # Database

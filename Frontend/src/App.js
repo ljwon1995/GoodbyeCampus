@@ -15,7 +15,7 @@ class App extends Component {
 
 
     try {
-            const res = await fetch('http://127.0.0.1:8000/message/' + newMessage);
+            const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/' + newMessage);
             const posts = await res.json();
             
             addResponseMessage(posts.content);

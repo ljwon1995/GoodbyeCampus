@@ -10,26 +10,5 @@
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <td><B>name</B></td>
-            <td><B>introduction</B></td>
-            <td><B>area</B></td>
-            <td><B>party_number</B></td>
-        </tr>
-        </thead>
-        <tbody>
-        {% for candidate in candidates %}
-        <tr>
-            <td> {{ candidate.name }} </td>
-            <td> {{ candidate.introduction }} </td>
-            <td> <a href = "areas/{{ candidate.area }}/"> {{candidate.area}} </a> </td>
-            <td>party_number {{ candidate.party_number }} </td>
-        </tr>
-        {% endfor %}
-        
-        <tbody>
-    </table>
+<h1>Server Start!</h1>
 </body>

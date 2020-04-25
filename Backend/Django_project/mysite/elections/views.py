@@ -1,77 +1,65 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseNotFound
 from django.http import HttpResponseRedirect, Http404
-from django.db.models import Sum
-
-from .models import Candidate, Poll, Choice
+from django.http import JsonResponse
 import datetime
+import socket
 
 # Create your views here.
 def index(request):
-	candidates = Candidate.objects.all()
-	context = {'candidates':candidates}
-	return render(request, 'elections/index.html',context)
+    str = "server started"
+    return HttpResponse(str)
 
-def areas(request, area):
-	today = datetime.datetime.now()
-	print(today)	
 
-	try:	
-		poll = Poll.objects.get(area = area, start_date__lte = today, end_date__gte = today)
-		candidates = Candidate.objects.filter(area = area)
-	except:
-		poll = None
-		candidates = None
+def api(request, message):
 
-	context = {'candidates': candidates, 'area': area, 'poll': poll}
-	return render(request,'elections/areas.html', context)
+        print('user message = ', message)
 
-def polls(request, poll_id):
-    poll = Poll.objects.get(pk=poll_id)
-    print(poll_id + 1)
-    selection = request.POST['choice']
+	#to the chatbot(message)
+	#result = message.upper()
 
-    try: 
-        choice = Choice.objects.get(poll_id = poll.id, candidate_id = selection)
-        choice.votes += 1
-        choice.save()
-    except:
-        #최초로 투표하는 경우, DB에 저장된 Choice객체가 없기 때문에 Choice를 새로 생성합니다
-        choice = Choice(poll_id = poll.id, candidate_id = selection, votes = 1)
-        choice.save()
 
-    return HttpResponseRedirect("/areas/{}/results".format(poll.area))
+        HOST = 'ec2-3-21-126-101.us-east-2.compute.amazonaws.com'
+        PORT = 1024
 
-def candidates(request, name):
-	candidate = get_object_or_404(Candidate, name=name)
-	# try:
-	# 	candidate = Candidate.objects.get(name=name)
-	# except:
-	# 	raise Http404
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client_socket.bind(('', 0))
+        client_socket.connect((HOST, PORT))
 
-	return HttpResponse(candidate.name)
 
-def results(request, area):
-	candidates = Candidate.objects.filter(area = area)
-	
-	polls = Poll.objects.filter(area = area)
-	polls_result = []
-	for poll in polls:
-		result = {}
-		result['start_date'] = poll.start_date
-		result['end_date'] = poll.end_date
-		total_votes = Choice.objects.filter(poll_id=poll.id).aggregate(Sum('votes'))
-		result['total_votes'] = total_votes['votes__sum']
-		rates = []
-		for candidate in candidates:
-			try:
-				choice = Choice.objects.get(poll_id=poll.id, candidate_id=candidate.id)
-				rates.append(round(choice.votes * 100/result['total_votes'],1))
-			except:
-				rates.append(0)
-		result['rates'] = rates
 
-		polls_result.append(result)
+        name = 'Jaewon'
+        msg = ":build GOODCAM reset"
+        bot = "Harry"
 
-	context = {'candidates':candidates, 'area':area, 'polls_result':polls_result}
-	return render(request, 'elections/result.html', context)
+        data = name + chr(0) + bot + chr(0) + msg + chr(0);
+
+        client_socket.send(data.encode());
+
+
+        
+        data = client_socket.recv(10000);
+        print('bot : ', data.decode());
+
+
+
+        print("Conversation Started");
+
+
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client_socket.bind(('', 0))
+        client_socket.connect((HOST, PORT))
+
+
+        data = name + chr(0) + bot + chr(0) + message + chr(0);
+        client_socket.send(data.encode());
+
+        data = client_socket.recv(10000);
+        print('bot : ', data.decode());
+        data = data.decode()
+        
+        client_socket.close()
+        return JsonResponse({
+                'message': 1,
+                'content':  data
+                })

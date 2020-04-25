@@ -8,10 +8,8 @@ client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client_socket.bind(('', 0))
 client_socket.connect((HOST, PORT))
 
-
-
-name = 'Jaewon'
-msg = ":build Harry reset"
+name = input("Enter Your Name : ")
+msg = ":build GOODCAM reset"
 bot = "HARRY"
 
 data = name + chr(0) + bot + chr(0) + msg + chr(0);
@@ -25,6 +23,10 @@ print('bot : ', data.decode());
 
 
 print("Conversation Started");
+
+
+
+
 msg = ""
 
 
