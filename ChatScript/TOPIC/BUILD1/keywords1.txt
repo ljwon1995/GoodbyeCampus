@@ -1,6 +1,0 @@
-﻿T~졸업가능여부 ( )
-~긍정대답 ( 엉 맞아 응 ㅇㅇ ㅇ 네 예 )
-~부정대답 ( 아니야 ㄴㄴ ㄴ 노노 어니 아냐 아닌데 아니 )
-T~introductions ( )
-T~control ( )
-T~xpostprocess ( )
