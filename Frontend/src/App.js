@@ -5,9 +5,17 @@ import './App.css';
 
 class App extends Component {
 
-  componentDidMount() {
-    addResponseMessage("환영합니다!!!asdfasdf");
+  async componentDidMount() {
 
+    try {
+            const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/start');
+            const posts = await res.json();
+            
+            addResponseMessage(posts.content);
+          
+        } catch (e) {
+            console.log(e);
+    }
   }
 
   async handleNewUserMessage (newMessage) {
