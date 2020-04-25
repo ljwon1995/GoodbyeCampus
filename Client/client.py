@@ -1,7 +1,7 @@
 import socket
 
 
-HOST = 'localhost'
+HOST = 'ec2-3-21-126-101.us-east-2.compute.amazonaws.com'
 PORT = 1024
 
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -9,7 +9,7 @@ client_socket.bind(('', 0))
 client_socket.connect((HOST, PORT))
 
 name = input("Enter Your Name : ")
-msg = ":build GOODCAM reset"
+msg = ":build Goodcam reset"
 bot = "HARRY"
 
 data = name + chr(0) + bot + chr(0) + msg + chr(0);
