@@ -13,46 +13,50 @@ def index(request):
 
 def api(request, message):
 
+        #TODO port is changing every time user sent. So make the way to distinguish user without port number.
+
         HOST = 'ec2-3-21-126-101.us-east-2.compute.amazonaws.com'
         PORT = 1024
 
+
+        ip = request.META.get('REMOTE_ADDR')
+        port = request.META.get('REMOTE_PORT')
+
+        name = ip + "/" + port
+
         if(message == 'start'):
+
                 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 client_socket.bind(('', 0))
                 client_socket.connect((HOST, PORT))
 
-                name = 'Jaewon'
-                msg = ":build Goodcam reset"
+                msg = ":reset"
                 bot = "HARRY"
 
                 data = name + chr(0) + bot + chr(0) + msg + chr(0);
                 client_socket.send(data.encode())
                 data = client_socket.recv(50000).decode()
-
                 client_socket.close()
 
-                client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                client_socket.bind(('', 0))
-                client_socket.connect((HOST, PORT))
 
-                msg = ""
+#                client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+#                client_socket.bind(('', 0))
+#                client_socket.connect((HOST, PORT))
 
-                data = name + chr(0) + bot + chr(0) + msg + chr(0);
-                client_socket.send(data.encode());
+#                msg = ""
+#                bot = 'HARRY'
+#                data = name + chr(0) + bot + chr(0) + msg + chr(0);
 
-                data = client_socket.recv(10000).decode();
+#                client_socket.send(data.encode())
+#                data = client_socket.recv(10000).decode();
 
-
-
+#                client_socket.close()
 
                 return JsonResponse({
                         'message': 1,
                         'content':  data
                         })
 
-
-
-            
 
         print('user message = ', message)
 
@@ -65,7 +69,6 @@ def api(request, message):
 
         print("Conversation Started");
 
-        name = 'Jaewon'
         bot = "HARRY"
 
 
