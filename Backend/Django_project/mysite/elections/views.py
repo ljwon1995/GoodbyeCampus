@@ -83,9 +83,10 @@ def api(request, message):
         data = client_socket.recv(10000);
         print('bot : ', data.decode());
         data = data.decode()
-        
+
         client_socket.close()
         return JsonResponse({
                 'message': 1,
                 'content':  data
                 })
+
