@@ -8,7 +8,16 @@ import socket
 
 funclist = []
 
+def graduationAssessment(argList):
+    response = ""
+    for arg in argList:
+        response += arg + " "
 
+    return response
+
+def initFunclist():
+    funclist.append(("graduationAssessment", graduationAssessment))
+    return
 
 # Create your views here.
 def index(request):
@@ -28,6 +37,7 @@ def api(request, message):
     name = ip + "/" + port
 
     if (message == 'start'):
+        initFunclist()
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client_socket.bind(('', 0))
         client_socket.connect((HOST, PORT))
@@ -41,30 +51,13 @@ def api(request, message):
         data = data.split("/")[1]
         client_socket.close()
 
-        #                client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        #                client_socket.bind(('', 0))
-        #                client_socket.connect((HOST, PORT))
-
-        #                msg = ""
-        #                bot = 'HARRY'
-        #                data = name + chr(0) + bot + chr(0) + msg + chr(0);
-
-        #                client_socket.send(data.encode())
-        #                data = client_socket.recv(10000).decode();
-
-        #                client_socket.close()
 
         return JsonResponse({
             'message': 1,
             'content': data
         })
 
-    print('user message = ', message)
 
-    # to the chatbot(message)
-    # result = message.upper()
-
-    print("Conversation Started");
 
     bot = "HARRY"
 
@@ -97,7 +90,6 @@ def api(request, message):
 
     else:
         response = "Error"
-
 
     client_socket.close()
     return JsonResponse({
