@@ -38,8 +38,8 @@ def api(request, message):
         data = name + chr(0) + bot + chr(0) + msg + chr(0);
         client_socket.send(data.encode())
         data = client_socket.recv(50000).decode()
+        data = data.split("/")[1]
         client_socket.close()
-        data = "kkk"
 
         #                client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         #                client_socket.bind(('', 0))
@@ -84,7 +84,7 @@ def api(request, message):
     type = tokens[0]
 
     # Find type
-    if type == 'f':
+    if type == 'f' or type == 'F':
         fname = tokens[1]
         argList = tokens[2:]
 
@@ -92,11 +92,12 @@ def api(request, message):
             if func[0] == fname:
                 response = func[1](argList)
 
-    elif type == 'u':
+    elif type == 'u' or type == 'U':
         response = tokens[1]
 
     else:
         response = "Error"
+
 
     client_socket.close()
     return JsonResponse({
