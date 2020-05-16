@@ -5,9 +5,7 @@ import json
 import time
 import getpass
 
-def getUserSubject():
-    ID = input('id입력 : ')
-    PW = getpass.getpass('비밀번호입력 : ')#input('비번입력 : ')
+def getUserSubject(ID, PW):
     start_time = time.time()
     h = {
         'Accept' : '*/*',
