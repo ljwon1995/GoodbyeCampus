@@ -11,6 +11,7 @@ def index(request):
     return HttpResponse(str)
 
 
+
 def api(request, message):
 
         #TODO port is changing every time user sent. So make the way to distinguish user without port number.
@@ -22,7 +23,7 @@ def api(request, message):
         ip = request.META.get('REMOTE_ADDR')
         port = request.META.get('REMOTE_PORT')
 
-        name = ip + "/" + port
+        name = ip
 
         if(message == 'start'):
 
