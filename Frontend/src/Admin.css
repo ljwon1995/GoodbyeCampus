@@ -1,0 +1,11 @@
+.Container {
+    text-align: center;
+    width: 12cm;
+    margin: auto;
+
+}
+
+.Container-Head {
+    background-color: lightskyblue;
+    margin-top: 4cm;
+}
