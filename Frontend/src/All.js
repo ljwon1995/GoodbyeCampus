@@ -7,6 +7,9 @@ import TableHead from '@material-ui/core/TableHead';
 import TableBody from '@material-ui/core/TableBody';
 import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
+import Dialog from '@material-ui/core/Dialog';
+import {DialogTitle, TextField, DialogActions} from '@material-ui/core';
+import DialogContent from '@material-ui/core/DialogContent'
 
 class All extends Component {
     
@@ -15,33 +18,103 @@ class All extends Component {
 
         this.state = {
          subject: [
-             {"id":"0", "year":"2018", "sem":1, "code":"123", "title":"asdf", "credit":"3", "etc":"~~~"},
-             {"id":"1", "year":"2018", "sem":1, "code":"123", "title":"asdf", "credit":"3", "etc":"~~~"},
-             {"id":"2", "year":"2018", "sem":1, "code":"123", "title":"asdf", "credit":"3", "etc":"~~~"},
-             {"id":"3", "year":"2018", "sem":1, "code":"123", "title":"asdf", "credit":"3", "etc":"~~~"},
-             {"id":"4", "year":"2018", "sem":1, "code":"123", "title":"asdf", "credit":"3", "etc":"~~~"}
+             {"year":"2020", "sem":1, "code":"111", "title":"test1", "credit":"3", "etc":"-"},
+             {"year":"2020", "sem":1, "code":"112", "title":"test2", "credit":"3", "etc":"-"},
+             {"year":"2020", "sem":1, "code":"113", "title":"test3", "credit":"3", "etc":"-"},
+             {"year":"2020", "sem":1, "code":"114", "title":"test4", "credit":"3", "etc":"-"},
+             {"year":"2020", "sem":1, "code":"115", "title":"test5", "credit":"3", "etc":"-"}
          ],
-         options: []
+         options: [],
+         open: false,
+         year: '',
+         sem: '',
+         code: '',
+         title: '',
+         credit: '',
+         etc: ''
+
         };
     }
-    onChange(e) {
-        // current array of options
+
+    _inputData(e) {
+        let nextState = {};
+
+        nextState[e.target.name] = e.target.value;
+        
+        this.setState(nextState);
+    }
+
+    _delete() {
         const options = this.state.options
-        let index
- 
-        // check if the check box is checked or unchecked
-        if (e.target.checked) {
-          // add the numerical value of the checkbox to options array
-          options.push(e.target.value)
-        } else {
-          // or remove the value from the unchecked checkbox from the array
-          index = options.indexOf(e.target.index)
-          options.splice(index, 1)
+        const newList = this.state.subject
+        if(this.state.options.length > 1) {
+
+            options.sort(function(a, b) { // 내림차순
+                return b - a
+            });
+
+            let i
+            for(i=0; i<options.length; i++){
+                newList.splice(options[i],1)
+            }
+
+            this.setState({
+                subject: newList,
+                options: []
+            })
         }
- 
-        // update the state with the new array of options
-        this.setState({ options: options })
-      }
+
+        else if(this.state.options.length === 1) {
+            newList.splice(options[0],1)
+
+            this.setState({
+                subject: newList,
+                options: []
+            })
+        }
+
+    }
+
+    _btnClick() {
+        this.setState({
+            open: true
+        })
+    }
+
+    _closeBtn() {
+        this.setState({
+            year: '',
+            sem: '',
+            code: '',
+            title: '',
+            credit: '',
+            etc: '',
+            open: false
+        })
+    }
+
+    _addNewItem() {
+        const list = this.state.subject
+        let newItem = {
+            "year": this.state.year,
+            "sem": this.state.sem,
+            "code": this.state.code,
+            "title": this.state.title,
+            "credit": this.state.credit,
+            "etc": this.state.etc}
+
+        this.setState({
+            subject: list.concat(newItem),
+            year: '',
+            sem: '',
+            code: '',
+            title: '',
+            credit: '',
+            etc: '',
+            open: false
+        })
+
+    }
 
     render(){
         return(
@@ -89,9 +162,25 @@ class All extends Component {
                 </Table>
                 </Paper>
                 <div style={{'textAlign':'center','margin':'auto', 'marginTop':'10px'}}>
-                    <Button variant="contained" color="primary" size='large' style={{'marginRight':'20px'}}>추가</Button>
-                    <Button variant="contained" color="primary" size='large'>삭제</Button>
+                    <Button variant="contained" color="primary" size='large' style={{'marginRight':'20px'}} onClick={this._btnClick.bind(this)}>추가</Button>
+                    <Button variant="contained" color="primary" size='large' onClick={this._delete.bind(this)}>삭제</Button>
                 </div>
+                <Dialog open={this.state.open} onClose>
+                    <DialogTitle>과목추가</DialogTitle>
+                    <DialogContent>
+                        <TextField label="년도" type="text" name="year" onChange={this._inputData.bind(this)}></TextField><br/>
+                        <TextField label="학기" type="text" name="sem" onChange={this._inputData.bind(this)}></TextField><br/>
+                        <TextField label="과목코드" type="text" name="code" onChange={this._inputData.bind(this)}></TextField><br/>
+                        <TextField label="과목명" type="text" name="title" onChange={this._inputData.bind(this)}></TextField><br/>
+                        <TextField label="학점" type="text" name="credit" onChange={this._inputData.bind(this)}></TextField><br/>
+                        <TextField label="비고" type="text" name="etc" onChange={this._inputData.bind(this)}></TextField><br/>
+                    </DialogContent>
+                    <DialogActions>
+                    <Button variant="contained" color="primary" onClick={this._addNewItem.bind(this)}>확인</Button>
+                    <Button variant="outlined" color="primary" onClick={this._closeBtn.bind(this)}>취소</Button>
+                    </DialogActions>
+
+                </Dialog>
             </div>
         );
     }
