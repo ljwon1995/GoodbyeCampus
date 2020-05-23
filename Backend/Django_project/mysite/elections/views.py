@@ -8,9 +8,9 @@ import crawlers
 from .models import Compulsory, Substitute, Subject
 
 funclist = []
-isAssessed = False
 
-class UserCheckedData: #user data
+class UserData:
+    assessed = False
     totalCredits = 0
     exclusiveGECredits = 0
     bsmCredits = 0
@@ -46,32 +46,29 @@ def checkGdRequire(year):
 
 def graduationAssessment(argList):
     global isAssessed
+    ret = ""
 
     ID = argList[0]
     PW = argList[1]
+
     #TODO In chatscript need to take ! inputs also
-    ret = "t"
     try:
         if isAssessed == False:
-            takeLists, stNum = crawlers.getUserSubject("yey6689", "para3150!")
+            takeLists, stNum = crawlers.getUserSubject(ID, PW)
             year = stNum[:4]
-            print(year)
             ret += checkGdRequire(year)
-            ret = takeLists[0]['kor_nm']
-            isAssessed = True
-        else:
-            ret = "Already assessed"
+
     except Exception as e:
         error = e
-        return str(error)
+        return False
 
-    return ret
+    return True
 
 def initFunclist():
     funclist.append(("graduationAssessment", graduationAssessment))
     return
 
-# Create your views here.
+#For debugging
 def index(request):
     
     str = "20141226"
@@ -81,11 +78,11 @@ def index(request):
 
 
 def api(request, message):
-    # TODO port is changing every time user sent. So make the way to distinguish user without port number.
 
     HOST = 'ec2-3-21-126-101.us-east-2.compute.amazonaws.com'
     PORT = 1024
 
+    # TODO port is changing every time user sent. So make the way to distinguish user without port number.
     ip = request.META.get('REMOTE_ADDR')
     port = request.META.get('REMOTE_PORT')
 
