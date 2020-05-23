@@ -106,7 +106,7 @@ for item in myList:
         newList.append(item)
 print(len(myList))
 print(len(newList))
-f = open('C:/Users/mypc/Desktop/캡ㅋ/강의시간표.txt', mode='at', encoding='utf-8')
+f = open('/home/ubuntu/test.txt', mode='at', encoding='utf-8')
 f.write(str(len(myList)))
 f.write('\n')
 f.write(str(len(newList)))

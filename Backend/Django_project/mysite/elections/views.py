@@ -4,16 +4,60 @@ from django.http import HttpResponseRedirect, Http404
 from django.http import JsonResponse
 import datetime
 import socket
-
+import crawlers
+from .models import Compulsory, Substitute, Subject
 
 funclist = []
 
-def graduationAssessment(argList):
-    response = ""
-    for arg in argList:
-        response += arg + " "
+class UserCheckedData: #user data
+    totalCredits = 0
+    exclusiveGECredits = 0
+    bsmCredits = 0
+    numCoreGE = 0
+    totalGECredits = 0
+    majorCredits = 0
+    designSubjectCredits = 0
+    compulsoryTaken = []
 
-    return response
+def certainFunction(argList):
+    graduationAssessment(argList)
+    #Do its logic
+
+def checkCompulsorySatisfid(year):
+    #Do its logic
+
+    return ""
+
+def checkMinMaxRequire(year):
+    #Do its logic
+
+    return ""
+
+def checkGdRequire(year):
+    ret = ""
+    ret += checkCompulsorySatisfied(year)
+    ret += checkMinMaxRequire(year)
+
+    return ret
+
+
+def graduationAssessment(argList):
+    ID = argList[0]
+    PW = argList[1]
+    #TODO In chatscript need to take ! inputs also
+
+    try:
+        takeLists = crawlers.getUserSubject("yey6689", "para3150!")
+        #stNum = takeLists[0]
+        stNum = "20141226"
+        year = stNum[:4]
+        checkGdRequire(year)
+
+    except Exception as e:
+        error = e
+        return str(error)
+
+    return "Hello"
 
 def initFunclist():
     funclist.append(("graduationAssessment", graduationAssessment))
@@ -21,8 +65,11 @@ def initFunclist():
 
 # Create your views here.
 def index(request):
-    str = "server started"
-    return HttpResponse(str)
+    str = "20141226"
+    str2 = str[:4]
+
+
+    return HttpResponse(str2)
 
 
 def api(request, message):
@@ -34,7 +81,7 @@ def api(request, message):
     ip = request.META.get('REMOTE_ADDR')
     port = request.META.get('REMOTE_PORT')
 
-    name = ip + "/" + port
+    name = ip
 
     if (message == 'start'):
         initFunclist()

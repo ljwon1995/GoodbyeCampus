@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Candidate, Poll, Choice
+from .models import Substitute,Compulsory,Subject
 
 # Register your models here.
-admin.site.register(Candidate)
-admin.site.register(Poll)
-admin.site.register(Choice)
+admin.site.register(Substitute)
+admin.site.register(Compulsory)
+admin.site.register(Subject)

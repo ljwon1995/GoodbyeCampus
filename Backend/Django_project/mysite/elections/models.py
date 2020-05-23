@@ -1,24 +1,38 @@
 from django.db import models
 
 # Create your models here.
-class Candidate(models.Model):
-    name = models.CharField(max_length=10)
-    introduction = models.TextField()
-    area = models.CharField(max_length=15)
-    party_number = models.IntegerField(default=1)
+class Substitute(models.Model):
+    course_id = models.CharField(max_length=20)
+    course_title = models.CharField(max_length=20)
+    
+    sub_id = models.CharField(max_length=20)
+    sub_title = models.CharField(max_length=20)
 
     def __str__(self):
-    	return self.name
+        return self.course_title + ':' + self.sub_title 
+
+class Compulsory(models.Model):
+    course_year = models.CharField(max_length=10)
+    course_id = models.CharField(max_length=20)
+    course_title = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.course_year + ':' + self.course_title
+
+class Subject(models.Model):
+    course_year = models.CharField(max_length=10)
+    course_semester = models.CharField(max_length=10)
+    course_colgnm = models.CharField(max_length=40)
+    course_sustnm = models.CharField(max_length=40)
+    course_pobjnm = models.CharField(max_length=40)
+    course_shyr = models.CharField(max_length=20)
+    course_profnm = models.CharField(max_length=40)
+    course_ltbdrm = models.CharField(max_length=20)
+    course_sbjtclss = models.CharField(max_length=40)
+    course_clssnm = models.CharField(max_length=40)
+    course_pnt = models.CharField(max_length=20)
+    course_remk = models.CharField(max_length=50)
 
 
-class Poll(models.Model):
-	start_date = models.DateTimeField()
-	end_date = models.DateTimeField()
-	area = models.CharField(max_length=15)
-
-
-class Choice(models.Model):
-	poll = models.ForeignKey(Poll, on_delete = models.CASCADE,)
-	candidate = models.ForeignKey(Candidate, on_delete = models.CASCADE,)
-	votes = models.IntegerField(default=0)
-
+    def __str__(self):
+        return self.course_year + ":" + self.course_semester + ":" + self.course_clssnm
