@@ -8,6 +8,7 @@ import crawlers
 from .models import Compulsory, Substitute, Subject
 
 funclist = []
+isAssessed = False
 
 class UserCheckedData: #user data
     totalCredits = 0
@@ -17,14 +18,16 @@ class UserCheckedData: #user data
     totalGECredits = 0
     majorCredits = 0
     designSubjectCredits = 0
+    avgGrade = 0
     compulsoryTaken = []
 
 def certainFunction(argList):
     graduationAssessment(argList)
     #Do its logic
 
-def checkCompulsorySatisfid(year):
+def checkCompulsorySatisfied(year):
     #Do its logic
+    compulsoryBools = []
 
     return ""
 
@@ -42,22 +45,27 @@ def checkGdRequire(year):
 
 
 def graduationAssessment(argList):
+    global isAssessed
+
     ID = argList[0]
     PW = argList[1]
     #TODO In chatscript need to take ! inputs also
-
+    ret = "t"
     try:
-        takeLists = crawlers.getUserSubject("yey6689", "para3150!")
-        #stNum = takeLists[0]
-        stNum = "20141226"
-        year = stNum[:4]
-        checkGdRequire(year)
-
+        if isAssessed == False:
+            takeLists, stNum = crawlers.getUserSubject("yey6689", "para3150!")
+            year = stNum[:4]
+            print(year)
+            ret += checkGdRequire(year)
+            ret = takeLists[0]['kor_nm']
+            isAssessed = True
+        else:
+            ret = "Already assessed"
     except Exception as e:
         error = e
         return str(error)
 
-    return "Hello"
+    return ret
 
 def initFunclist():
     funclist.append(("graduationAssessment", graduationAssessment))
@@ -65,11 +73,11 @@ def initFunclist():
 
 # Create your views here.
 def index(request):
+    
     str = "20141226"
-    str2 = str[:4]
-
-
-    return HttpResponse(str2)
+    takeLists, stNum = crawlers.getUserSubject("yey6689", "para3150!")
+    
+    return HttpResponse(takeLists[0]['kor_nm'])
 
 
 def api(request, message):

@@ -7,6 +7,7 @@ import getpass
 
 def getUserSubject(ID, PW):
     start_time = time.time()
+
     h = {
         'Accept' : '*/*',
         'Accept-Language' : 'ko-KR,ko;q=0.9,en-US;q=0.8,en;q=0.7',
@@ -25,6 +26,7 @@ def getUserSubject(ID, PW):
 
     with requests.Session() as s:
         url = 'https://sso2.cau.ac.kr/SSO/AuthWeb/Logon.aspx?ssosite=mportal.cau.ac.kr'
+
         r = s.post(url, data=d, headers=h)
         bs = BeautifulSoup(r.text, "html5lib")
         inputs = bs.select('input')
@@ -46,6 +48,9 @@ def getUserSubject(ID, PW):
                 url = "https://sso2.cau.ac.kr/SSO/AuthWeb/NACookieManage.aspx"
                 r = s.post(url, data=data, headers=h)
         r = s.get('https://mportal.cau.ac.kr/index.do', headers=h)
+        r_num = s.post('https://mportal.cau.ac.kr/login/getLoginInfo.ajax', headers=h)
+        res = json.loads(r_num.text)
+        user = res['stdno']
         r = s.post('https://mportal.cau.ac.kr/std/usj/sUsjGdc003/index.do', data={
             'menuId' : '150202'
         }, headers=h)
@@ -82,4 +87,4 @@ def getUserSubject(ID, PW):
     end_time = time.time()
     print('Time taken : ' + str(end_time-start_time))
 
-    return result
+    return result,user
