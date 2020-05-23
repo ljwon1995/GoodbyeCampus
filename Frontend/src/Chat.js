@@ -60,7 +60,9 @@ class Chat extends Component {
         <Widget
          handleNewUserMessage={this.handleNewUserMessage.bind(this)}
          fullScreenMode={true}
-         />
+         showCloseButton={false}
+         title="Goodbye Campus"
+         subtitle="당신의 졸업 도우미"/>
       </div>
     );
   }
