@@ -9,6 +9,7 @@ from .models import Compulsory, Substitute, Subject
 
 funclist = []   #질문 대답 함수 리스트
 takeList = []   #사용자가 들은 과목 리스트
+takeListAdaptedRetaken = [] #사용자가 들은 재수강 과목을 뺀 과목 리스트
 
 requirements = {}   #각 년도별 졸업요건
 requirements["2010"] = {}
@@ -170,6 +171,7 @@ def certainFunction(argList):
     graduationAssessment(argList)
     #Do its logic
 
+# target이 대체 가능한 과목들 리턴
 def getSubstitutableSubjects(target):
     tlist = []
     tlist.append(target)
@@ -192,6 +194,7 @@ def getSubstitutableSubjects(target):
 
     return tlist
 
+#target을 대체 가능한 과목들 리턴
 def getSubstitutingSubjects(target):
     temp = []
     temp.append(target)
@@ -212,6 +215,55 @@ def getSubstitutingSubjects(target):
         current_idx += 1
 
     return temp
+
+subsFoundlist = []
+#재수강인 과목 판단 후 재수강 반영한 수강 과목 리스트에 추가/수정
+def checkNotRetaken(target, index, takeList):
+    #global takeList
+    global SubsFoundlist
+    func_flag = True
+
+    #tareget의 대체 과목 파악
+    substitute = getSubstitutableSubjects(target)
+
+    # target과 같은 과목 코드로 대체 과목을 찾은 적이 있다면 이 target은 재수강한 과목이다
+    if substitute not in subsFoundlist:
+        subsFoundlist.append(substitute)
+    else:
+        #기존에 있는 재수강 반영 수강 과목 리스트에 target의 내용으로 덮어씌우기
+        idx = 0
+        for i in range(0, len(takeListAdaptedRetaken)):
+            if takeListAdaptedRetaken[i]["sbjt_no"] == target:
+                idx = i
+                break
+
+        takeListAdaptedRetaken[idx] = takeList[index]
+        func_flag = False
+
+
+
+    # 대체과목리스트에 있는 항목이 수강한 과목 중에 있다면? => target은 재수강
+    # 같은 과목 코드 재수강 ->
+    for_flag = True
+    for i in range(1, len(substitute)):
+        if for_flag:
+            for j in range(0, len(takeList)):
+                if substitute[i] == takeList[j]["sbjt_no"]:
+                    idx = 0
+                    for k in range(0, len(takeListAdaptedRetaken)):
+                        if takeListAdaptedRetaken[k]["sbjt_no"] == substitute[i]:
+                            idx = k
+                            break
+
+                    takeListAdaptedRetaken[idx] = takeList[index]
+                    func_flag = False
+                    for_flag = False
+                    break
+
+    if func_flag == True and takeList[index] not in takeListAdaptedRetaken:
+        takeListAdaptedRetaken.append(takeList[index])
+
+    return func_flag
 
 def checkCompulsorySatisfied(year):
     #Do its logic
@@ -250,6 +302,7 @@ def checkMinMaxRequire(year):
     #Do its logic
     global takeList
     global userData
+
 
 
     return ""
@@ -293,34 +346,17 @@ def initFunclist():
 #For debugging
 def index(request):
     global userData
+    global takeListAdaptedRetaken
+
     takeList, stNum = crawlers.getUserSubject("yey6689", "para3150!")
-    year = "2014"
-    compulsoryBools = []
-    length = len(requirements[year]["compulsorySubjects"])
-    for i in range(0, length):
-        compulsoryBools.append(False)
-
     for i in range(0, len(takeList)):
-        tlist = getSubstitutableSubjects(takeList[i]["sbjt_no"])
+        checkNotRetaken(takeList[i]["sbjt_no"], i, takeList)
 
-        flag = True
-        for j in range(0, len(tlist)):
-            if flag:
-                for k in range(0, length):
-                    if tlist[j] == requirements[year]["compulsorySubjects"][k].course_id:
-                        compulsoryBools[k] = True
-                        flag = False
-                        break
+    a = Subject.objects.filter(course_sbjtclss__startswith="28333")
 
-    notTaken = []
-    for i in range(0, len(compulsoryBools)):
-        if compulsoryBools[i] == False:
-            temp = getSubstitutingSubjects(requirements[year]["compulsorySubjects"][i].course_id)
 
-            notTaken.append(temp)
 
-    userData.compulsoryNotTaken = notTaken
-    return HttpResponse(userData.compulsoryNotTaken)
+    return HttpResponse(a[10].course_remk)
 
 
 def api(request, message):
