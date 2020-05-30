@@ -354,6 +354,10 @@ def checkMinMaxRequire(year):
 
     return ""
 
+def check2010(year):
+    
+
+    return ""
 def check2013(year):
     global takeList
     st = ""  # 분석 결과
