@@ -674,9 +674,6 @@ def moreMajorCredit(argList):
     return graduationAssessment(argList)
 
 #TODO
-def askTotCredit(argList):
-    return graduationAssessment(argList)
-#TODO
 def askCompul(argList):
     return graduationAssessment(argList)
 #TODO
@@ -717,8 +714,7 @@ def initFunclist():
     funclist.append(("graduationAvailability", graduationAvailability))
     funclist.append(("moreTotCredit", moreTotCredit))
     funclist.append(("moreMajorCredit", moreMajorCredit))
-    funclist.append(("askTotCredit", askTotCredit))
-    funclist.append(("askMajorCompul", askMajorCompul))
+    funclist.append(("askCompul", askCompul))
     funclist.append(("askConsult", askConsult))
     funclist.append(("askGradPaper", askGradPaper))
 
