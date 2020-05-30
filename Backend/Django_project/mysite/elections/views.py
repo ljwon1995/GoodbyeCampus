@@ -7,9 +7,6 @@ import socket
 import crawlers
 from .models import Compulsory, Substitute, Subject
 
-funclist = []   #질문 대답 함수 리스트
-takeList = []   #사용자가 들은 과목 리스트
-takeListAdaptedRetaken = [] #사용자가 들은 재수강 과목을 뺀 과목 리스트
 
 requirements = {}   #각 년도별 졸업요건
 requirements["2010"] = {}
@@ -56,6 +53,8 @@ requirements["2013"]["totalCredits"]=140
 requirements["2013"]["numCoreGE"]=3
 requirements["2013"]["GECreditsLimit"]=45
 requirements["2013"]["majorCredits"]=84
+requirements["2013"]["majorBasicCredits"]=14
+requirements["2013"]["majorCompulsoryCredits"]=12
 requirements["2013"]["exclusiveGECredits"]=6
 requirements["2013"]["bsmCredits"]=18
 requirements["2013"]["designSubjectCredits"]=12
@@ -140,6 +139,12 @@ requirements["2020"]["bsmCredits"]=18
 requirements["2020"]["designSubjectCredits"]=12
 requirements["2020"]["avgGrade"]=2.2
 requirements["2020"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2020)
+
+funclist = []   #질문 대답 함수 리스트
+takeList = []   #사용자가 들은 과목 리스트
+takeListAdaptedRetaken = [] #사용자가 들은 재수강 과목을 뺀 과목 리스트
+
+
 
 class UserData:
     assessed = False
@@ -294,9 +299,9 @@ def checkNotRetaken(target, index, takeList):
 
     return func_flag
 
-def checkCompulsorySatisfied(year, takeList):
+def checkCompulsorySatisfied(year):
     #Do its logic
-    #global takeList
+    global takeList
     global userData
 
     compulsoryBools = []
@@ -342,72 +347,319 @@ def checkMinMaxRequire(year):
     global takeList
     global userData
 
-    if year == "2014":
-        for i in range(0, len(takeList)):
-            if(checkNotRetaken(takeList[i]["sbjt_no"], i, takeList)):
-                sInfo = Subject.objects.filter(course_sbjtclss__startswith=takeList[i]["sbjt_no"], course_year=takeList[i]["re_year"])
-
-                #핵심 교양 갯수 더하기
-                for j in range(0, len(sInfo)):
-                    if "핵심" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
-                        userData.numCoreGE += 1
-                        break
-
-                #교양 학점 더하기
-                for j in range(0, len(sInfo)):
-                    if "교양" in sInfo[j].course_pobjnm:
-                        userData.totalGECredits += int(sInfo[j].course_pnt.split("-")[0])
-                        break
-
-                #전공 학점 더하기
-                for j in range(0, len(sInfo)):
-                    if "전공" in sInfo[j].course_pobjnm and "기초" not in sInfo[j].course_pobjnm:
-                        userData.majorCredits += int(sInfo[j].course_pnt.split("-")[0])
-                        break
-
-                #전공기초 학점 더하기
-                for j in range(0, len(sInfo)):
-                    if "전공기초" in sInfo[j].course_pobjnm:
-                        userData.majorBasicCredits += int(sInfo[j].course_pnt.split("-")[0])
-                        break
-
-                #총 학점 더하기
-                for j in range(0, len(sInfo)):
-                    userData.totalCredits += int(sInfo[j].course_pnt.split("-")[0])
-                    break
-
-                #전문교양 학점 더하기
-                for j in range(0, len(sInfo)):
-                    if "전문교양" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
-                        #st += sInfo[j].course_clssnm + "   "
-                        #st += sInfo[j].course_remk + "   "
-                        userData.exclusiveGECredits += int(sInfo[j].course_pnt.split("-")[0])
-                        break
-
-                #BSM 학점 더하기
-                for j in range(0, len(sInfo)):
-                    if "BSM" in sInfo[j].course_remk:
-                        userData.bsmCredits += int(sInfo[j].course_pnt.split("-")[0])
-                        break
-
-                #설계 학점 더하기
-                for j in range(0, len(sInfo)):
-                    if "설계" in sInfo[j].course_remk:# and "컴퓨터" in sInfo[j].course_remk:
-                        #st += sInfo[j].course_clssnm + "   "
-                        #st += sInfo[j].course_remk + "   "
-                        string = sInfo[j].course_remk
-                        credit = ""
-                        for i in range(0, len(string)):
-                            if string[i] == "설" and string[i+1] == "계":
-                                credit += string[i+2]
-                                break
-
-                        userData.designSubjectCredits += int(credit)
-                        break
-
+    for func in check_funclist:
+        if func[0] == year:
+            func[1](year, takeList)
 
 
     return ""
+
+def check2013(year):
+    global takeList
+    st = ""  # 분석 결과
+
+    # ------요건 분석 로직 ------------
+    for i in range(0, len(takeList)):
+        if takeList[i]["g_grd"] != 'F ':
+            if (checkNotRetaken(takeList[i]["sbjt_no"], i, takeList)):
+                sInfo = Subject.objects.filter(course_sbjtclss__startswith=takeList[i]["sbjt_no"],
+                                               course_year=takeList[i]["re_year"])
+
+                # 핵심 교양 갯수 더하기
+                for j in range(0, len(sInfo)):
+                    if "핵심" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
+                        userData.numCoreGE += 1
+                        userData.numCoreGEList.append(takeList[i])
+                        break
+
+                # 교양 학점 더하기 및 들은 교양 과목 리스트에 추가
+                for j in range(0, len(sInfo)):
+                    if "교양" in sInfo[j].course_pobjnm:
+                        userData.totalGECredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.totalGECreditsList.append(takeList[i])
+                        break
+
+                # 전공 학점 더하기 및 들은 전공 과목 리스트에 추가
+                for j in range(0, len(sInfo)):
+                    if "전공" in sInfo[j].course_pobjnm and "기초" not in sInfo[j].course_pobjnm:
+                        userData.majorCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.majorCreditsList.append(takeList[i])
+                        break
+
+                # 전공기초 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "전공기초" in sInfo[j].course_pobjnm:
+                        userData.majorBasicCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.majorBasicCreditsList.append(takeList[i])
+                        break
+
+                # 전공필수 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "전공필수" in sInfo[j].course_pobjnm:
+                        userData.majorCompulsoryCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.majorCompulsoryCreditsList.append(takeList[i])
+                        break
+
+                # 총 학점 더하기
+                userData.totalCredits += int(takeList[i]["acq_pnt"])
+
+                # 전문교양 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "전문교양" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
+                        # st += sInfo[j].course_clssnm + "   "
+                        # st += sInfo[j].course_remk + "   "
+                        userData.exclusiveGECredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.exclusiveGECreditsList.append(takeList[i])
+                        break
+
+                # BSM 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "BSM" in sInfo[j].course_remk:
+                        userData.bsmCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.bsmCreditsList.append(takeList[i])
+                        break
+
+                # 설계 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "설계" in sInfo[j].course_remk:  # and "컴퓨터" in sInfo[j].course_remk:
+                        # st += sInfo[j].course_clssnm + "   "
+                        # st += sInfo[j].course_remk + "   "
+                        string = sInfo[j].course_remk
+                        credit = ""
+                        for k in range(0, len(string)):
+                            if string[k] == "설" and string[k + 1] == "계":
+                                credit += string[k + 2]
+                                break
+
+                        userData.designSubjectCredits += int(credit)
+                        userData.designSubjectCreditsList.append((takeList[i], credit))
+
+                        break
+
+    # ------ 요견 판별 로직 ----------
+
+    # 핵심 교양 학점 만족 판별
+    if userData.numCoreGE >= requirements[year]["numCoreGE"]:
+        userData.numCoreGESatisfied = True
+    else:
+        st += "핵심 교양 불만족\n 핵심 교양 과목을 " + str(equirements[year]["numCoreGE"] - userData.numCoreGE) + "개 이상 더 들으셔야 합니다."
+
+    # 총 교양 과목 학점이 45이상 이면 45헉점만 인정
+    diff = 0
+    if userData.totalGECredits > requirements[year]["GECreditsLimit"]:
+        temp = userData.totalGECredits
+        diff = temp - requirements[year]["GECreditsLimit"]
+        userData.totalGECredits = requirements[year]["GECreditsLimit"]
+
+    # 전공 학점 만족 판별
+    if userData.majorCredits >= requirements[year]["majorCredits"]:
+        userData.majorCreditsSatisfied = True
+    else:
+        st += "전공 과목 불만족\n 전공 과목 학점을 " + str(
+            requirements[year]["majorCredits"] - userData.majorCredits) + "만큼 더 취득하셔야 합니다."
+
+    # 전공 기초 학점 만족 판별
+    if userData.majorBasicCredits >= requirements[year]["majorBasicCredits"]:
+        userData.majorBasicCreditsSatisfied = True
+    else:
+        st += "전공 기초 과목 불만족\n 전공 기초 과목 학점을 " + str(
+            requirements[year]["majorBasicCredits"] - userData.majorBasicCredits) + "만큼 더 취득하셔야 합니다."
+
+    if userData.majorCompulsoryCredits >= requirements[year]["majorCompulsoryCredits"]:
+        userData.majorCompulsoryCreditsSatisfied = True
+    else:
+        st += "전공 필수 과목 불만족\n 전공 필수 과목 학점을 " + str(
+            requirements[year]["majorCompulsoryCredits"] - userData.majorCompulsoryCredits) + "만큼 더 취득하셔야 합니다."
+
+    # 총 학점 만족 판별
+    if (userData.totalCredits - diff) >= requirements[year]["totalCredits"]:
+        userData.totalCreditsSatisfied = True
+    else:
+        st += "총 학점 불만족\n 총 학점을 " + str(requirements[year]["totalCredits"] - userData.totalCredits) + "만큼 더 취득하셔야 합니다."
+
+    # 전문 교양 학점 만족 판별
+    if userData.exclusiveGECredits >= requirements[year]["exclusiveGECredits"]:
+        userData.exclusiveGECreditsSatisfied = True
+    else:
+        st += "전문 교양 학점 불만족\n 전문 교양 과목 학점을 " + str(
+            requirements[year]["exclusiveGECredits"] - userData.exclusiveGECredits) + "만큼 더 취득하셔야 합니다."
+
+    # BSM 학점 만족 판별
+    if userData.bsmCredits >= requirements[year]["bsmCredits"]:
+        userData.bsmCreditsSatisfied = True
+    else:
+        st += "BSM 학점 불만족\n BSM 과목 학점을 " + str(
+            requirements[year]["bsmCredits"] - userData.bsmCredits) + "만큼 더 취득하셔야 합니다."
+
+    # 설계 학점 만족 판별
+    if userData.designSubjectCredits >= requirements[year]["designSubjectCredits"]:
+        userData.designSubjectCreditsSatisfied = True
+    else:
+        st += "설계 학점 불만족\n 설계 과목 학점을 " + str(
+            requirements[year]["designSubjectCredits"] - userData.designSubjectCredits) + "만큼 더 취득하셔야 합니다."
+
+    userData.result += st
+
+    # sum = ""
+    # for i in range(0, len(takeListAdaptedRetaken)):
+    #     sum += (takeListAdaptedRetaken[i]["kor_nm"] + str(takeListAdaptedRetaken[i]["acq_pnt"]) + "    ")
+
+    return ""
+
+def check2014(year):
+    global takeList
+    st = ""  # 분석 결과
+
+    # ------요건 분석 로직 ------------
+    for i in range(0, len(takeList)):
+        if takeList[i]["g_grd"] != 'F ':
+            if (checkNotRetaken(takeList[i]["sbjt_no"], i, takeList)):
+                sInfo = Subject.objects.filter(course_sbjtclss__startswith=takeList[i]["sbjt_no"],
+                                                   course_year=takeList[i]["re_year"])
+
+                # 핵심 교양 갯수 더하기
+                for j in range(0, len(sInfo)):
+                    if "핵심" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
+                        userData.numCoreGE += 1
+                        userData.numCoreGEList.append(takeList[i])
+                        break
+
+                # 교양 학점 더하기 및 들은 교양 과목 리스트에 추가
+                for j in range(0, len(sInfo)):
+                    if "교양" in sInfo[j].course_pobjnm:
+                        userData.totalGECredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.totalGECreditsList.append(takeList[i])
+                        break
+
+                # 전공 학점 더하기 및 들은 전공 과목 리스트에 추가
+                for j in range(0, len(sInfo)):
+                    if "전공" in sInfo[j].course_pobjnm and "기초" not in sInfo[j].course_pobjnm:
+                        userData.majorCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.majorCreditsList.append(takeList[i])
+                        break
+
+                # 전공기초 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "전공기초" in sInfo[j].course_pobjnm:
+                        userData.majorBasicCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.majorBasicCreditsList.append(takeList[i])
+                        break
+
+                # 전공필수 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "전공필수" in sInfo[j].course_pobjnm:
+                        userData.majorCompulsoryCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.majorCompulsoryCreditsList.append(takeList[i])
+                        break
+
+                # 총 학점 더하기
+                userData.totalCredits += int(takeList[i]["acq_pnt"])
+
+                # 전문교양 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "전문교양" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
+                        # st += sInfo[j].course_clssnm + "   "
+                        # st += sInfo[j].course_remk + "   "
+                        userData.exclusiveGECredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.exclusiveGECreditsList.append(takeList[i])
+                        break
+
+                # BSM 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "BSM" in sInfo[j].course_remk:
+                        userData.bsmCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        userData.bsmCreditsList.append(takeList[i])
+                        break
+
+                # 설계 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "설계" in sInfo[j].course_remk:  # and "컴퓨터" in sInfo[j].course_remk:
+                        # st += sInfo[j].course_clssnm + "   "
+                        # st += sInfo[j].course_remk + "   "
+                        string = sInfo[j].course_remk
+                        credit = ""
+                        for k in range(0, len(string)):
+                            if string[k] == "설" and string[k + 1] == "계":
+                                credit += string[k + 2]
+                                break
+
+                        userData.designSubjectCredits += int(credit)
+                        userData.designSubjectCreditsList.append((takeList[i], credit))
+
+                        break
+
+    # ------ 요견 판별 로직 ----------
+
+    # 핵심 교양 학점 만족 판별
+    if userData.numCoreGE >= requirements[year]["numCoreGE"]:
+        userData.numCoreGESatisfied = True
+    else:
+        st += "핵심 교양 불만족\n 핵심 교양 과목을 " + str(equirements[year]["numCoreGE"] - userData.numCoreGE) + "개 이상 더 들으셔야 합니다."
+
+    # 총 교양 과목 학점이 45이상 이면 45헉점만 인정
+    diff = 0
+    if userData.totalGECredits > requirements[year]["GECreditsLimit"]:
+        temp = userData.totalGECredits
+        diff = temp - requirements[year]["GECreditsLimit"]
+        userData.totalGECredits = requirements[year]["GECreditsLimit"]
+
+    # 전공 학점 만족 판별
+    if userData.majorCredits >= requirements[year]["majorCredits"]:
+        userData.majorCreditsSatisfied = True
+    else:
+        st += "전공 과목 불만족\n 전공 과목 학점을 " + str(
+            requirements[year]["majorCredits"] - userData.majorCredits) + "만큼 더 취득하셔야 합니다."
+
+    # 전공 기초 학점 만족 판별
+    if userData.majorBasicCredits >= requirements[year]["majorBasicCredits"]:
+        userData.majorBasicCreditsSatisfied = True
+    else:
+        st += "전공 기초 과목 불만족\n 전공 기초 과목 학점을 " + str(
+            requirements[year]["majorBasicCredits"] - userData.majorBasicCredits) + "만큼 더 취득하셔야 합니다."
+
+    if userData.majorCompulsoryCredits >= requirements[year]["majorCompulsoryCredits"]:
+        userData.majorCompulsoryCreditsSatisfied = True
+    else:
+        st += "전공 필수 과목 불만족\n 전공 필수 과목 학점을 " + str(requirements[year]["majorCompulsoryCredits"] - userData.majorCompulsoryCredits) + "만큼 더 취득하셔야 합니다."
+
+    # 총 학점 만족 판별
+    if (userData.totalCredits - diff) >= requirements[year]["totalCredits"]:
+        userData.totalCreditsSatisfied = True
+    else:
+        st += "총 학점 불만족\n 총 학점을 " + str(requirements[year]["totalCredits"] - userData.totalCredits) + "만큼 더 취득하셔야 합니다."
+
+    # 전문 교양 학점 만족 판별
+    if userData.exclusiveGECredits >= requirements[year]["exclusiveGECredits"]:
+        userData.exclusiveGECreditsSatisfied = True
+    else:
+        st += "전문 교양 학점 불만족\n 전문 교양 과목 학점을 " + str(requirements[year]["exclusiveGECredits"] - userData.exclusiveGECredits) + "만큼 더 취득하셔야 합니다."
+
+    # BSM 학점 만족 판별
+    if userData.bsmCredits >= requirements[year]["bsmCredits"]:
+        userData.bsmCreditsSatisfied = True
+    else:
+        st += "BSM 학점 불만족\n BSM 과목 학점을 " + str(requirements[year]["bsmCredits"] - userData.bsmCredits) + "만큼 더 취득하셔야 합니다."
+
+    # 설계 학점 만족 판별
+    if userData.designSubjectCredits >= requirements[year]["designSubjectCredits"]:
+        userData.designSubjectCreditsSatisfied = True
+    else:
+        st += "설계 학점 불만족\n 설계 과목 학점을 " + str(requirements[year]["designSubjectCredits"] - userData.designSubjectCredits) + "만큼 더 취득하셔야 합니다."
+
+    userData.result += st
+
+    # sum = ""
+    # for i in range(0, len(takeListAdaptedRetaken)):
+    #     sum += (takeListAdaptedRetaken[i]["kor_nm"] + str(takeListAdaptedRetaken[i]["acq_pnt"]) + "    ")
+
+    return ""
+
+
+
+
+check_funclist = [] #년도별 요건 분석 함수 리스트
+check_funclist.append(("2014",check2014))
+check_funclist.append(("2013",check2013))
 
 def checkGdRequire(year):
     checkCompulsorySatisfied(year)
@@ -433,13 +685,13 @@ def graduationAssessment(argList):
             checkGdRequire(year)
             userData.assessed = True
         else:
-            return "Already Assessed"
+            return userData.result
 
     except Exception as e:
         error = e
         return "구현중"
 
-    return "구현중"
+    return userData.result
 
 def initFunclist():
     funclist.append(("graduationAssessment", graduationAssessment))
@@ -450,152 +702,13 @@ def index(request):
     global userData
     global takeListAdaptedRetaken
 
-    takeList, stNum = crawlers.getUserSubject("kkh6582", "para3150!")
-    year="2014"
+    takeList, stNum = crawlers.getUserSubject("yey6689", "para3150!")
+    year="2013"
+
+    checkCompulsorySatisfied(year, takeList)
+    checkMinMaxRequire(year, takeList)
     st = "" #디버깅용
 
-    if year == "2014":
-        checkCompulsorySatisfied(year, takeList)
-        #------요건 분석 로직 ------------
-        for i in range(0, len(takeList)):
-            if takeList[i]["g_grd"] != 'F ':
-                if(checkNotRetaken(takeList[i]["sbjt_no"], i, takeList)):
-                    sInfo = Subject.objects.filter(course_sbjtclss__startswith=takeList[i]["sbjt_no"], course_year=takeList[i]["re_year"])
-
-                    #핵심 교양 갯수 더하기
-                    for j in range(0, len(sInfo)):
-                        if "핵심" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
-                            userData.numCoreGE += 1
-                            userData.numCoreGEList.append(takeList[i])
-                            break
-
-                    #교양 학점 더하기 및 들은 교양 과목 리스트에 추가
-                    for j in range(0, len(sInfo)):
-                        if "교양" in sInfo[j].course_pobjnm:
-                            userData.totalGECredits += int(sInfo[j].course_pnt.split("-")[0])
-                            userData.totalGECreditsList.append(takeList[i])
-                            break
-
-                    #전공 학점 더하기 및 들은 전공 과목 리스트에 추가
-                    for j in range(0, len(sInfo)):
-                        if "전공" in sInfo[j].course_pobjnm and "기초" not in sInfo[j].course_pobjnm:
-                            userData.majorCredits += int(sInfo[j].course_pnt.split("-")[0])
-                            userData.majorCreditsList.append(takeList[i])
-                            break
-
-                    #전공기초 학점 더하기
-                    for j in range(0, len(sInfo)):
-                        if "전공기초" in sInfo[j].course_pobjnm:
-                            userData.majorBasicCredits += int(sInfo[j].course_pnt.split("-")[0])
-                            userData.majorBasicCreditsList.append(takeList[i])
-                            break
-
-                    #전공필수 학점 더하기
-                    for j in range(0, len(sInfo)):
-                        if "전공필수" in sInfo[j].course_pobjnm:
-                            userData.majorCompulsoryCredits += int(sInfo[j].course_pnt.split("-")[0])
-                            userData.majorCompulsoryCreditsList.append(takeList[i])
-                            break
-
-                    #총 학점 더하기
-                    userData.totalCredits += int(takeList[i]["acq_pnt"])
-
-
-                    #전문교양 학점 더하기
-                    for j in range(0, len(sInfo)):
-                        if "전문교양" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
-                            #st += sInfo[j].course_clssnm + "   "
-                            #st += sInfo[j].course_remk + "   "
-                            userData.exclusiveGECredits += int(sInfo[j].course_pnt.split("-")[0])
-                            userData.exclusiveGECreditsList.append(takeList[i])
-                            break
-
-                    #BSM 학점 더하기
-                    for j in range(0, len(sInfo)):
-                        if "BSM" in sInfo[j].course_remk:
-                            userData.bsmCredits += int(sInfo[j].course_pnt.split("-")[0])
-                            userData.bsmCreditsList.append(takeList[i])
-                            break
-
-                    #설계 학점 더하기
-                    for j in range(0, len(sInfo)):
-                        if "설계" in sInfo[j].course_remk:# and "컴퓨터" in sInfo[j].course_remk:
-                            #st += sInfo[j].course_clssnm + "   "
-                            #st += sInfo[j].course_remk + "   "
-                            string = sInfo[j].course_remk
-                            credit = ""
-                            for k in range(0, len(string)):
-                                if string[k] == "설" and string[k+1] == "계":
-                                    credit += string[k+2]
-                                    break
-
-                            userData.designSubjectCredits += int(credit)
-                            userData.designSubjectCreditsList.append((takeList[i], credit))
-
-                            break
-
-        #------ 요견 판별 로직 ----------
-
-        #핵심 교양 학점 만족 판별
-        if userData.numCoreGE >= requirements[year]["numCoreGE"]:
-            userData.numCoreGESatisfied = True
-        else:
-            st += "핵심 교양 불만족\n 핵심 교양 과목을 " + str(requirements[year]["numCoreGE"] - userData.numCoreGE) + "개 이상 더 들으셔야 합니다."
-
-        #총 교양 과목 학점이 45이상 이면 45헉점만 인정
-        diff = 0
-        if userData.totalGECredits > requirements[year]["GECreditsLimit"]:
-            temp = userData.totalGECredits
-            diff = temp - requirements[year]["GECreditsLimit"]
-            userData.totalGECredits = requirements[year]["GECreditsLimit"]
-
-        #전공 학점 만족 판별
-        if userData.majorCredits >= requirements[year]["majorCredits"]:
-            userData.majorCreditsSatisfied = True
-        else:
-            st += "전공 과목 불만족\n 전공 과목 학점을 " + str(requirements[year]["majorCredits"] - userData.majorCredits) + "만큼 더 취득하셔야 합니다."
-
-        #전공 기초 학점 만족 판별
-        if userData.majorBasicCredits >= requirements[year]["majorBasicCredits"]:
-            userData.majorBasicCreditsSatisfied = True
-        else:
-            st += "전공 기초 과목 불만족\n 전공 기초 과목 학점을 " + str(requirements[year]["majorBasicCredits"] - userData.majorBasicCredits) + "만큼 더 취득하셔야 합니다."
-
-        if userData.majorCompulsoryCredits >= requirements[year]["majorCompulsoryCredits"]:
-            userData.majorCompulsoryCreditsSatisfied = True
-        else:
-            st += "전공 필수 과목 불만족\n 전공 필수 과목 학점을 " + str(requirements[year]["majorCompulsoryCredits"] - userData.majorCompulsoryCredits) + "만큼 더 취득하셔야 합니다."
-
-        #총 학점 만족 판별
-        if (userData.totalCredits - diff) >= requirements[year]["totalCredits"]:
-            userData.totalCreditsSatisfied = True
-        else:
-            st += "총 학점 불만족\n 총 학점을 " + str(requirements[year]["totalCredits"] - userData.totalCredits) + "만큼 더 취득하셔야 합니다."
-
-        #전문 교양 학점 만족 판별
-        if userData.exclusiveGECredits >= requirements[year]["exclusiveGECredits"]:
-            userData.exclusiveGECreditsSatisfied = True
-        else:
-            st += "전문 교양 학점 불만족\n 전문 교양 과목 학점을 " + str(requirements[year]["exclusiveGECredits"] - userData.exclusiveGECredits) + "만큼 더 취득하셔야 합니다."
-
-        #BSM 학점 만족 판별
-        if userData.bsmCredits >= requirements[year]["bsmCredits"]:
-            userData.bsmCreditsSatisfied = True
-        else:
-            st += "BSM 학점 불만족\n BSM 과목 학점을 " + str(requirements[year]["bsmCredits"] - userData.bsmCredits) + "만큼 더 취득하셔야 합니다."
-
-        #설계 학점 만족 판별
-        if userData.designSubjectCredits >= requirements[year]["designSubjectCredits"]:
-            userData.designSubjectCreditsSatisfied = True
-        else:
-            st += "설계 학점 불만족\n 설계 과목 학점을 " + str(requirements[year]["designSubjectCredits"] - userData.designSubjectCredits) + "만큼 더 취득하셔야 합니다."
-
-
-        userData.result += st
-
-    # sum = ""
-    # for i in range(0, len(takeListAdaptedRetaken)):
-    #     sum += (takeListAdaptedRetaken[i]["kor_nm"] + str(takeListAdaptedRetaken[i]["acq_pnt"]) + "    ")
 
 
     return HttpResponse(userData.result)
