@@ -654,10 +654,15 @@ check_funclist.append(("2013",check2013))
 
 def checkGdRequire(year, userData, takeList):
     checkCompulsorySatisfied(year, userData, takeList)
-    #TODO check this also
     checkMinMaxRequire(year, userData, takeList)
 
 
+
+
+
+def graduationAvailability(argList):
+
+    return graduationAssessment(argList)
 
 
 
@@ -673,7 +678,10 @@ def graduationAssessment(argList):
 
         if ID not in userGraduInfo:
             userData = UserData()
-            takeList, stNum = crawlers.getUserSubject(ID, PW)
+            try:
+                takeList, stNum = crawlers.getUserSubject(ID, PW)
+            except Exception as e:
+                return "ID와 PW가 맞지 않습니다. 다시 질문 해 주세요"
             year = stNum[:4]
             checkGdRequire(year, userData, takeList)
             userGraduInfo[ID] = userData
@@ -686,7 +694,7 @@ def graduationAssessment(argList):
 
 
 def initFunclist():
-    funclist.append(("graduationAssessment", graduationAssessment))
+    funclist.append(("graduationAvailability", graduationAvailability))
     return
 
 #For debugging
@@ -768,6 +776,6 @@ def api(request, message):
     except Exception as e:
         return JsonResponse({
             'message': 1,
-            'content': "ERROR in api" + str(e)
+            'content': "ERROR in api " + str(e)
         })
 
