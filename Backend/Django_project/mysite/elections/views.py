@@ -31,7 +31,7 @@ requirements["2010"]["GECreditsLimit"]=52        #Maximum General Education cour
 requirements["2010"]["majorCredits"]=66          #Total credits required for major courses
 requirements["2010"]["exclusiveGECredits"]=6     #Total credits for exclusive General Education courses
 requirements["2010"]["bsmCredits"]=18            #Total credits for bsm courses
-requirements["2010"]["designSubjectsCredits"]=12 #Total credits required for design courses
+requirements["2010"]["designSubjectCredits"]=12 #Total credits required for design courses
 requirements["2010"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2010) # List of compulsory subjects for the year
 
 requirements["2011"]["totalCredits"]=132
@@ -40,7 +40,7 @@ requirements["2011"]["GECreditsLimit"]=45
 requirements["2011"]["majorCredits"]=66
 requirements["2011"]["exclusiveGECredits"]=6
 requirements["2011"]["bsmCredits"]=18
-requirements["2011"]["designSubjectsCredits"]=12
+requirements["2011"]["designSubjectCredits"]=12
 requirements["2011"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2011)
 
 requirements["2012"]["totalCredits"]=132
@@ -49,7 +49,7 @@ requirements["2012"]["GECreditsLimit"]=45
 requirements["2012"]["majorCredits"]=66
 requirements["2012"]["exclusiveGECredits"]=6
 requirements["2012"]["bsmCredits"]=18
-requirements["2012"]["designSubjectsCredits"]=12
+requirements["2012"]["designSubjectCredits"]=12
 requirements["2012"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2012)
 
 requirements["2013"]["totalCredits"]=140
@@ -58,16 +58,18 @@ requirements["2013"]["GECreditsLimit"]=45
 requirements["2013"]["majorCredits"]=84
 requirements["2013"]["exclusiveGECredits"]=6
 requirements["2013"]["bsmCredits"]=18
-requirements["2013"]["designSubjectsCredits"]=12
+requirements["2013"]["designSubjectCredits"]=12
 requirements["2013"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2013)
 
 requirements["2014"]["totalCredits"]=140
 requirements["2014"]["numCoreGE"]=3
 requirements["2014"]["GECreditsLimit"]=45
 requirements["2014"]["majorCredits"]=84
+requirements["2014"]["majorBasicCredits"]=14
+requirements["2014"]["majorCompulsoryCredits"]=12
 requirements["2014"]["exclusiveGECredits"]=6
 requirements["2014"]["bsmCredits"]=18
-requirements["2014"]["designSubjectsCredits"]=12
+requirements["2014"]["designSubjectCredits"]=12
 requirements["2014"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2014)
 
 requirements["2015"]["totalCredits"]=140
@@ -78,7 +80,7 @@ requirements["2015"]["MACHGE"]=4        #MACH liberal arts credits to be taken =
 requirements["2015"]["MACHPrac"]=2      #Total MACH practice credits to be taken => 2 courses
 requirements["2015"]["exclusiveGECredits"]=6
 requirements["2015"]["bsmCredits"]=18
-requirements["2015"]["designSubjectsCredits"]=12
+requirements["2015"]["designSubjectCredits"]=12
 requirements["2015"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2015)
 
 requirements["2016"]["totalCredits"]=140
@@ -89,7 +91,7 @@ requirements["2016"]["MACHGE"]=4
 requirements["2016"]["MACHPrac"]=2
 requirements["2016"]["exclusiveGECredits"]=6
 requirements["2016"]["bsmCredits"]=18
-requirements["2016"]["designSubjectsCredits"]=12
+requirements["2016"]["designSubjectCredits"]=12
 requirements["2016"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2016)
 
 requirements["2017"]["totalCredits"]=140
@@ -100,7 +102,7 @@ requirements["2017"]["MACHGE"]=4
 requirements["2017"]["MACHPrac"]=2
 requirements["2017"]["exclusiveGECredits"]=6
 requirements["2017"]["bsmCredits"]=18
-requirements["2017"]["designSubjectsCredits"]=12
+requirements["2017"]["designSubjectCredits"]=12
 requirements["2017"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2017)
 
 requirements["2018"]["totalCredits"]=140
@@ -111,7 +113,7 @@ requirements["2018"]["MACHGE"]=4
 requirements["2018"]["MACHPrac"]=2
 requirements["2018"]["exclusiveGECredits"]=6
 requirements["2018"]["bsmCredits"]=18
-requirements["2018"]["designSubjectsCredits"]=12
+requirements["2018"]["designSubjectCredits"]=12
 requirements["2018"]["avgGrade"]=2.2
 requirements["2018"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2018)
 
@@ -123,7 +125,7 @@ requirements["2019"]["MACHGE"]=2
 #requirement_2019["MACHPrac"]=2
 requirements["2019"]["exclusiveGECredits"]=6
 requirements["2019"]["bsmCredits"]=18
-requirements["2019"]["designSubjectsCredits"]=12
+requirements["2019"]["designSubjectCredits"]=12
 requirements["2019"]["avgGrade"]=2.2
 requirements["2019"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2019)
 
@@ -135,35 +137,62 @@ requirements["2020"]["MACHGE"]=2
 #requirement_2020["MACHPrac"]=2
 requirements["2020"]["exclusiveGECredits"]=6
 requirements["2020"]["bsmCredits"]=18
-requirements["2020"]["designSubjectsCredits"]=12
+requirements["2020"]["designSubjectCredits"]=12
 requirements["2020"]["avgGrade"]=2.2
 requirements["2020"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2020)
 
 class UserData:
     assessed = False
     totalCredits = 0
-    satisfyTotalCredits = False
+    totalCreditsSatisfied = False
     exclusiveGECredits = 0
+    exclusiveGECreditsList = []
+    exclusiveGECreditsSatisfied = False
     bsmCredits = 0
+    bsmCreditsList = []
+    bsmCreditsSatisfied = False
     numCoreGE = 0
+    numCoreGEList = []
+    numCoreGESatisfied = False
     totalGECredits = 0
+    totalGECreditsList = []
+    #totalGECreditsSatisfied = False
     majorCredits = 0
+    majorCreditsList = []
+    majorCreditsSatisfied = False
+    majorBasicCredits = 0
+    majorBasicCreditsList = []
+    majorBasicCreditsSatisfied = False
+    majorCompulsoryCredits = 0
+    majorCompulsoryCreditsList = []
+    majorCompulsoryCreditsSatisfied = False
     designSubjectCredits = 0
+    designSubjectCreditsList = []
+    designSubjectCreditsSatisfied = False
     avgGrade = 0
+    avgGradeSatisfied = False
     compulsoryNotTaken = []
+    compulsorySatisfied = False
     coreGE15 = {}
     coreGE15["토대기반"]=False
     coreGE15["존재구축"] = False
     coreGE15["소통융합"] = False
     coreGE15["실천"] = False
+    coreGE15_satisfied = False
     coreGE16 = {}
     coreGE16["도전"] = False
     coreGE16["창의"] = False
     coreGE16["융합"] = False
     coreGE16["신뢰"] = False
     coreGE16["소통"] = False
+    coreGE16_satisfied = False
     machGECredits = 0
+    machGECreditsList = []
+    machGECreditsSatisfied = False
     machPracCredits = 0
+    machPracCreditsList = []
+    machPracCreditsSatisfied = False
+    result = ""
 
 userData = UserData()
 
@@ -265,9 +294,9 @@ def checkNotRetaken(target, index, takeList):
 
     return func_flag
 
-def checkCompulsorySatisfied(year):
+def checkCompulsorySatisfied(year, takeList):
     #Do its logic
-    global takeList
+    #global takeList
     global userData
 
     compulsoryBools = []
@@ -276,16 +305,17 @@ def checkCompulsorySatisfied(year):
         compulsoryBools.append(False)
 
     for i in range(0, len(takeList)):
-        tlist = getSubstitutableSubjects(takeList[i]["sbjt_no"])
+        if takeList[i]["g_grd"] != "F ":
+            tlist = getSubstitutableSubjects(takeList[i]["sbjt_no"])
 
-        flag = True
-        for j in range(0, len(tlist)):
-            if flag:
-                for k in range(0, length):
-                    if tlist[j] == requirements[year]["compulsorySubjects"][k].course_id:
-                        compulsoryBools[k] = True
-                        flag = False
-                        break
+            flag = True
+            for j in range(0, len(tlist)):
+                if flag:
+                    for k in range(0, length):
+                        if tlist[j] == requirements[year]["compulsorySubjects"][k].course_id:
+                            compulsoryBools[k] = True
+                            flag = False
+                            break
 
     notTaken = []
     for i in range(0, len(compulsoryBools)):
@@ -296,12 +326,84 @@ def checkCompulsorySatisfied(year):
 
     userData.compulsoryNotTaken = notTaken
 
+    if len(userData.compulsoryNotTaken) == 0:
+        userData.compulsorySatisfied = True
+    else:
+        st = ""
+        for i in range(0, len(userData.compulsoryNotTaken)):
+            sbjt = Subject.objects.filter(course_sbjtclss__startswith=userData.compulsoryNotTaken[i][0])
+            st += sbjt[0].course_clssnm + ", "
+
+        userData.result += "필수 과목 중 아직 수강하지 않은 과목이 있습니다.\n 수강하지 않은 필수 과목 : " + st
     return ""
 
 def checkMinMaxRequire(year):
     #Do its logic
     global takeList
     global userData
+
+    if year == "2014":
+        for i in range(0, len(takeList)):
+            if(checkNotRetaken(takeList[i]["sbjt_no"], i, takeList)):
+                sInfo = Subject.objects.filter(course_sbjtclss__startswith=takeList[i]["sbjt_no"], course_year=takeList[i]["re_year"])
+
+                #핵심 교양 갯수 더하기
+                for j in range(0, len(sInfo)):
+                    if "핵심" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
+                        userData.numCoreGE += 1
+                        break
+
+                #교양 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "교양" in sInfo[j].course_pobjnm:
+                        userData.totalGECredits += int(sInfo[j].course_pnt.split("-")[0])
+                        break
+
+                #전공 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "전공" in sInfo[j].course_pobjnm and "기초" not in sInfo[j].course_pobjnm:
+                        userData.majorCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        break
+
+                #전공기초 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "전공기초" in sInfo[j].course_pobjnm:
+                        userData.majorBasicCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        break
+
+                #총 학점 더하기
+                for j in range(0, len(sInfo)):
+                    userData.totalCredits += int(sInfo[j].course_pnt.split("-")[0])
+                    break
+
+                #전문교양 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "전문교양" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
+                        #st += sInfo[j].course_clssnm + "   "
+                        #st += sInfo[j].course_remk + "   "
+                        userData.exclusiveGECredits += int(sInfo[j].course_pnt.split("-")[0])
+                        break
+
+                #BSM 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "BSM" in sInfo[j].course_remk:
+                        userData.bsmCredits += int(sInfo[j].course_pnt.split("-")[0])
+                        break
+
+                #설계 학점 더하기
+                for j in range(0, len(sInfo)):
+                    if "설계" in sInfo[j].course_remk:# and "컴퓨터" in sInfo[j].course_remk:
+                        #st += sInfo[j].course_clssnm + "   "
+                        #st += sInfo[j].course_remk + "   "
+                        string = sInfo[j].course_remk
+                        credit = ""
+                        for i in range(0, len(string)):
+                            if string[i] == "설" and string[i+1] == "계":
+                                credit += string[i+2]
+                                break
+
+                        userData.designSubjectCredits += int(credit)
+                        break
 
 
 
@@ -348,15 +450,155 @@ def index(request):
     global userData
     global takeListAdaptedRetaken
 
-    takeList, stNum = crawlers.getUserSubject("yey6689", "para3150!")
-    for i in range(0, len(takeList)):
-        checkNotRetaken(takeList[i]["sbjt_no"], i, takeList)
+    takeList, stNum = crawlers.getUserSubject("kkh6582", "para3150!")
+    year="2014"
+    st = "" #디버깅용
 
-    a = Subject.objects.filter(course_sbjtclss__startswith="28333")
+    if year == "2014":
+        checkCompulsorySatisfied(year, takeList)
+        #------요건 분석 로직 ------------
+        for i in range(0, len(takeList)):
+            if takeList[i]["g_grd"] != 'F ':
+                if(checkNotRetaken(takeList[i]["sbjt_no"], i, takeList)):
+                    sInfo = Subject.objects.filter(course_sbjtclss__startswith=takeList[i]["sbjt_no"], course_year=takeList[i]["re_year"])
+
+                    #핵심 교양 갯수 더하기
+                    for j in range(0, len(sInfo)):
+                        if "핵심" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
+                            userData.numCoreGE += 1
+                            userData.numCoreGEList.append(takeList[i])
+                            break
+
+                    #교양 학점 더하기 및 들은 교양 과목 리스트에 추가
+                    for j in range(0, len(sInfo)):
+                        if "교양" in sInfo[j].course_pobjnm:
+                            userData.totalGECredits += int(sInfo[j].course_pnt.split("-")[0])
+                            userData.totalGECreditsList.append(takeList[i])
+                            break
+
+                    #전공 학점 더하기 및 들은 전공 과목 리스트에 추가
+                    for j in range(0, len(sInfo)):
+                        if "전공" in sInfo[j].course_pobjnm and "기초" not in sInfo[j].course_pobjnm:
+                            userData.majorCredits += int(sInfo[j].course_pnt.split("-")[0])
+                            userData.majorCreditsList.append(takeList[i])
+                            break
+
+                    #전공기초 학점 더하기
+                    for j in range(0, len(sInfo)):
+                        if "전공기초" in sInfo[j].course_pobjnm:
+                            userData.majorBasicCredits += int(sInfo[j].course_pnt.split("-")[0])
+                            userData.majorBasicCreditsList.append(takeList[i])
+                            break
+
+                    #전공필수 학점 더하기
+                    for j in range(0, len(sInfo)):
+                        if "전공필수" in sInfo[j].course_pobjnm:
+                            userData.majorCompulsoryCredits += int(sInfo[j].course_pnt.split("-")[0])
+                            userData.majorCompulsoryCreditsList.append(takeList[i])
+                            break
+
+                    #총 학점 더하기
+                    userData.totalCredits += int(takeList[i]["acq_pnt"])
 
 
+                    #전문교양 학점 더하기
+                    for j in range(0, len(sInfo)):
+                        if "전문교양" in sInfo[j].course_remk and "컴퓨터" in sInfo[j].course_remk:
+                            #st += sInfo[j].course_clssnm + "   "
+                            #st += sInfo[j].course_remk + "   "
+                            userData.exclusiveGECredits += int(sInfo[j].course_pnt.split("-")[0])
+                            userData.exclusiveGECreditsList.append(takeList[i])
+                            break
 
-    return HttpResponse(a[10].course_remk)
+                    #BSM 학점 더하기
+                    for j in range(0, len(sInfo)):
+                        if "BSM" in sInfo[j].course_remk:
+                            userData.bsmCredits += int(sInfo[j].course_pnt.split("-")[0])
+                            userData.bsmCreditsList.append(takeList[i])
+                            break
+
+                    #설계 학점 더하기
+                    for j in range(0, len(sInfo)):
+                        if "설계" in sInfo[j].course_remk:# and "컴퓨터" in sInfo[j].course_remk:
+                            #st += sInfo[j].course_clssnm + "   "
+                            #st += sInfo[j].course_remk + "   "
+                            string = sInfo[j].course_remk
+                            credit = ""
+                            for k in range(0, len(string)):
+                                if string[k] == "설" and string[k+1] == "계":
+                                    credit += string[k+2]
+                                    break
+
+                            userData.designSubjectCredits += int(credit)
+                            userData.designSubjectCreditsList.append((takeList[i], credit))
+
+                            break
+
+        #------ 요견 판별 로직 ----------
+
+        #핵심 교양 학점 만족 판별
+        if userData.numCoreGE >= requirements[year]["numCoreGE"]:
+            userData.numCoreGESatisfied = True
+        else:
+            st += "핵심 교양 불만족\n 핵심 교양 과목을 " + str(requirements[year]["numCoreGE"] - userData.numCoreGE) + "개 이상 더 들으셔야 합니다."
+
+        #총 교양 과목 학점이 45이상 이면 45헉점만 인정
+        diff = 0
+        if userData.totalGECredits > requirements[year]["GECreditsLimit"]:
+            temp = userData.totalGECredits
+            diff = temp - requirements[year]["GECreditsLimit"]
+            userData.totalGECredits = requirements[year]["GECreditsLimit"]
+
+        #전공 학점 만족 판별
+        if userData.majorCredits >= requirements[year]["majorCredits"]:
+            userData.majorCreditsSatisfied = True
+        else:
+            st += "전공 과목 불만족\n 전공 과목 학점을 " + str(requirements[year]["majorCredits"] - userData.majorCredits) + "만큼 더 취득하셔야 합니다."
+
+        #전공 기초 학점 만족 판별
+        if userData.majorBasicCredits >= requirements[year]["majorBasicCredits"]:
+            userData.majorBasicCreditsSatisfied = True
+        else:
+            st += "전공 기초 과목 불만족\n 전공 기초 과목 학점을 " + str(requirements[year]["majorBasicCredits"] - userData.majorBasicCredits) + "만큼 더 취득하셔야 합니다."
+
+        if userData.majorCompulsoryCredits >= requirements[year]["majorCompulsoryCredits"]:
+            userData.majorCompulsoryCreditsSatisfied = True
+        else:
+            st += "전공 필수 과목 불만족\n 전공 필수 과목 학점을 " + str(requirements[year]["majorCompulsoryCredits"] - userData.majorCompulsoryCredits) + "만큼 더 취득하셔야 합니다."
+
+        #총 학점 만족 판별
+        if (userData.totalCredits - diff) >= requirements[year]["totalCredits"]:
+            userData.totalCreditsSatisfied = True
+        else:
+            st += "총 학점 불만족\n 총 학점을 " + str(requirements[year]["totalCredits"] - userData.totalCredits) + "만큼 더 취득하셔야 합니다."
+
+        #전문 교양 학점 만족 판별
+        if userData.exclusiveGECredits >= requirements[year]["exclusiveGECredits"]:
+            userData.exclusiveGECreditsSatisfied = True
+        else:
+            st += "전문 교양 학점 불만족\n 전문 교양 과목 학점을 " + str(requirements[year]["exclusiveGECredits"] - userData.exclusiveGECredits) + "만큼 더 취득하셔야 합니다."
+
+        #BSM 학점 만족 판별
+        if userData.bsmCredits >= requirements[year]["bsmCredits"]:
+            userData.bsmCreditsSatisfied = True
+        else:
+            st += "BSM 학점 불만족\n BSM 과목 학점을 " + str(requirements[year]["bsmCredits"] - userData.bsmCredits) + "만큼 더 취득하셔야 합니다."
+
+        #설계 학점 만족 판별
+        if userData.designSubjectCredits >= requirements[year]["designSubjectCredits"]:
+            userData.designSubjectCreditsSatisfied = True
+        else:
+            st += "설계 학점 불만족\n 설계 과목 학점을 " + str(requirements[year]["designSubjectCredits"] - userData.designSubjectCredits) + "만큼 더 취득하셔야 합니다."
+
+
+        userData.result += st
+
+    # sum = ""
+    # for i in range(0, len(takeListAdaptedRetaken)):
+    #     sum += (takeListAdaptedRetaken[i]["kor_nm"] + str(takeListAdaptedRetaken[i]["acq_pnt"]) + "    ")
+
+
+    return HttpResponse(userData.result)
 
 
 def api(request, message):
