@@ -141,13 +141,13 @@ requirements["2020"]["avgGrade"]=2.2
 requirements["2020"]["compulsorySubjects"]=Compulsory.objects.filter(course_year=2020)
 
 funclist = []   #질문 대답 함수 리스트
-takeList = []   #사용자가 들은 과목 리스트
-takeListAdaptedRetaken = [] #사용자가 들은 재수강 과목을 뺀 과목 리스트
 
+
+# Save {ID : UserData}
+userGraduInfo = dict()
 
 
 class UserData:
-    assessed = False
     totalCredits = 0
     totalCreditsSatisfied = False
     exclusiveGECredits = 0
@@ -199,7 +199,6 @@ class UserData:
     machPracCreditsSatisfied = False
     result = ""
 
-userData = UserData()
 
 def certainFunction(argList):
     graduationAssessment(argList)
@@ -250,11 +249,8 @@ def getSubstitutingSubjects(target):
 
     return temp
 
-subsFoundlist = []
 #재수강인 과목 판단 후 재수강 반영한 수강 과목 리스트에 추가/수정
-def checkNotRetaken(target, index, takeList):
-    #global takeList
-    global SubsFoundlist
+def checkNotRetaken(target, index, takeList, takeListAdaptedRetaken, subsFoundlist):
     func_flag = True
 
     #tareget의 대체 과목 파악
@@ -299,10 +295,8 @@ def checkNotRetaken(target, index, takeList):
 
     return func_flag
 
-def checkCompulsorySatisfied(year):
+def checkCompulsorySatisfied(year, userData, takeList):
     #Do its logic
-    global takeList
-    global userData
 
     compulsoryBools = []
     length = len(requirements[year]["compulsorySubjects"])
@@ -342,14 +336,11 @@ def checkCompulsorySatisfied(year):
         userData.result += "필수 과목 중 아직 수강하지 않은 과목이 있습니다.\n 수강하지 않은 필수 과목 : " + st
     return ""
 
-def checkMinMaxRequire(year):
-    #Do its logic
-    global takeList
-    global userData
+def checkMinMaxRequire(year, userData, takeList):
 
     for func in check_funclist:
         if func[0] == year:
-            func[1](year)
+            func[1](year, userData, takeList)
 
 
     return ""
@@ -358,14 +349,15 @@ def check2010(year):
     
 
     return ""
-def check2013(year):
-    global takeList
+def check2013(year, userData, takeList):
     st = ""  # 분석 결과
+    takeListAdaptedRetaken = []
+    subsFoundlist = []
 
     # ------요건 분석 로직 ------------
     for i in range(0, len(takeList)):
         if takeList[i]["g_grd"] != 'F ':
-            if (checkNotRetaken(takeList[i]["sbjt_no"], i, takeList)):
+            if (checkNotRetaken(takeList[i]["sbjt_no"], i, takeList, takeListAdaptedRetaken, subsFoundlist)):
                 sInfo = Subject.objects.filter(course_sbjtclss__startswith=takeList[i]["sbjt_no"],
                                                course_year=takeList[i]["re_year"])
 
@@ -504,20 +496,18 @@ def check2013(year):
 
     userData.result += st
 
-    # sum = ""
-    # for i in range(0, len(takeListAdaptedRetaken)):
-    #     sum += (takeListAdaptedRetaken[i]["kor_nm"] + str(takeListAdaptedRetaken[i]["acq_pnt"]) + "    ")
 
     return ""
 
-def check2014(year):
-    global takeList
+def check2014(year, userData, takeList):
     st = ""  # 분석 결과
+    takeListAdaptedRetaken = []
+    subsFoundlist = []
 
     # ------요건 분석 로직 ------------
     for i in range(0, len(takeList)):
         if takeList[i]["g_grd"] != 'F ':
-            if (checkNotRetaken(takeList[i]["sbjt_no"], i, takeList)):
+            if (checkNotRetaken(takeList[i]["sbjt_no"], i, takeList, takeListAdaptedRetaken, subsFoundlist)):
                 sInfo = Subject.objects.filter(course_sbjtclss__startswith=takeList[i]["sbjt_no"],
                                                    course_year=takeList[i]["re_year"])
 
@@ -652,9 +642,6 @@ def check2014(year):
 
     userData.result += st
 
-    # sum = ""
-    # for i in range(0, len(takeListAdaptedRetaken)):
-    #     sum += (takeListAdaptedRetaken[i]["kor_nm"] + str(takeListAdaptedRetaken[i]["acq_pnt"]) + "    ")
 
     return ""
 
@@ -665,16 +652,17 @@ check_funclist = [] #년도별 요건 분석 함수 리스트
 check_funclist.append(("2014",check2014))
 check_funclist.append(("2013",check2013))
 
-def checkGdRequire(year):
-    checkCompulsorySatisfied(year)
-    checkMinMaxRequire(year)
+def checkGdRequire(year, userData, takeList):
+    checkCompulsorySatisfied(year, userData, takeList)
+    #TODO check this also
+    checkMinMaxRequire(year, userData, takeList)
+
+
 
 
 
 
 def graduationAssessment(argList):
-    global userData
-    global takeList
 
     ret = ""
 
@@ -683,18 +671,18 @@ def graduationAssessment(argList):
 
     try:
 
-        if userData.assessed == False:
+        if ID not in userGraduInfo:
+            userData = UserData()
             takeList, stNum = crawlers.getUserSubject(ID, PW)
             year = stNum[:4]
-            checkGdRequire(year)
-            userData.assessed = True
-        else:
-            return userData.result
+            checkGdRequire(year, userData, takeList)
+            userGraduInfo[ID] = userData
+
+        return userGraduInfo[ID].result
     except Exception as e:
         return str(e)
 
 
-    return userData.result
 
 
 def initFunclist():
@@ -703,19 +691,9 @@ def initFunclist():
 
 #For debugging
 def index(request):
-    global userData
-    global takeListAdaptedRetaken
-
-    takeList, stNum = crawlers.getUserSubject("yey6689", "para3150!")
-    year="2013"
-
-    checkCompulsorySatisfied(year, takeList)
-    checkMinMaxRequire(year, takeList)
-    st = "" #디버깅용
 
 
-
-    return HttpResponse(userData.result)
+    return HttpResponse("hello")
 
 def api(request, message):
     try:
