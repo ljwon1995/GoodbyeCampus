@@ -683,6 +683,22 @@ def askConsult(argList):
 def askGradPaper(argList):
     return graduationAssessment(argList)
 
+#TODO
+def askChineses(argList):
+    return graduationAssessment(argList)
+
+#TODO
+def askEnglish(argList):
+    return graduationAssessment(argList)
+
+#TODO
+def askTopcit(argList):
+    return graduationAssessment(argList)
+
+#TODO
+def askGradTest(argList):
+    return graduationAssessment(argList)
+
 
 def graduationAssessment(argList):
 
@@ -717,6 +733,11 @@ def initFunclist():
     funclist.append(("askCompul", askCompul))
     funclist.append(("askConsult", askConsult))
     funclist.append(("askGradPaper", askGradPaper))
+    funclist.append(("askChinese", askChinese))
+    funclist.append(("askEnglish", askEnglish))
+    funclist.append(("askTopcit", askTopcit))
+    funclist.append(("askGradTest", askGradTest))
+
 
     return
 
