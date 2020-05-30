@@ -684,7 +684,7 @@ def askGradPaper(argList):
     return graduationAssessment(argList)
 
 #TODO
-def askChineses(argList):
+def askChinese(argList):
     return graduationAssessment(argList)
 
 #TODO
