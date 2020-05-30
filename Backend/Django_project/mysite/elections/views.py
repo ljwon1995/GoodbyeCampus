@@ -349,7 +349,7 @@ def checkMinMaxRequire(year):
 
     for func in check_funclist:
         if func[0] == year:
-            func[1](year, takeList)
+            func[1](year)
 
 
     return ""
@@ -679,10 +679,10 @@ def graduationAssessment(argList):
     ret = ""
 
     ID = argList[0]
-    PW = argList[1]
+    PW = argList[1].replace(' ', '')
 
-    #TODO In chatscript need to take ! inputs also
     try:
+
         if userData.assessed == False:
             takeList, stNum = crawlers.getUserSubject(ID, PW)
             year = stNum[:4]
@@ -690,12 +690,12 @@ def graduationAssessment(argList):
             userData.assessed = True
         else:
             return userData.result
-
     except Exception as e:
-        error = e
-        return "구현중"
+        return str(e)
+
 
     return userData.result
+
 
 def initFunclist():
     funclist.append(("graduationAssessment", graduationAssessment))
@@ -717,76 +717,79 @@ def index(request):
 
     return HttpResponse(userData.result)
 
-
 def api(request, message):
+    try:
+        protocol, message = message.split("$", maxsplit=1)
 
-    HOST = 'ec2-3-21-126-101.us-east-2.compute.amazonaws.com'
-    PORT = 1024
+        HOST = 'ec2-3-21-126-101.us-east-2.compute.amazonaws.com'
+        PORT = 1024
 
-    # TODO port is changing every time user sent. So make the way to distinguish user without port number.
-    ip = request.META.get('REMOTE_ADDR')
-    port = request.META.get('REMOTE_PORT')
+    
 
-    name = ip
+        if (protocol == 'start'):
+            name = message
+            initFunclist()
+            client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            client_socket.bind(('', 0))
+            client_socket.connect((HOST, PORT))
 
-    if (message == 'start'):
-        initFunclist()
+            msg = ":reset"
+            bot = "HARRY"
+
+            data = name + chr(0) + bot + chr(0) + msg + chr(0);
+            client_socket.send(data.encode())
+            data = client_socket.recv(50000).decode()
+            data = data.split("/")[1]
+            client_socket.close()
+            return JsonResponse({
+                'message': 1,
+                'content': data
+            })
+
+
+        elif (protocol == 'notfirst'):
+            name, message = message.split("$", maxsplit = 1)
+
+        bot = "HARRY"
+
         client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         client_socket.bind(('', 0))
         client_socket.connect((HOST, PORT))
 
-        msg = ":reset"
-        bot = "HARRY"
+        data = name + chr(0) + bot + chr(0) + message + chr(0);
+        client_socket.send(data.encode());
 
-        data = name + chr(0) + bot + chr(0) + msg + chr(0);
-        client_socket.send(data.encode())
-        data = client_socket.recv(50000).decode()
-        data = data.split("/")[1]
+        data = client_socket.recv(10000);
+        print('bot : ', data.decode());
+        data = data.decode()
+
+        # Data Preprocessing
+        tokens = data.split('/')
+        type = tokens[0]
+
+        # Find type
+        if type == 'f' or type == 'F':
+            fname = tokens[1]
+            argList = tokens[2:]
+
+            for func in funclist:
+                if func[0] == fname:
+                    response = func[1](argList)
+
+        elif type == 'u' or type == 'U':
+            response = tokens[1]
+
+        else:
+            response = "Error"
+
         client_socket.close()
-
-
         return JsonResponse({
             'message': 1,
-            'content': data
+            'content': response
         })
-
-
-
-    bot = "HARRY"
-
-    client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    client_socket.bind(('', 0))
-    client_socket.connect((HOST, PORT))
-
-    data = name + chr(0) + bot + chr(0) + message + chr(0);
-    client_socket.send(data.encode());
-
-    data = client_socket.recv(10000);
-    print('bot : ', data.decode());
-    data = data.decode()
-
-    # Data Preprocessing
-    tokens = data.split('/')
-    type = tokens[0]
-
-    # Find type
-    if type == 'f' or type == 'F':
-        fname = tokens[1]
-        argList = tokens[2:]
-
-        for func in funclist:
-            if func[0] == fname:
-                response = func[1](argList)
-
-    elif type == 'u' or type == 'U':
-        response = tokens[1]
-
-    else:
-        response = "Error"
-
-    client_socket.close()
-    return JsonResponse({
-        'message': 1,
-        'content': response
-    })
+    except Exception as e:
+        return JsonResponse({
+            'message': 1,
+            'content': "ERROR in api" + str(e)
+        })
 

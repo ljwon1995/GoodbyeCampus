@@ -26,7 +26,7 @@ class Chat extends Component {
     this.user = this._randomUser();
 
     try {
-            const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/start');
+            const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/start$'+ this.user);
             const posts = await res.json();
             
             addResponseMessage(posts.content);
@@ -40,7 +40,7 @@ class Chat extends Component {
   async handleNewUserMessage (newMessage) {
 
     try {
-      const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/' + newMessage);
+      const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/notfirst$' + this.user + "$" + newMessage);
       const posts = await res.json();
             
       addResponseMessage(posts.content);
