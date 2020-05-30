@@ -659,12 +659,32 @@ def checkGdRequire(year, userData, takeList):
 
 
 
-
+#TODO Answer whole things
 def graduationAvailability(argList):
-
     return graduationAssessment(argList)
 
 
+#TODO Answer how more credits achieved
+def moreTotCredit(argList):
+    return graduationAssessment(argList)
+
+
+#TODO
+def moreMajorCredit(argList):
+    return graduationAssessment(argList)
+
+#TODO
+def askTotCredit(argList):
+    return graduationAssessment(argList)
+#TODO
+def askMajorCompul(argList):
+    return graduationAssessment(argList)
+#TODO
+def askConsult(argList):
+    return graduationAssessment(argList)
+#TODO
+def askGradPaper(argList):
+    return graduationAssessment(argList)
 
 
 def graduationAssessment(argList):
@@ -695,6 +715,13 @@ def graduationAssessment(argList):
 
 def initFunclist():
     funclist.append(("graduationAvailability", graduationAvailability))
+    funclist.append(("moreTotCredit", moreTotCredit))
+    funclist.append(("moreMajorCredit", moreMajorCredit))
+    funclist.append(("askTotCredit", askTotCredit))
+    funclist.append(("askMajorCompul", askMajorCompul))
+    funclist.append(("askConsult", askConsult))
+    funclist.append(("askGradPaper", askGradPaper))
+
     return
 
 #For debugging
