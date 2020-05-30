@@ -677,7 +677,7 @@ def moreMajorCredit(argList):
 def askTotCredit(argList):
     return graduationAssessment(argList)
 #TODO
-def askMajorCompul(argList):
+def askCompul(argList):
     return graduationAssessment(argList)
 #TODO
 def askConsult(argList):
