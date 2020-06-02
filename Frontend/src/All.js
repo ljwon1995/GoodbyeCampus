@@ -9,22 +9,20 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import {DialogTitle, TextField, DialogActions, Select, MenuItem} from '@material-ui/core';
-import DialogContent from '@material-ui/core/DialogContent'
+import DialogContent from '@material-ui/core/DialogContent';
 
-class All extends Component {
-    
+class All extends Component {    
     constructor(props){
         super(props);
 
         this.state = {
-         subject: [
-             {"year":"2020", "sem":1, "code":"111", "title":"test1", "credit":"3", "etc":"-"},
-             {"year":"2020", "sem":1, "code":"112", "title":"test2", "credit":"3", "etc":"-"},
-             {"year":"2020", "sem":1, "code":"113", "title":"test3", "credit":"3", "etc":"-"}
-         ],
-         options: [],
-         open: false, year: '', sem: '', code: '', title: '', credit: '', etc: '',
-         main: "문과대학"
+            options: [],
+            subject: [],
+            open: false, 
+            year:"2020", sem:"1", shyr:"1", dist:"교양", colgnm:"", sust:"", title:"", prof:"", time:"", code:"", credit:"", etc:"",
+            s_year: '2020', s_sem: '1',
+            main: "소프트웨어대학",
+            sub : "소프트웨어학부"
         };
     }
 
@@ -36,41 +34,37 @@ class All extends Component {
         this.setState(nextState);
     }
 
-    _selectChange(e) {
+    _subSelect = (event) => {
         this.setState({
-            main: e.target.value
+            sub: event.target.value
         })
     }
 
     _delete() {
-        const options = this.state.options
-        const newList = this.state.subject
-        if(this.state.options.length > 1) {
-
-            options.sort(function(a, b) { // 내림차순
-                return b - a
-            });
-
-            let i
-            for(i=0; i<options.length; i++){
-                newList.splice(options[i],1)
+        let selected = Array.from(this.state.options);
+        let newList = Array.from(this.state.subject);
+        
+        if(selected.length !== 0){
+            if(selected.length > 1){
+                let i
+                selected.sort(function(a, b) { // 내림차순
+                    return b - a;
+                    // 11, 10, 4, 3, 2, 1
+                });
+                for(i=0; i<selected.length; i++){
+                    newList.splice(selected[i],1)
+                }
             }
 
-            this.setState({
-                subject: newList,
-                options: []
-            })
+            else{
+                newList.splice(selected[0],1)
+            }     
         }
 
-        else if(this.state.options.length === 1) {
-            newList.splice(options[0],1)
-
-            this.setState({
-                subject: newList,
-                options: []
-            })
-        }
-
+        this.setState({
+            options: [],
+            subject: newList
+        })
     }
 
     _btnClick() {
@@ -91,265 +85,79 @@ class All extends Component {
         })
     }
 
-    _addNewItem() {
-        const list = this.state.subject
-        let newItem = {
-            "year": this.state.year,
-            "sem": this.state.sem,
-            "code": this.state.code,
-            "title": this.state.title,
-            "credit": this.state.credit,
-            "etc": this.state.etc}
-
+    _clearState = () => {
         this.setState({
-            subject: list.concat(newItem),
-            year: '',
-            sem: '',
-            code: '',
-            title: '',
-            credit: '',
-            etc: '',
-            open: false
+            year: "2020",
+            sem: "1",
+            shyr : "1",
+            dist : "교양",
+            colgnm : "",
+            sust : "",
+            title : "",
+            prof : "",
+            time : "",
+            code : "",
+            credit : "",
+            etc : ""
         })
-
     }
 
-    render(){
-        var sub = ''
-        if(this.state.main === "문과대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"국어국문학과"}>국어국문학과</MenuItem>
-                <MenuItem value={"영어영문학과"}>영어영문학과</MenuItem>
-                <MenuItem value={"독어독문학과"}>독어독문학과</MenuItem>
-                <MenuItem value={"문헌정보학과"}>문헌정보학과</MenuItem>
-                <MenuItem value={"불어불문학과"}>불어불문학과</MenuItem>
-                <MenuItem value={"일어일문학과"}>일어일문학과</MenuItem>
-                <MenuItem value={"심리학과"}>심리학과</MenuItem>
-                <MenuItem value={"청소년학과"}>청소년학과</MenuItem>
-                <MenuItem value={"철학과"}>철학과</MenuItem>
-                <MenuItem value={"사회복지학과"}>사회복지학과</MenuItem>
-                <MenuItem value={"아동복지학과"}>아동복지학과</MenuItem>
-                <MenuItem value={"사회학과"}>사회학과</MenuItem>
-                <MenuItem value={"민속학과"}>민속학과</MenuItem>
-                <MenuItem value={"역사학과"}>역사학과</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "자연과학대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"물리학과"}>물리학과</MenuItem>
-                <MenuItem value={"화학과"}>화학과</MenuItem>
-                <MenuItem value={"수리통계학부"}>수리통계학부</MenuItem>
-                <MenuItem value={"수학정공"}>수학전공</MenuItem>
-                <MenuItem value={"통계전공"}>통계전공</MenuItem>
-                <MenuItem value={"생명과학과"}>생명과학과</MenuItem>
-                <MenuItem value={"생명과학부"}>생명과학부</MenuItem>
-                <MenuItem value={"수학과"}>수학과</MenuItem>
-                <MenuItem value={"생명과학전공"}>생명과학전공</MenuItem>
-                <MenuItem value={"의생명과학전공"}>의생명과학전공</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "공과대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"기계공학부"}>기계공학부</MenuItem>
-                <MenuItem value={"건설환경공학과"}>건설환경공학과</MenuItem>
-                <MenuItem value={"전자전기공학부"}>전자전기공학부</MenuItem>
-                <MenuItem value={"컴퓨터공학부"}>컴퓨터공학부</MenuItem>
-                <MenuItem value={"건축학부"}>건축학부</MenuItem>
-                <MenuItem value={"건축공학전공"}>건축공학전공</MenuItem>
-                <MenuItem value={"건축학전공"}>건축학전공</MenuItem>
-                <MenuItem value={"화학신소재공학부"}>화학신소재공학부</MenuItem>
-                <MenuItem value={"도시공학과"}>도시공학과</MenuItem>
-                <MenuItem value={"사회기반시스템공학부"}>사회기반시스템공학부</MenuItem>
-                <MenuItem value={"융합공학부"}>융합공학부</MenuItem>
-                <MenuItem value={"건설시스템공학전공"}>건설시스템공학전공</MenuItem>
-                <MenuItem value={"도시시스템공학전공"}>도시시스템공학전공</MenuItem>
-                <MenuItem value={"디지털이미지전공"}>디지털이미지전공</MenuItem>
-                <MenuItem value={"나노바이오소재공학전공"}>나노바이오소재공학전공</MenuItem>
-                <MenuItem value={"의료공학전공"}>의료공학전공</MenuItem>
-                <MenuItem value={"건설환경플랜트공학전공"}>건설환경플랜트공학전공</MenuItem>
-                <MenuItem value={"바이오메디컬공학전공"}>바이오메디컬공학전공</MenuItem>
-                <MenuItem value={"에너지시스템 공학부"}>에너지시스템 공학부</MenuItem>
-                <MenuItem value={"발전기계전공"}>발전기계전공</MenuItem>
-                <MenuItem value={"원자력전공"}>원자력전공</MenuItem>
-                <MenuItem value={"발전전기전공"}>발전전기전공</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "사범대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"교육학과"}>교육학과</MenuItem>
-                <MenuItem value={"유아교육과"}>유아교육과</MenuItem>
-                <MenuItem value={"가정교육과"}>가정교육과</MenuItem>
-                <MenuItem value={"체육교육과"}>체육교육과</MenuItem>
-                <MenuItem value={"영어교육과"}>영어교육과</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "법과대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"법학과"}>법학과</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "정경대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"정치외교학과"}>정치외교학과</MenuItem>
-                <MenuItem value={"행정학과"}>행정학과</MenuItem>
-                <MenuItem value={"경제학과"}>경제학과</MenuItem>
-                <MenuItem value={"광고홍보학과"}>광고홍보학과</MenuItem>
-                <MenuItem value={"정경계열"}>정경계열</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "경영대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"경영학부"}>경영학부</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "의과대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"간호학과"}>간호학과</MenuItem>
-                <MenuItem value={"의학부"}>의학부</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "약학대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"약학전공"}>약학전공</MenuItem>
-                <MenuItem value={"제약학전공"}>제약학전공</MenuItem>
-                <MenuItem value={"약학부"}>약학부</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "미디어공연영상대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"신문방송학부"}>신문방송학부</MenuItem>
-                <MenuItem value={"언론저널리즘전공"}>언론저널리즘전공</MenuItem>
-                <MenuItem value={"미디어콘텐츠전공"}>미디어콘텐츠전공</MenuItem>
-                <MenuItem value={"공연영상미술전공"}>공연영상미술전공</MenuItem>
-                <MenuItem value={"연극전공"}>연극전공</MenuItem>
-                <MenuItem value={"영화전공"}>영화전공</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "자유전공학부") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"자유전공학부"}>자유전공학부</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "공공인재학부") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"공공인재학부"}>공공인재학부</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "글로벌지식학부") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"글로벌지식학부"}>글로벌지식학부</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "사회과학대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"정치국제학과"}>정치국제학과</MenuItem>
-                <MenuItem value={"공공인재학부"}>공공인재학부</MenuItem>
-                <MenuItem value={"심리학과"}>심리학과</MenuItem>
-                <MenuItem value={"문헌정보학과"}>문헌정보학과</MenuItem>
-                <MenuItem value={"사회복지학부"}>사회복지학부</MenuItem>
-                <MenuItem value={"신문방송학부"}>신문방송학부</MenuItem>
-                <MenuItem value={"사회학과"}>사회학과</MenuItem>
-                <MenuItem value={"가족복지전공"}>가족복지전공</MenuItem>
-                <MenuItem value={"사회복지전공"}>사회복지전공</MenuItem>
-                <MenuItem value={"아동복지전공"}>아동복지전공</MenuItem>
-                <MenuItem value={"청소년전공"}>청소년전공</MenuItem>
-                <MenuItem value={"미디어콘텐츠전공"}>미디어콘텐츠전공</MenuItem>
-                <MenuItem value={"언론저널리즘전공"}>언론저널리즘전공</MenuItem>
-                <MenuItem value={"도시계획·부동산 학과"}>도시계획·부동산 학과</MenuItem>
-                <MenuItem value={"미디어커뮤니케이션학부"}>미디어커뮤니케이션학부</MenuItem>
-                <MenuItem value={"언론정보학부"}>언론정보학부</MenuItem>
-                <MenuItem value={"디지털미디어콘텐츠전공"}>디지털미디어콘텐츠전공</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "경영경제대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"글로벌금융전공"}>글로벌금융전공</MenuItem>
-                <MenuItem value={"경제학부(서울)"}>경제학부(서울)</MenuItem>
-                <MenuItem value={"응용통계학과"}>응용통계학과</MenuItem>
-                <MenuItem value={"광고홍보학과"}>광고홍보학과</MenuItem>
-                <MenuItem value={"지식경영학부"}>지식경영학부</MenuItem>
-                <MenuItem value={"경영학부(서울)"}>경영학부(서울)</MenuItem>
-                <MenuItem value={"국제물류 학과"}>국제물류 학과</MenuItem>
-                <MenuItem value={"산업보안학과"}>산업보안학과</MenuItem>
-                <MenuItem value={"경영학전공"}>경영학전공</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "예술대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"공간연출전공"}>공간연출전공</MenuItem>
-                <MenuItem value={"영화전공"}>영화전공</MenuItem>
-                <MenuItem value={"연극전공"}>연극전공</MenuItem>
-                <MenuItem value={"공연영상창작학부"}>공연영상창작학부</MenuItem>
-                <MenuItem value={"디자인학부"}>디자인학부</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "인문대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"국어국문학과"}>국어국문학과</MenuItem>
-                <MenuItem value={"영어영문학과"}>영어영문학과</MenuItem>
-                <MenuItem value={"유럽문화학부"}>유럽문화학부</MenuItem>
-                <MenuItem value={"아시아문화학부"}>아시아문화학부</MenuItem>
-                <MenuItem value={"철학과"}>철학과</MenuItem>
-                <MenuItem value={"역사학과"}>역사학과</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "적십자간호대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"간호학과"}>간호학과</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "창의ICT공과대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"융합교양학부"}>융합교양학부</MenuItem>
-                <MenuItem value={"전자전기공학부"}>전자전기공학부</MenuItem>
-                <MenuItem value={"컴퓨터공학부"}>컴퓨터공학부</MenuItem>
-                <MenuItem value={"소프트웨어전공"}>소프트웨어전공</MenuItem>
-                <MenuItem value={"컴퓨터공학전공"}>컴퓨터공학전공</MenuItem>
-                <MenuItem value={"융합공학부"}>융합공학부</MenuItem>
-                <MenuItem value={"바이오메디컬공학전공"}>바이오메디컬공학전공</MenuItem>
-                <MenuItem value={"나노바이오소재공학전공"}>나노바이오소재공학전공</MenuItem>
-                <MenuItem value={"디지털이미징전공"}>디지털이미징전공</MenuItem>
-                <MenuItem value={"소프트웨어학부"}>소프트웨어학부</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "교양학부대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"교양학부"}>교양학부</MenuItem>
-            </Select>
-        }
-        else if(this.state.main === "소프트웨어대학") {
-            sub = 
-            <Select style={{"marginLeft":'20px'}}>
-                <MenuItem value={"소프트웨어학부"}>소프트웨어학부</MenuItem>
-            </Select>
-        }
+    _selectYear = (event) => {
+        this.setState({
+            s_year: event.target.value
+        })
+    }
 
+    _selectsem = (event) => {
+        this.setState({
+            s_sem: event.target.value
+        })
+    }
+
+    _addFormSelect = (event) => {
+        let nextState = {};
+
+        nextState[event.target.name] = event.target.value;
         
+        this.setState(nextState);
+    }
+    render(){
+
+        const category = {
+            "문과대학" : ["국어국문학과", "영어영문학과", "독어독문학과", "문헌정보학과", "불어불문학과", "일어일문학과", "심리학과", "청소년학과", "철학과", "사회복지학과", "아동복지학과", "사회학과", "민속학과", "역사학과"],
+            "자연과학대학" : ["물리학과", "화학과", "수리통계학부", "수학전공", "통계전공", "생명과학과", "생명과학부", "수학과", "생명과학전공", "의생명과학전공"],
+            "공과대학" : ["기계공학부", "건설환경공학과", "전자전기공학부", "컴퓨터공학부", "건축학부", "건축공학전공", "건축학전공", "화학신소재공학부", "도시공학과", "사회기반시스템공학부", "융합공학부", "건설시스템공학전공", "도시시스템공학전공", "디지털이미지전공", "나노바이오소재공학전공", "의료공학전공", "건설환경플랜트공학전공", "바이오메디컬공학전공", "에너지시스템 공학부", "발전기계전공", "원자력전공", "발전전기전공"],
+            "사범대학" : ["교육학과", "유아교육과", "가정교육과", "체육교육과", "영어교육과"],
+            "법과대학" : ["법학과"],
+            "정경대학" : ["정치외교학과", "행정학과", "경제학과", "광고홍보학과", "정경계열"],
+            "경영대학" : ["경영학부"],
+            "의과대학" : ["간호학과", "의학부"],
+            "약학대학" : ["약학전공", "제약학전공", "약학부"],
+            "미디어공연영상대학" : ["신문방송학부", "언론저널리즘전공", "미디어콘텐츠전공", "공연영상미술전공", "연극전공", "영화전공"],
+            "자유전공학부" : ["자유전공학부"],
+            "공공인재학부" : ["공공인재학부"],
+            "글로벌지식학부" : ["글로벌지식학부"],
+            "사회과학대학" : ["정치국제학과", "공공인재학부", "심리학과", "문헌정보학과", "사회복지학부", "신문방송학부", "사회학과", "가족복지전공", "사회복지전공", "아동복지전공", "청소년전공", "미디어콘텐츠전공", "언론저널리즘전공", "도시계획·부동산 학과", "미디어커뮤니케이션학부", "언론정보학부", "디지털미디어콘텐츠전공"],
+            "경영경제대학" : ["글로벌금융전공", "경제학부(서울)", "응용통계학과", "광고홍보학과", "지식경영학부", "경영학부(서울)", "국제물류 학과", "산업보안학과", "경영학전공"],
+            "예술대학" : ["공간연출전공", "영화전공", "연극전공", "공연영상창작학부", "디자인학부"],
+            "인문대학" : ["국어국문학과", "영어영문학과", "유럽문화학부", "아시아문화학부", "철학과", "역사학과"],
+            "적십자간호대학" : ["간호학과"],
+            "창의ICT공과대학" : ["융합교양학부", "전자전기공학부", "컴퓨터공학부", "소프트웨어전공", "컴퓨터공학전공", "융합공학부", "바이오메디컬공학전공", "나노바이오소재공학전공", "디지털이미징전공", "소프트웨어학부"],
+            "교양학부대학" : ["교양학부"],
+            "소프트웨어대학" : ["소프트웨어학부"]
+        }        
+
+
+        let content = null;
+
+        if(this.state.subject.length === 0) {
+            content = <div style = {{"textAlign" : "center", "margin" : "auto"}}>검색결과가 없습니다.</div>
+        }
 
         return(
             <div style={{"marginTop":"15px"}}>
                 <div style={{"textAlign":"center"}}>
-                    <Select defaultValue={"2020"}>
+                    <Select value={this.state.s_year ? this.state.s_year : ""} onChange={this._selectYear}>
                         <MenuItem value={"2010"}>2010년</MenuItem>
                         <MenuItem value={"2011"}>2011년</MenuItem>
                         <MenuItem value={"2012"}>2012년</MenuItem>
@@ -362,11 +170,17 @@ class All extends Component {
                         <MenuItem value={"2019"}>2019년</MenuItem>
                         <MenuItem value={"2020"}>2020년</MenuItem>
                     </Select>
-                    <Select defaultValue={"1"} style={{"marginLeft":'20px'}}>
+                    <Select value={this.state.s_sem ? this.state.s_sem : ""} style={{"marginLeft":'20px'}} onChange={this._selectsem}>
                         <MenuItem value={"1"}>1학기</MenuItem>
+                        <MenuItem value={"S"}>하계</MenuItem>
                         <MenuItem value={"2"}>2학기</MenuItem>
+                        <MenuItem value={"W"}>동계</MenuItem>
                     </Select>
-                    <Select defaultValue={"문과대학"} style={{"marginLeft":'20px'}} onChange={this._selectChange.bind(this)}>
+                    <Select value={this.state.main ? this.state.main : ""} style={{"marginLeft":'20px'}} onChange={(event)=>{
+                            this.setState({
+                                main: event.target.value,
+                                sub: category[event.target.value][0]});
+                    }}>
                         <MenuItem value={"문과대학"}>문과대학</MenuItem>
                         <MenuItem value={"자연과학대학"}>자연과학대학</MenuItem>
                         <MenuItem value={"공과대학"}>공과대학</MenuItem>
@@ -389,69 +203,197 @@ class All extends Component {
                         <MenuItem value={"교양학부대학"}>교양학부대학</MenuItem>
                         <MenuItem value={"소프트웨어대학"}>소프트웨어대학</MenuItem>
                     </Select>
-                    {sub}
+                    <Select value={this.state.sub ? this.state.sub : ""} style={{"marginLeft":'20px'}} onChange={this._subSelect}>
+                        {category[this.state.main].map((item, index) => 
+                                <MenuItem key={index} value={item}>{item}</MenuItem>)}
+                    </Select>
+                    <Button variant="contained" color="primary" size='small' style={{'marginLeft':'20px'}} onClick={function(){
+                    fetch("http://127.0.0.1:8000/course/"+this.state.s_year+"/"+this.state.s_sem+"/"+encodeURI(this.state.main)+"/"+encodeURI(this.state.sub))
+                    .then(res=>res.json())
+                    .then(function(json){
+                        this.setState({
+                            subject: json
+                        })
+                    }.bind(this))}.bind(this)}>검색</Button>
                 </div>
-                <Paper>
+                <Paper style={{"height":"450px", "overflow":"auto"}}>
                 <Table size="small" style={{"marginTop":"15px"}}>
                     <TableHead>
                         <TableRow>
-                            <TableCell></TableCell>
-                            <TableCell></TableCell>
-                            <TableCell>년도</TableCell>
-                            <TableCell>학기</TableCell>
-                            <TableCell>과목코드</TableCell>
-                            <TableCell>과목명</TableCell>
-                            <TableCell>학점</TableCell>
-                            <TableCell>비고</TableCell>
+                            <TableCell style={{"width":"1px"}}></TableCell>
+                            <TableCell style={{"textAlign":"center"}}>년도</TableCell>
+                            <TableCell style={{"textAlign":"center"}}>학기</TableCell>
+                            <TableCell style={{"textAlign":"center"}}>대학</TableCell>
+                            <TableCell style={{"textAlign":"center"}}>학부</TableCell>
+                            <TableCell style={{"textAlign":"center"}}>과목분류</TableCell>
+                            <TableCell style={{"textAlign":"center"}}>과목코드</TableCell>
+                            <TableCell style={{"textAlign":"center"}}>과목이름</TableCell>
+                            <TableCell style={{"textAlign":"center"}}>학점</TableCell>
+                            <TableCell style={{"textAlign":"center"}}>비고</TableCell>
                         </TableRow>
-                    </TableHead>
-                    <TableBody>
+                    </TableHead>    
+                    <TableBody style={{"alignSelf":"center"}}>
                         {this.state.subject.map((item, index) => 
-                            <TableRow style={{'alignItems':'center'}}>
-                                <TableCell><Checkbox onChange={function(e){
-                                    const options = this.state.options;
-                                    let indx;
+                            {return <TableRow key={item.pk} style={{'alignItems':'center'}}>
+                                <TableCell style={{"textAlign":"center"}}><Checkbox onChange={function(e){
+                                    let selected = Array.from(this.state.options)
+                                    let cancel
 
                                     if(e.target.checked){
-                                        options.push(index)
+                                        selected.push(index)
                                     }
+
                                     else{
-                                        indx = options.indexOf(index)
-                                        options.splice(indx,1)
+                                        cancel = selected.indexOf(index)
+                                        selected.splice(cancel,1)
                                     }
-                                    this.setState({ options: options })
+                                    this.setState({
+                                        options: selected
+                                    })
                                 }.bind(this)}></Checkbox></TableCell>
-                                <TableCell>{index+1}</TableCell>
-                                <TableCell>{item.year}</TableCell>
-                                <TableCell>{item.sem}</TableCell>
-                                <TableCell>{item.code}</TableCell>
-                                <TableCell>{item.title}</TableCell>
-                                <TableCell>{item.credit}</TableCell>
-                                <TableCell>{item.etc}</TableCell>
-                            </TableRow>
-                        )}
-                    </TableBody>
+                                <TableCell style={{"textAlign":"center"}}>{item.fields.course_year}</TableCell>
+                                <TableCell style={{"textAlign":"center"}}>{item.fields.course_semester}</TableCell>
+                                <TableCell style={{"textAlign":"center"}}>{item.fields.course_colgnm}</TableCell>
+                                <TableCell style={{"textAlign":"center"}}>{item.fields.course_sustnm}</TableCell>
+                                <TableCell style={{"textAlign":"center"}}>{item.fields.course_pobjnm}</TableCell>
+                                <TableCell style={{"textAlign":"center"}}>{item.fields.course_sbjtclss}</TableCell>
+                                <TableCell style={{"textAlign":"center"}}>{item.fields.course_clssnm}</TableCell>
+                                <TableCell style={{"textAlign":"center"}}>{item.fields.course_pnt}</TableCell>
+                                <TableCell style={{"textAlign":"center"}}>{item.fields.course_remk}</TableCell>                                
+                            </TableRow>}
+                            )}
+                        </TableBody>
                 </Table>
+                {content}
                 </Paper>
                 <div style={{'textAlign':'center','margin':'auto', 'marginTop':'10px'}}>
                     <Button variant="contained" color="primary" size='large' style={{'marginRight':'20px'}} onClick={this._btnClick.bind(this)}>추가</Button>
-                    <Button variant="contained" color="primary" size='large' onClick={this._delete.bind(this)}>삭제</Button>
+                    <Button variant="contained" color="primary" size='large' onClick=
+                    {
+
+                        e=>{
+
+                            let selected = Array.from(this.state.options);
+                            let newList = Array.from(this.state.subject);
+                            let pass = [];
+                            
+                            if(selected.length !== 0){
+                                if(selected.length > 1){
+                                    let i
+                                    selected.sort(function(a, b) { // 내림차순
+                                        return b - a;
+                                        // 11, 10, 4, 3, 2, 1
+                                    });
+                                    for(i=0; i<selected.length; i++){
+                                        pass.push(newList[selected[i]].pk)
+                                        newList.splice(selected[i],1)
+                                    }
+                                }
+                    
+                                else{
+                                    pass.push(newList[selected[0]].pk)
+                                    newList.splice(selected[0],1)
+                                }     
+                            }
+
+                            fetch("http://localhost:8000/delete", {
+                                method: 'post',
+                                body: JSON.stringify({
+                                    data: pass
+                                })
+                            })
+                    
+                            this.setState({
+                                options: [],
+                                subject: newList
+                            })
+
+
+                        }                 
+                    }
+                    >삭제</Button>
                 </div>
-                <Dialog open={this.state.open} onClose>
-                    <DialogTitle>과목추가</DialogTitle>
-                    <DialogContent>
-                        <TextField label="년도" type="text" name="year" onChange={this._inputData.bind(this)}></TextField><br/>
-                        <TextField label="학기" type="text" name="sem" onChange={this._inputData.bind(this)}></TextField><br/>
-                        <TextField label="과목코드" type="text" name="code" onChange={this._inputData.bind(this)}></TextField><br/>
+                <Dialog open={this.state.open} onClose={this._closeBtn.bind(this)}>
+                    <DialogTitle style={{"textAlign":"center"}}>과목추가</DialogTitle>
+                    <DialogContent style={{"textAlign":"center"}}>
+                        <Select name="year" value={this.state.year ? this.state.year : ""}
+                        onChange={this._addFormSelect}>
+                            <MenuItem value={"2020"}>2020년</MenuItem>
+                        </Select>
+                        <Select name="sem" value={this.state.sem ? this.state.sem : ""}
+                        onChange={this._addFormSelect}>
+                            <MenuItem value={"1"}>1학기</MenuItem>
+                            <MenuItem value={"S"}>하계</MenuItem>
+                            <MenuItem value={"2"}>2학기</MenuItem>
+                            <MenuItem value={"W"}>동계</MenuItem>
+                        </Select>
+                        <Select name="shyr" value={this.state.shyr ? this.state.shyr : ""}
+                        onChange={this._addFormSelect}>
+                            <MenuItem value={"1"}>1학년</MenuItem>
+                            <MenuItem value={"2"}>2학년</MenuItem>
+                            <MenuItem value={"3"}>3학년</MenuItem>
+                            <MenuItem value={"4"}>4학년</MenuItem>
+                        </Select>
+                        <Select name="dist" value={this.state.dist ? this.state.dist : ""}
+                        onChange={this._addFormSelect}>
+                            <MenuItem value={"교양"}>교양</MenuItem>
+                            <MenuItem value={"전공"}>전공</MenuItem>
+                            <MenuItem value={"전공필수"}>전공필수</MenuItem>
+                        </Select><br/>
+                        <TextField label="단과대학" type="text" name="colgnm" onChange={this._inputData.bind(this)}></TextField><br/>
+                        <TextField label="학부" type="text" name="sust" onChange={this._inputData.bind(this)}></TextField><br/>
                         <TextField label="과목명" type="text" name="title" onChange={this._inputData.bind(this)}></TextField><br/>
-                        <TextField label="학점" type="text" name="credit" onChange={this._inputData.bind(this)}></TextField><br/>
+                        <TextField label="교수" type="text" name="prof" onChange={this._inputData.bind(this)}></TextField><br/>
+                        <TextField label="시간표" type="text" name="time" onChange={this._inputData.bind(this)}></TextField><br/>
+                        <TextField style={{"width":'30%'}} label="과목코드-분반" type="text" name="code" onChange={this._inputData.bind(this)}></TextField>
+                        <TextField style={{"width":'25%', "marginLeft":"5px"}} label="학점-시간" type="text" name="credit" onChange={this._inputData.bind(this)}></TextField><br/>                        
                         <TextField label="비고" type="text" name="etc" onChange={this._inputData.bind(this)}></TextField><br/>
                     </DialogContent>
                     <DialogActions>
-                    <Button variant="contained" color="primary" onClick={this._addNewItem.bind(this)}>확인</Button>
+                    <Button variant="contained" color="primary" onClick={
+                        (event) => {
+                            if(!(this.state.colgnm === "") && !(this.state.sust === "") && !(this.state.title === "")){
+                                console.log(this._addFormCheck)
+                                let pass = [];
+                                pass.push(this.state.year); 
+                                pass.push(this.state.sem);
+                                pass.push(this.state.shyr);
+                                pass.push(this.state.dist);
+                                pass.push(this.state.colgnm);
+                                pass.push(this.state.sust);
+                                pass.push(this.state.title);
+                                pass.push(this.state.prof);
+                                pass.push(this.state.time);
+                                pass.push(this.state.code);
+                                pass.push(this.state.credit);
+                                pass.push(this.state.etc);
+
+                                let i;
+                                for(i=0; i<pass.length; i++){
+                                    if(pass[i] === "") {
+                                        pass[i] = "None";
+                                    }
+                                }
+
+                                fetch("http://localhost:8000/add",
+                                {
+                                    method: 'post',
+                                    body: JSON.stringify({
+                                        data: pass
+                                    })
+                                })
+                                .then(this._clearState)
+                                .then(this.setState({
+                                    open: false
+                                }))
+                            }
+                            else {
+                                alert('항목을 채워주세요')
+                            }
+                    }
+                    }>확인</Button>
                     <Button variant="outlined" color="primary" onClick={this._closeBtn.bind(this)}>취소</Button>
                     </DialogActions>
-
                 </Dialog>
             </div>
         );

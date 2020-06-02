@@ -6,6 +6,9 @@ import datetime
 import socket
 import crawlers
 from .models import Compulsory, Substitute, Subject
+from django.core import serializers
+from django.views.decorators.csrf import csrf_exempt
+import json
 
 
 requirements = {}   #각 년도별 졸업요건
@@ -145,6 +148,47 @@ funclist = []   #질문 대답 함수 리스트
 
 # Save {ID : UserData}
 userGraduInfo = dict()
+
+def course(request, year, sem, main, sub):
+    print(year, sem, main, sub)
+    result_list = Subject.objects.filter(course_year = year, course_semester = sem, course_colgnm = main, course_sustnm = sub)
+    print(result_list)
+    serial = serializers.serialize('json', result_list)
+
+    return HttpResponse(serial, content_type="text/json-comment-filtered")
+
+@csrf_exempt
+def delete(request):
+
+    if request.method == 'POST':
+        test = json.loads(request.body)
+        for item in test['data']:
+            Subject.objects.get(pk=item).delete()            
+
+    return HttpResponse("success")
+
+@csrf_exempt
+def add(request):
+
+    if request.method == 'POST':
+        bring = json.loads(request.body)
+        item = bring['data']
+
+        Subject(course_year = item[0],
+                course_semester = item[1],
+                course_colgnm = item[4],
+                course_sustnm = item[5],
+                course_pobjnm = item[3],
+                course_shyr = item[2],
+                course_profnm = item[7],
+                course_ltbdrm = item[8],
+                course_sbjtclss = item[9],
+                course_clssnm = item[6],
+                course_pnt = item[10],
+                course_remk = item[11]).save()
+            
+
+    return HttpResponse('success')
 
 
 class UserData:
