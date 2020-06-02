@@ -36,3 +36,4 @@ class Subject(models.Model):
 
     def __str__(self):
         return self.course_year + ":" + self.course_semester + ":" + self.course_clssnm
+
