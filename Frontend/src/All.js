@@ -20,7 +20,7 @@ class All extends Component {
             subject: [],
             open: false, 
             year:"2020", sem:"1", shyr:"1", dist:"교양", colgnm:"", sust:"", title:"", prof:"", time:"", code:"", credit:"", etc:"",
-            s_year: '2020', s_sem: '1',
+            s_title : "", s_year: '2020', s_sem: '1',
             main: "소프트웨어대학",
             sub : "소프트웨어학부"
         };
@@ -37,33 +37,6 @@ class All extends Component {
     _subSelect = (event) => {
         this.setState({
             sub: event.target.value
-        })
-    }
-
-    _delete() {
-        let selected = Array.from(this.state.options);
-        let newList = Array.from(this.state.subject);
-        
-        if(selected.length !== 0){
-            if(selected.length > 1){
-                let i
-                selected.sort(function(a, b) { // 내림차순
-                    return b - a;
-                    // 11, 10, 4, 3, 2, 1
-                });
-                for(i=0; i<selected.length; i++){
-                    newList.splice(selected[i],1)
-                }
-            }
-
-            else{
-                newList.splice(selected[0],1)
-            }     
-        }
-
-        this.setState({
-            options: [],
-            subject: newList
         })
     }
 
@@ -151,7 +124,7 @@ class All extends Component {
         let content = null;
 
         if(this.state.subject.length === 0) {
-            content = <div style = {{"textAlign" : "center", "margin" : "auto"}}>검색결과가 없습니다.</div>
+            content = <div style = {{"textAlign" : "center", "marginTop" : "160px"}}>검색결과가 없습니다.</div>
         }
 
         return(
@@ -207,20 +180,36 @@ class All extends Component {
                         {category[this.state.main].map((item, index) => 
                                 <MenuItem key={index} value={item}>{item}</MenuItem>)}
                     </Select>
-                    <Button variant="contained" color="primary" size='small' style={{'marginLeft':'20px'}} onClick={function(){
-                    fetch("http://127.0.0.1:8000/course/"+this.state.s_year+"/"+this.state.s_sem+"/"+encodeURI(this.state.main)+"/"+encodeURI(this.state.sub))
-                    .then(res=>res.json())
-                    .then(function(json){
-                        this.setState({
-                            subject: json
-                        })
-                    }.bind(this))}.bind(this)}>검색</Button>
+                    <TextField value={this.state.s_title} variant="outlined" style={{"marginLeft":'20px'}} size="small" label="과목명" type="text" name="s_title" onChange={this._inputData.bind(this)}></TextField>
+                    <Button variant="contained" color="primary" size='large' style={{'marginLeft':'20px'}} onClick={
+                        function(){
+                            let pass = [];
+
+                            pass.push(this.state.s_year);
+                            pass.push(this.state.s_sem);
+                            pass.push(this.state.main);
+                            pass.push(this.state.sub);
+                            pass.push(this.state.s_title);
+                            
+                            fetch("http://localhost:8000/course", {
+                                method : 'post',
+                                body : JSON.stringify({
+                                    data : pass,
+                                    type : "All"
+                                })
+                            }).then(res=>res.json())
+                            .then(function(json){
+                                this.setState({
+                                    s_title: "",
+                                    subject: json
+                                })
+                            }.bind(this))}.bind(this)}>검색</Button>
                 </div>
                 <Paper style={{"height":"450px", "overflow":"auto"}}>
                 <Table size="small" style={{"marginTop":"15px"}}>
                     <TableHead>
                         <TableRow>
-                            <TableCell style={{"width":"1px"}}></TableCell>
+                            <TableCell style={{"width":"1px", "alignItems":"center"}}></TableCell>
                             <TableCell style={{"textAlign":"center"}}>년도</TableCell>
                             <TableCell style={{"textAlign":"center"}}>학기</TableCell>
                             <TableCell style={{"textAlign":"center"}}>대학</TableCell>
@@ -294,21 +283,20 @@ class All extends Component {
                                     pass.push(newList[selected[0]].pk)
                                     newList.splice(selected[0],1)
                                 }     
-                            }
 
-                            fetch("http://localhost:8000/delete", {
+                                fetch("http://localhost:8000/delete", {
                                 method: 'post',
                                 body: JSON.stringify({
-                                    data: pass
+                                    data: pass,
+                                    type: 'All'
+                                    })
                                 })
-                            })
                     
-                            this.setState({
-                                options: [],
-                                subject: newList
-                            })
-
-
+                                this.setState({
+                                    options: [],
+                                    subject: newList
+                                })
+                            }
                         }                 
                     }
                     >삭제</Button>
@@ -353,7 +341,6 @@ class All extends Component {
                     <Button variant="contained" color="primary" onClick={
                         (event) => {
                             if(!(this.state.colgnm === "") && !(this.state.sust === "") && !(this.state.title === "")){
-                                console.log(this._addFormCheck)
                                 let pass = [];
                                 pass.push(this.state.year); 
                                 pass.push(this.state.sem);
@@ -379,7 +366,8 @@ class All extends Component {
                                 {
                                     method: 'post',
                                     body: JSON.stringify({
-                                        data: pass
+                                        data: pass,
+                                        type: 'All'
                                     })
                                 })
                                 .then(this._clearState)
