@@ -46,32 +46,21 @@ class All extends Component {
         })
     }
 
-    _closeBtn() {
+    _closeBtn = () => {
         this.setState({
-            year: '',
-            sem: '',
-            code: '',
-            title: '',
-            credit: '',
-            etc: '',
+            year:"2020", 
+            sem:"1", 
+            shyr:"1", 
+            dist:"교양", 
+            colgnm:"", 
+            sust:"", 
+            title:"", 
+            prof:"", 
+            time:"", 
+            code:"", 
+            credit:"", 
+            etc:"",
             open: false
-        })
-    }
-
-    _clearState = () => {
-        this.setState({
-            year: "2020",
-            sem: "1",
-            shyr : "1",
-            dist : "교양",
-            colgnm : "",
-            sust : "",
-            title : "",
-            prof : "",
-            time : "",
-            code : "",
-            credit : "",
-            etc : ""
         })
     }
 
@@ -301,7 +290,7 @@ class All extends Component {
                     }
                     >삭제</Button>
                 </div>
-                <Dialog open={this.state.open} onClose={this._closeBtn.bind(this)}>
+                <Dialog open={this.state.open} onClose={this._closeBtn}>
                     <DialogTitle style={{"textAlign":"center"}}>과목추가</DialogTitle>
                     <DialogContent style={{"textAlign":"center"}}>
                         <Select name="year" value={this.state.year ? this.state.year : ""}
@@ -370,17 +359,14 @@ class All extends Component {
                                         type: 'All'
                                     })
                                 })
-                                .then(this._clearState)
-                                .then(this.setState({
-                                    open: false
-                                }))
+                                .then(this._closeBtn)
                             }
                             else {
                                 alert('항목을 채워주세요')
                             }
                     }
                     }>확인</Button>
-                    <Button variant="outlined" color="primary" onClick={this._closeBtn.bind(this)}>취소</Button>
+                    <Button variant="outlined" color="primary" onClick={this._closeBtn}>취소</Button>
                     </DialogActions>
                 </Dialog>
             </div>

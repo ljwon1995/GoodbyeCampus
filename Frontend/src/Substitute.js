@@ -12,8 +12,8 @@ import {DialogTitle, TextField, DialogActions} from '@material-ui/core';
 import DialogContent from '@material-ui/core/DialogContent';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import Radio from '@material-ui/core/Radio';
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import FormControl from '@material-ui/core/FormControl'
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
 
 class Substitute extends Component {
     
@@ -34,17 +34,7 @@ class Substitute extends Component {
              "과목명" : "과목명",
              "과목코드" : "과목코드"
          }
-
         };
-    }
-
-    _clearState = () => {
-        this.setState({
-            oldCode: "",
-            oldNm: "",
-            newCode: "",
-            newNm: ""
-        })
     }
 
     _inputData(e) {
@@ -61,7 +51,7 @@ class Substitute extends Component {
         })
     }
 
-    _closeBtn() {
+    _closeBtn = () => {
         this.setState({
             oldCode: '',
             oldNm: '',
@@ -69,37 +59,6 @@ class Substitute extends Component {
             newNm: '',
             open: false
         })
-    }
-
-    _delete() {
-        const options = this.state.options
-        const newList = this.state.subject
-        if(this.state.options.length > 1) {
-
-            options.sort(function(a, b) { // 내림차순
-                return b - a
-            });
-
-            let i
-            for(i=0; i<options.length; i++){
-                newList.splice(options[i],1)
-            }
-
-            this.setState({
-                subject: newList,
-                options: []
-            })
-        }
-
-        else if(this.state.options.length === 1) {
-            newList.splice(options[0],1)
-
-            this.setState({
-                subject: newList,
-                options: []
-            })
-        }
-
     }
 
     _modeChange = (event) => {
@@ -245,7 +204,7 @@ class Substitute extends Component {
                         }
                     }>삭제</Button>
                 </div>
-                <Dialog open={this.state.open} onClose={this._closeBtn.bind(this)}>
+                <Dialog open={this.state.open} onClose={this._closeBtn}>
                     <DialogTitle>대체과목추가</DialogTitle>
                     <DialogContent>
                         <TextField label="과목코드" type="text" name="oldCode" onChange={this._inputData.bind(this)}></TextField><br/>
@@ -269,10 +228,7 @@ class Substitute extends Component {
                                     type: 'Subs'
                                 })
                             })
-                            .then(this._clearState)
-                            .then(this.setState({
-                                open: false
-                            }))
+                            .then(this._closeBtn)
                         }
 
                         else {
@@ -280,7 +236,7 @@ class Substitute extends Component {
                         }
                         
                     }}>확인</Button>
-                    <Button variant="outlined" color="primary" onClick={this._closeBtn.bind(this)}>취소</Button>
+                    <Button variant="outlined" color="primary" onClick={this._closeBtn}>취소</Button>
                     </DialogActions>
 
                 </Dialog>
