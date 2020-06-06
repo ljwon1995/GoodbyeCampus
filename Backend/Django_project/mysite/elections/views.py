@@ -9,7 +9,7 @@ from .models import Compulsory, Substitute, Subject
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 import json
-import django.db.models import Q
+from django.db.models import Q
 
 
 requirements = {}   #각 년도별 졸업요건
