@@ -942,6 +942,10 @@ def graduationAvailability(argList):
 
         if userGraduInfo[ID].machPracCreditsSatisfied == False:
             st += "MACH 실습 학점 조건을 만족하시지 못합니다.\n MACH 실습 학점을 " + str(userGraduInfo[ID].machPracCreditsMore) + "만큼 더 취득하셔야 합니다.\n"
+
+    st += "이에 더해,\n"
+    st += requirements[userGraduInfo[ID].year]["others"] + "\n"
+    st += "상기의 조건들을 만족하시면 졸업이 가능하십니다.\n"
     return st
 
 #TODO Answer how more credits achieved
