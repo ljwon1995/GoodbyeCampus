@@ -9,6 +9,7 @@ from .models import Compulsory, Substitute, Subject
 from django.core import serializers
 from django.views.decorators.csrf import csrf_exempt
 import json
+from django.db.models import Q
 
 
 requirements = {}   #각 년도별 졸업요건
@@ -192,21 +193,52 @@ funclist = []   #질문 대답 함수 리스트
 userGraduInfo = dict()
 
 
-def course(request, year, sem, main, sub):
-    print(year, sem, main, sub)
-    result_list = Subject.objects.filter(course_year = year, course_semester = sem, course_colgnm = main, course_sustnm = sub)
-    print(result_list)
-    serial = serializers.serialize('json', result_list)
+@csrf_exempt
+def course(request):
+
+    if request.method == 'POST':
+
+        ret_course = None
+        serial = None
+        test = json.loads(request.body)
+
+        if test['type'] == 'All':
+            temp = test['data']
+            if temp[4] == "":
+                ret_course = Subject.objects.filter(course_year=temp[0], course_semester=temp[1], course_colgnm=temp[2], course_sustnm=temp[3])
+            else:
+                ret_course = Subject.objects.filter(course_year=temp[0], course_semester=temp[1], course_clssnm__contains=temp[4])
+            serial = serializers.serialize('json', ret_course)
+
+        else :
+            ret_course = None
+            data = test['data']
+            mode = test['mode']
+            if mode == "과목코드" :
+                ret_course = Substitute.objects.filter(Q(course_id=data) | Q(sub_id=data)).distinct()
+            else :
+                ret_course = Substitute.objects.filter(Q(course_title__contains=data) | Q(sub_title__contains=data)).distinct()
+
+            serial = serializers.serialize('json', ret_course)
 
     return HttpResponse(serial, content_type="text/json-comment-filtered")
+
+            
+
 
 @csrf_exempt
 def delete(request):
 
     if request.method == 'POST':
         test = json.loads(request.body)
-        for item in test['data']:
-            Subject.objects.get(pk=item).delete()            
+
+        if test['type'] == "All":
+            for item in test['data']:
+                Subject.objects.get(pk=item).delete()    
+
+        else:
+            for item in test['data']:
+                Substitute.objects.get(pk=item).delete()        
 
     return HttpResponse("success")
 
@@ -214,21 +246,31 @@ def delete(request):
 def add(request):
 
     if request.method == 'POST':
-        bring = json.loads(request.body)
-        item = bring['data']
 
-        Subject(course_year = item[0],
-                course_semester = item[1],
-                course_colgnm = item[4],
-                course_sustnm = item[5],
-                course_pobjnm = item[3],
-                course_shyr = item[2],
-                course_profnm = item[7],
-                course_ltbdrm = item[8],
-                course_sbjtclss = item[9],
-                course_clssnm = item[6],
-                course_pnt = item[10],
-                course_remk = item[11]).save()
+        bring = json.loads(request.body)
+        
+        if bring['type'] == 'All':
+            item = bring['data']
+            Subject(course_year = item[0],
+                    course_semester = item[1],
+                    course_colgnm = item[4],
+                    course_sustnm = item[5],
+                    course_pobjnm = item[3],
+                    course_shyr = item[2],
+                    course_profnm = item[7],
+                    course_ltbdrm = item[8],
+                    course_sbjtclss = item[9],
+                    course_clssnm = item[6],
+                    course_pnt = item[10],
+                    course_remk = item[11]).save()
+
+        else:
+            item = bring['data']
+            Substitute(course_id=item[0],
+                    course_title=item[1],
+                    sub_id=item[2],
+                    sub_title=item[3]
+            ).save()
             
 
     return HttpResponse('success')
