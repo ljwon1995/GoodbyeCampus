@@ -73,17 +73,54 @@ class Chat extends Component {
         open : true
       })
     } 
+    
+    if(newMessage === ':test') {
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/start');
+    		const posts = await res.json()
+	   	 
+		addResponseMessage(posts.content);
+	}
+	catch (e){
+    		console.log(e)
+	}
 
-    try {
-      const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/notfirst$' + this.user + "$" + newMessage);
-      const posts = await res.json();
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/anal');
+    		const posts = await res.json()
+	    
+		addResponseMessage(posts.content);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/makingStudent');
+    		const posts = await res.json()
+	    	
+		var str = posts.content
+		str = str.replace(/\n/g,'\n\n')
+		addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+	
+	
+    } else {
+
+    	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/notfirst$' + this.user + "$" + newMessage);
+    		const posts = await res.json();
             
-      addResponseMessage(posts.content);
-          
-    } 
-    catch (e) {
-      console.log(e);
-    }    
+    		addResponseMessage(posts.content);
+    	} 
+    	catch (e) {
+      		console.log(e);
+    	}    
+
+    }
   }
 
   render() {

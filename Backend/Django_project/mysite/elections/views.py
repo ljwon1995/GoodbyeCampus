@@ -191,7 +191,7 @@ funclist = []   #질문 대답 함수 리스트
 
 # Save {ID : UserData}
 userGraduInfo = dict()
-
+test_takeList = []
 
 @csrf_exempt
 def course(request):
@@ -1252,5 +1252,32 @@ def api(request, message):
         return JsonResponse({
             'message': 1,
             'content': "ERROR in api " + str(e)
+        })
+
+st = ""
+def startTest(request, message):
+    global st
+
+    if message == "start":
+        response = "테스트를 시작합니다." + message
+    
+    if message == "anal":
+        response = "인격을 생성합니다."
+        ID = "yey6689"
+        PW = "para3150!"
+        global test_takeList
+        
+        list = []
+        list.append(ID)
+        list.append(PW)
+        st = graduationAvailability(list) 
+    
+    if message == "makingStudent":
+        response = "생성 완료\n"
+        response += st
+
+    return JsonResponse({
+            'message': 1,
+            'content': response
         })
 
