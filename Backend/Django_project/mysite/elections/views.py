@@ -818,7 +818,7 @@ def checkLte2014(year, userData, takeList):
     if userData.numCoreGE >= requirements[year]["numCoreGE"]:
         userData.numCoreGESatisfied = True
     else:
-        userData.numCoreGEMore = equirements[year]["numCoreGE"] - userData.numCoreGE
+        userData.numCoreGEMore = requirements[year]["numCoreGE"] - userData.numCoreGE
         #st += "핵심 교양 불만족\n 핵심 교양 과목을 " + str(equirements[year]["numCoreGE"] - userData.numCoreGE) + "개 이상 더 들으셔야 합니다."
 
     # 총 교양 과목 학점이 45이상 이면 45헉점만 인정
@@ -1295,7 +1295,7 @@ def startTest(request, message):
         takeList = []
 
         # 만족 판단에 쓸 userData
-        checkUser = userData()
+        checkUser = UserData()
 
         # 확률 표본 생성
         prob = []
@@ -1324,7 +1324,7 @@ def startTest(request, message):
                 dict["sbjt_no"] = requirements[year]["compulsorySubjects"][i].course_id
                 dict["kor_nm"] = requirements[year]["compulsorySubjects"][i].course_title
                 dict["re_year"] = year
-                temp = Subject.objects.filter(course_id=requirements[year]["compulsorySubjects"][i].course_id)
+                temp = Subject.objects.filter(course_sbjtclss__startswith=requirements[year]["compulsorySubjects"][i].course_id)
                 dict["acq_pnt"] = temp[0].course_pnt.split("-")[0]
                 grd_pool = "ABCD"
                 dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
@@ -1368,6 +1368,7 @@ def startTest(request, message):
                 dict["kor_nm"] = temp.course_clssnm
                 dict["re_year"] = year
                 dict["acq_pnt"] = temp.course_pnt.split("-")[0]
+                grd_pool = "ABCD"
                 dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
                 grade = 0
                 if dict["g_grd"][0] == "A":
@@ -1412,6 +1413,7 @@ def startTest(request, message):
                 dict["kor_nm"] = temp.course_clssnm
                 dict["re_year"] = year
                 dict["acq_pnt"] = temp.course_pnt.split("-")[0]
+                grd_pool = "ABCD"
                 dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
                 grade = 0
                 if dict["g_grd"][0] == "A":
@@ -1455,6 +1457,7 @@ def startTest(request, message):
                 dict["kor_nm"] = temp.course_clssnm
                 dict["re_year"] = year
                 dict["acq_pnt"] = temp.course_pnt.split("-")[0]
+                grd_pool = "ABCD"
                 dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
                 grade = 0
                 if dict["g_grd"][0] == "A":
@@ -1495,12 +1498,12 @@ def checkCourse(dict, checkUser):
     sInfo = Subject.objects.filter(course_sbjtclss__startswith=dict["sbjt_no"])
 
     checkUser.totalCredits += int(sInfo[0].course_pnt.split("-")[0])
-    for i in range(0, len(subject)):
+    for i in range(0, len(sInfo)):
         if "전공" in sInfo[i].course_pobjnm and "기초" not in sInfo[i].course_pobjnm:
             checkUser.majorCredits += int(sInfo[i].course_pnt.split("-")[0])
             break
 
-    for i in range(0, len(subject)):
+    for i in range(0, len(sInfo)):
         if "전공기초" in sInfo[i].course_pobjnm:
             checkUser.majorBasicCredits += int(sInfo[i].course_pnt.split("-")[0])
             break
