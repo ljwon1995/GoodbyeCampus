@@ -1160,271 +1160,263 @@ def initFunclist():
 #For debugging
 def index(request):
 
-    st = ""
-    test_idx = 1
+    # st = ""
+    # test_idx = 1
+    #
+    # message = "start"
+    # response = ""
+    # if message == "start":
+    #     response = "테스트를 시작합니다." + message
+    #
+    # message = "anal"
+    # response = ""
+    #
+    # if message == "anal":
+    #     response = "인격을 생성합니다."
+    #
+    #     userData = UserData()
+    #     ID = "test" + str(test_idx)
+    #     string_pool = "0123456789"
+    #     stNum = str(random.randint(2010, 2020)) + random.choice(string_pool) + random.choice(
+    #         string_pool) + random.choice(string_pool) + random.choice(string_pool)
+    #     year = stNum[:4]
+    #     userData.st_id += stNum
+    #     userData.year += year
+    #
+    #     takeList = []
+    #
+    #     # 만족 판단에 쓸 userData
+    #     checkUser = UserData()
+    #
+    #     # 확률 표본 생성
+    #     prob = []
+    #     for i in range(0, 100):
+    #         if (i < 80):  # 90%로 0
+    #             prob.append(0)
+    #         else:  # 10%로 1
+    #             prob.append(1)
+    #
+    #     random.shuffle(prob)
+    #
+    #     plus_prob = []
+    #     for i in range(0, 10):
+    #         if (i < 5):  # 50%로 0
+    #             plus_prob.append("+")
+    #         else:  # 50%로 1
+    #             plus_prob.append("")
+    #
+    #     random.shuffle(plus_prob)
+    #
+    #
+    #     # 확률에 따라 졸업요건 만족 불만족 판단
+    #
+    #     # 필수 리스트
+    #     if (random.choice(prob) == 0):
+    #         for i in range(0, len(requirements[year]["compulsorySubjects"])):
+    #             temp = Subject.objects.filter(
+    #                 course_sbjtclss__startswith=requirements[year]["compulsorySubjects"][i].course_id)
+    #             if temp[0].course_pnt.split("-")[0] != ".5":
+    #                 dict = {}
+    #                 dict["sbjt_no"] = requirements[year]["compulsorySubjects"][i].course_id
+    #                 dict["kor_nm"] = requirements[year]["compulsorySubjects"][i].course_title
+    #                 dict["re_year"] = year
+    #                 dict["acq_pnt"] = temp[0].course_pnt.split("-")[0]
+    #                 grd_pool = "ABCD"
+    #                 dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
+    #                 grade = 0
+    #                 if dict["g_grd"][0] == "A":
+    #                     grade = 4.0
+    #                 elif dict["g_grd"][0] == "B":
+    #                     grade = 3.0
+    #                 elif dict["g_grd"][0] == "C":
+    #                     grade = 2.0
+    #                 elif dict["g_grd"][0] == "D":
+    #                     grade = 1.0
+    #
+    #                 if len(dict["g_grd"]) != 1:
+    #                     grade += 0.5
+    #
+    #                 dict["grd_mak"] = grade
+    #
+    #                 takeList.append(dict)
+    #                 checkCourse(dict, checkUser, year)
+    #
+    #
+    #     # 전공 학점
+    #     sInfo = Subject.objects.filter(Q(course_pobjnm="전공") | Q(course_pobjnm="전공필수"),
+    #                                    Q(course_sustnm__startswith="소프트") | Q(course_sustnm__startswith="컴퓨터"),
+    #                                    course_year=year)
+    #     if (random.choice(prob) == 0):
+    #         rand_credits = random.randint(requirements[year]["majorCredits"], requirements[year]["majorCredits"] + 10)
+    #     else:
+    #         rand_credits = random.randint(requirements[year]["majorCredits"] - 5,
+    #                                       requirements[year]["majorCredits"] - 3)
+    #
+    #     while (checkUser.majorCredits < rand_credits):
+    #         temp = random.choice(sInfo)
+    #         dict = {}
+    #
+    #         flag = True
+    #         for i in range(0, len(takeList)):
+    #             if takeList[i]["sbjt_no"] == temp.course_sbjtclss.split("-")[0]:
+    #                 flag = False
+    #                 break
+    #
+    #         if flag:
+    #             dict["sbjt_no"] = temp.course_sbjtclss.split("-")[0]
+    #             dict["kor_nm"] = temp.course_clssnm
+    #             dict["re_year"] = year
+    #             dict["acq_pnt"] = temp.course_pnt.split("-")[0]
+    #             grd_pool = "ABCD"
+    #             dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
+    #             grade = 0
+    #             if dict["g_grd"][0] == "A":
+    #                 grade = 4.0
+    #             elif dict["g_grd"][0] == "B":
+    #                 grade = 3.0
+    #             elif dict["g_grd"][0] == "C":
+    #                 grade = 2.0
+    #             elif dict["g_grd"][0] == "D":
+    #                 grade = 1.0
+    #
+    #             if len(dict["g_grd"]) != 1:
+    #                 grade += 0.5
+    #
+    #             dict["grd_mak"] = grade
+    #
+    #             takeList.append(dict)
+    #             checkCourse(dict, checkUser, year)
+    #
+    #
+    #
+    #
+    #     # 전공기초 학점
+    #     sInfo = Subject.objects.filter(Q(course_sustnm__startswith="소프트") | Q(course_sustnm__startswith="컴퓨터"),
+    #                                    course_pobjnm="전공기초",course_year=year)
+    #     if (random.choice(prob) == 0):
+    #         rand_credits = random.randint(requirements[year]["majorBasicCredits"],
+    #                                       requirements[year]["majorBasicCredits"])
+    #     else:
+    #         rand_credits = random.randint(requirements[year]["majorBasicCredits"] - 6,
+    #                                       requirements[year]["majorBasicCredits"] - 2)
+    #
+    #     while checkUser.majorBasicCredits <= rand_credits:
+    #         temp = random.choice(sInfo)
+    #         dict = {}
+    #
+    #         flag = True
+    #         for i in range(0, len(takeList)):
+    #             if takeList[i]["sbjt_no"] == temp.course_sbjtclss.split("-")[0]:
+    #                 flag = False
+    #                 break
+    #
+    #         if flag:
+    #             dict["sbjt_no"] = temp.course_sbjtclss.split("-")[0]
+    #             dict["kor_nm"] = temp.course_clssnm
+    #             dict["re_year"] = year
+    #             dict["acq_pnt"] = temp.course_pnt.split("-")[0]
+    #             grd_pool = "ABCD"
+    #             dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
+    #             grade = 0
+    #             if dict["g_grd"][0] == "A":
+    #                 grade = 4.0
+    #             elif dict["g_grd"][0] == "B":
+    #                 grade = 3.0
+    #             elif dict["g_grd"][0] == "C":
+    #                 grade = 2.0
+    #             elif dict["g_grd"][0] == "D":
+    #                 grade = 1.0
+    #
+    #             if len(dict["g_grd"]) != 1:
+    #                 grade += 0.5
+    #
+    #             dict["grd_mak"] = grade
+    #
+    #             takeList.append(dict)
+    #             checkCourse(dict, checkUser, year)
+    #
+    #
+    #
+    #     #교양 학점
+    #     sInfo = Subject.objects.filter(course_pobjnm="교양", course_year=year)
+    #     rand_credits = random.randint(35,45)
+    #
+    #     while (checkUser.totalGECredits < rand_credits):
+    #         temp = random.choice(sInfo)
+    #         dict = {}
+    #
+    #         flag = True
+    #         for i in range(0, len(takeList)):
+    #             if takeList[i]["sbjt_no"] == temp.course_sbjtclss.split("-")[0]:
+    #                 flag = False
+    #                 break
+    #
+    #         if flag:
+    #             dict["sbjt_no"] = temp.course_sbjtclss.split("-")[0]
+    #             dict["kor_nm"] = temp.course_clssnm
+    #             dict["re_year"] = year
+    #             dict["acq_pnt"] = temp.course_pnt.split("-")[0]
+    #             grd_pool = "ABCD"
+    #             dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
+    #             grade = 0
+    #             if dict["g_grd"][0] == "A":
+    #                 grade = 4.0
+    #             elif dict["g_grd"][0] == "B":
+    #                 grade = 3.0
+    #             elif dict["g_grd"][0] == "C":
+    #                 grade = 2.0
+    #             elif dict["g_grd"][0] == "D":
+    #                 grade = 1.0
+    #
+    #             if len(dict["g_grd"]) != 1:
+    #                 grade += 0.5
+    #
+    #             dict["grd_mak"] = grade
+    #
+    #             takeList.append(dict)
+    #             checkCourse(dict, checkUser, year)
+    #
+    #
+    #
+    #     checkGdRequire(year, userData, takeList)
+    #     response = userData
+    #     userGraduInfo[ID] = userData
+    #     test_idx += 1
+    #
+    #     for i in range(0, len(takeList)):
+    #         st += "수강한 과목:\n"
+    #         st += takeList[i]["kor_nm"] + "(" + takeList[i]["acq_pnt"] + "학점)" + ": " + takeList[i]["g_grd"] + "\n"
 
-    message = "start"
-    response = ""
-    if message == "start":
-        response = "테스트를 시작합니다." + message
-
-    message = "anal"
-    response = ""
-
-    if message == "anal":
-        response = "인격을 생성합니다."
-
-        userData = UserData()
-        ID = "test" + str(test_idx)
-        string_pool = "0123456789"
-        stNum = str(random.randint(2010, 2020)) + random.choice(string_pool) + random.choice(
-            string_pool) + random.choice(string_pool) + random.choice(string_pool)
-        year = stNum[:4]
-        userData.st_id += stNum
-        userData.year += year
-
-        takeList = []
-
-        # 만족 판단에 쓸 userData
-        checkUser = UserData()
-
-        # 확률 표본 생성
-        prob = []
-        for i in range(0, 100):
-            if (i < 80):  # 90%로 0
-                prob.append(0)
-            else:  # 10%로 1
-                prob.append(1)
-
-        random.shuffle(prob)
-
-        plus_prob = []
-        for i in range(0, 10):
-            if (i < 5):  # 50%로 0
-                plus_prob.append("+")
-            else:  # 50%로 1
-                plus_prob.append("")
-
-        random.shuffle(plus_prob)
-
-
-        # 확률에 따라 졸업요건 만족 불만족 판단
-
-        # 필수 리스트
-        if (random.choice(prob) == 0):
-            for i in range(0, len(requirements[year]["compulsorySubjects"])):
-                temp = Subject.objects.filter(
-                    course_sbjtclss__startswith=requirements[year]["compulsorySubjects"][i].course_id)
-                if temp[0].course_pnt.split("-")[0] != ".5":
-                    dict = {}
-                    dict["sbjt_no"] = requirements[year]["compulsorySubjects"][i].course_id
-                    dict["kor_nm"] = requirements[year]["compulsorySubjects"][i].course_title
-                    dict["re_year"] = year
-                    dict["acq_pnt"] = temp[0].course_pnt.split("-")[0]
-                    grd_pool = "ABCD"
-                    dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
-                    grade = 0
-                    if dict["g_grd"][0] == "A":
-                        grade = 4.0
-                    elif dict["g_grd"][0] == "B":
-                        grade = 3.0
-                    elif dict["g_grd"][0] == "C":
-                        grade = 2.0
-                    elif dict["g_grd"][0] == "D":
-                        grade = 1.0
-
-                    if len(dict["g_grd"]) != 1:
-                        grade += 0.5
-
-                    dict["grd_mak"] = grade
-
-                    takeList.append(dict)
-                    checkCourse(dict, checkUser, year)
-
-
-        # 전공 학점
-        sInfo = Subject.objects.filter(Q(course_pobjnm="전공") | Q(course_pobjnm="전공필수"),
-                                       Q(course_sustnm__startswith="소프트") | Q(course_sustnm__startswith="컴퓨터"),
-                                       course_year=year)
-        if (random.choice(prob) == 0):
-            rand_credits = random.randint(requirements[year]["majorCredits"], requirements[year]["majorCredits"] + 10)
-        else:
-            rand_credits = random.randint(requirements[year]["majorCredits"] - 5,
-                                          requirements[year]["majorCredits"] - 3)
-
-        while (checkUser.majorCredits < rand_credits):
-            temp = random.choice(sInfo)
-            dict = {}
-
-            flag = True
-            for i in range(0, len(takeList)):
-                if takeList[i]["sbjt_no"] == temp.course_sbjtclss.split("-")[0]:
-                    flag = False
-                    break
-
-            if flag:
-                dict["sbjt_no"] = temp.course_sbjtclss.split("-")[0]
-                dict["kor_nm"] = temp.course_clssnm
-                dict["re_year"] = year
-                dict["acq_pnt"] = temp.course_pnt.split("-")[0]
-                grd_pool = "ABCD"
-                dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
-                grade = 0
-                if dict["g_grd"][0] == "A":
-                    grade = 4.0
-                elif dict["g_grd"][0] == "B":
-                    grade = 3.0
-                elif dict["g_grd"][0] == "C":
-                    grade = 2.0
-                elif dict["g_grd"][0] == "D":
-                    grade = 1.0
-
-                if len(dict["g_grd"]) != 1:
-                    grade += 0.5
-
-                dict["grd_mak"] = grade
-
-                takeList.append(dict)
-                checkCourse(dict, checkUser, year)
-
-
-
-
-        # 전공기초 학점
-        sInfo = Subject.objects.filter(Q(course_sustnm__startswith="소프트") | Q(course_sustnm__startswith="컴퓨터"),
-                                       course_pobjnm="전공기초",course_year=year)
-        if (random.choice(prob) == 0):
-            rand_credits = random.randint(requirements[year]["majorBasicCredits"],
-                                          requirements[year]["majorBasicCredits"])
-        else:
-            rand_credits = random.randint(requirements[year]["majorBasicCredits"] - 6,
-                                          requirements[year]["majorBasicCredits"] - 2)
-
-        while checkUser.majorBasicCredits <= rand_credits:
-            temp = random.choice(sInfo)
-            dict = {}
-
-            flag = True
-            for i in range(0, len(takeList)):
-                if takeList[i]["sbjt_no"] == temp.course_sbjtclss.split("-")[0]:
-                    flag = False
-                    break
-
-            if flag:
-                dict["sbjt_no"] = temp.course_sbjtclss.split("-")[0]
-                dict["kor_nm"] = temp.course_clssnm
-                dict["re_year"] = year
-                dict["acq_pnt"] = temp.course_pnt.split("-")[0]
-                grd_pool = "ABCD"
-                dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
-                grade = 0
-                if dict["g_grd"][0] == "A":
-                    grade = 4.0
-                elif dict["g_grd"][0] == "B":
-                    grade = 3.0
-                elif dict["g_grd"][0] == "C":
-                    grade = 2.0
-                elif dict["g_grd"][0] == "D":
-                    grade = 1.0
-
-                if len(dict["g_grd"]) != 1:
-                    grade += 0.5
-
-                dict["grd_mak"] = grade
-
-                takeList.append(dict)
-                checkCourse(dict, checkUser, year)
-
-
-
-        #교양 학점
-        sInfo = Subject.objects.filter(course_pobjnm="교양", course_year=year)
-        rand_credits = random.randint(35,45)
-
-        while (checkUser.totalGECredits < rand_credits):
-            temp = random.choice(sInfo)
-            dict = {}
-
-            flag = True
-            for i in range(0, len(takeList)):
-                if takeList[i]["sbjt_no"] == temp.course_sbjtclss.split("-")[0]:
-                    flag = False
-                    break
-
-            if flag:
-                dict["sbjt_no"] = temp.course_sbjtclss.split("-")[0]
-                dict["kor_nm"] = temp.course_clssnm
-                dict["re_year"] = year
-                dict["acq_pnt"] = temp.course_pnt.split("-")[0]
-                grd_pool = "ABCD"
-                dict["g_grd"] = random.choice(grd_pool) + random.choice(plus_prob)
-                grade = 0
-                if dict["g_grd"][0] == "A":
-                    grade = 4.0
-                elif dict["g_grd"][0] == "B":
-                    grade = 3.0
-                elif dict["g_grd"][0] == "C":
-                    grade = 2.0
-                elif dict["g_grd"][0] == "D":
-                    grade = 1.0
-
-                if len(dict["g_grd"]) != 1:
-                    grade += 0.5
-
-                dict["grd_mak"] = grade
-
-                takeList.append(dict)
-                checkCourse(dict, checkUser, year)
-
-
-
-        checkGdRequire(year, userData, takeList)
-        response = userData
-        userGraduInfo[ID] = userData
-        test_idx += 1
-
-        for i in range(0, len(takeList)):
-            st += "수강한 과목:\n"
-            st += takeList[i]["kor_nm"] + "(" + takeList[i]["acq_pnt"] + "학점)" + ": " + takeList[i]["g_grd"] + "\n"
-
-    ID = "yey6689"
-    PW = "para3150!"
-
-    tlist, stN = crawlers.getUserSubject(ID, PW)
+    tlist = Subject.objects.all()
 
     f = open("db.txt",'w')
     for i in range(0, len(tlist)):
-        temp = tlist[i]["sbjt_no"] + "/" + tlist[i]["kor_nm"] + "/" + str(tlist[i]["acq_pnt"]) + "/"
+        if tlist[i].course_pnt.split("-")[0] != ".5":
+            temp = tlist[i].course_sbjtclss.split("-")[0] + "/" + tlist[i].course_clssnm + "/" + tlist[i].course_pnt.split("-")[0] + "/"
 
-        list = Subject.objects.filter(course_sbjtclss__startswith=tlist[i]["sbjt_no"])
 
-        major = "0"
-        bsm = "0"
-        design = "0"
-        for j in range(0, len(list)):
-            if "전공" in list[j].course_pobjnm:
+            major = "0"
+            bsm = "0"
+            design = "0"
+
+            if "전공" in tlist[i].course_pobjnm:
                 major = "1"
-                break
 
-
-        for j in range(0, len(list)):
-            if "BSM" in list[j].course_remk:
+            if "BSM" in tlist[i].course_remk:
                 bsm = "1"
-                break
 
-        for j in range(0, len(list)):
-            if "설계" in list[j].course_remk:
-                string = list[j].course_remk
+
+            if "설계" in tlist[i].course_remk:
+                string = tlist[i].course_remk
                 credit = ""
                 for k in range(0, len(string)):
                     if string[k] == "설" and string[k + 1] == "계":
                         credit += string[k + 2]
                         design = credit
                         break
-                break
 
-        temp += major + "/" + bsm + "/" + design + "\n"
-        f.write(temp)
+            temp += major + "/" + bsm + "/" + design + "\n"
+            f.write(temp)
 
     # message = "makingStudent"
     # response = ""
@@ -1433,7 +1425,7 @@ def index(request):
     #     response = "생성 완료\n"
     #     response += st
 
-    return HttpResponse(response)
+    return HttpResponse("a")
 
 def api(request, message):
     try:
