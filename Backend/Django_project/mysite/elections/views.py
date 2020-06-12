@@ -481,9 +481,13 @@ def checkCompulsorySatisfied(year, userData, takeList):
         st = ""
         for i in range(0, len(userData.compulsoryNotTaken)):
             sbjt = Subject.objects.filter(course_sbjtclss__startswith=userData.compulsoryNotTaken[i][0])
-            st += sbjt[0].course_clssnm + ", "
+            
+            if i == len(userData.compulsoryNotTaken) - 1:
+                st += sbjt[0].course_clssnm
+            else:
+                st += sbjt[0].course_clssnm + "\n"
 
-        userData.compulsoryResult += "필수 과목 중 아직 수강하지 않은 과목이 있습니다.\n 수강하지 않은 필수 과목 : " + st
+        userData.compulsoryResult += "필수 과목 중 아직 수강하지 않은 과목이 있습니다.\n 수강하지 않은 필수 과목 :\n" + st + "\n"
     return ""
 
 def checkMinMaxRequire(year, userData, takeList):
@@ -1479,14 +1483,17 @@ def api(request, message):
 
 st = ""
 test_idx = 1
+ID = ""
 def startTest(request, message):
     global st
     global test_idx
+    global ID
+    global userGraduInfo
 
     response = ""
 
     if message == "start":
-        response = "테스트를 시작합니다." + message
+        response = "테스트를 시작합니다."
     
     if message == "anal":
         response = "인격을 생성합니다."
@@ -1496,6 +1503,7 @@ def startTest(request, message):
         string_pool = "0123456789"
         stNum = str(random.randint(2010, 2020)) + random.choice(string_pool) + random.choice(
             string_pool) + random.choice(string_pool) + random.choice(string_pool)
+       
         year = stNum[:4]
         userData.st_id += stNum
         userData.year += year
@@ -1687,19 +1695,57 @@ def startTest(request, message):
                 checkCourse(dict, checkUser, year)
 
         checkGdRequire(year, userData, takeList)
-        response = userData.avgGrade
         userGraduInfo[ID] = userData
         test_idx += 1
 
-        st += "학번: " + userData.st_id + "\n" + "수강한 과목:\n"
+        st += "학번: " + userGraduInfo[ID].st_id + "\n" + "수강한 과목:\n"
         for i in range(0, len(takeList)):
             st += takeList[i]["kor_nm"] + "(" + takeList[i]["acq_pnt"] + "학점)" + ": " + takeList[i]["g_grd"] + "\n"
 
-    response = ""
 
     if message == "makingStudent":
         response = "생성 완료\n"
         response += st
+    
+    if message == "totalCredits":
+        response = "총 학점 만족 또는 불만족"
+    
+    if message == "exclusiveGECredits":
+        response = "전문 교양 만족 또는 불만족"
+
+    if message == "BSMCredits":
+        response = "BSM 만족 또는 불만족"
+    
+    if message == "coreGECredits":
+        response = "핵심 교양 만족 또는 불만족"
+
+    if message == "majorCredits":
+        response = "전공 만족 또는 불만족"
+
+    if message == "majorBasicCredits":
+        response = "전공 기초 만족 또는 불만족"
+
+    if message == "majorCompulsoryCredits":
+        response = "전공 필수 만족 또는 불만족"
+
+    if message == "designSubjectCredits":
+        response = "설계학점 만족 또는 불만족"
+
+    if message == "avgGrade":
+        response = "평균 학점 만족 또는 불만족"
+
+    if message == "compulsoryNotTaken":
+        response = "필수 과목 만족 또는 불만족"
+
+    if message == "machGE":
+        response = "MACH 교양 만족 또는 불만족"
+
+    if message == "machPrac":
+        response = "MACH 실습 만족 또는 불만족"
+
+    if message == "others":
+        response = requirements[userGraduInfo[ID].year]["others"]
+
 
     return JsonResponse({
             'message': 1,
