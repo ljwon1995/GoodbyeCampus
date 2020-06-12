@@ -1169,14 +1169,15 @@ def index(request):
 
     st = ""
     test_idx = 1
-
+    global userGraduInfo
+    ID = ""
     message = "start"
     response = ""
+
     if message == "start":
-        response = "테스트를 시작합니다." + message
+        response = "테스트를 시작합니다."
 
     message = "anal"
-    response = ""
 
     if message == "anal":
         response = "인격을 생성합니다."
@@ -1186,6 +1187,7 @@ def index(request):
         string_pool = "0123456789"
         stNum = str(random.randint(2010, 2020)) + random.choice(string_pool) + random.choice(
             string_pool) + random.choice(string_pool) + random.choice(string_pool)
+
         year = stNum[:4]
         userData.st_id += stNum
         userData.year += year
@@ -1213,7 +1215,6 @@ def index(request):
                 plus_prob.append("")
 
         random.shuffle(plus_prob)
-
 
         # 확률에 따라 졸업요건 만족 불만족 판단
 
@@ -1247,7 +1248,6 @@ def index(request):
 
                     takeList.append(dict)
                     checkCourse(dict, checkUser, year)
-
 
         # 전공 학점
         sInfo = Subject.objects.filter(Q(course_pobjnm="전공") | Q(course_pobjnm="전공필수"),
@@ -1294,12 +1294,9 @@ def index(request):
                 takeList.append(dict)
                 checkCourse(dict, checkUser, year)
 
-
-
-
         # 전공기초 학점
         sInfo = Subject.objects.filter(Q(course_sustnm__startswith="소프트") | Q(course_sustnm__startswith="컴퓨터"),
-                                       course_pobjnm="전공기초",course_year=year)
+                                       course_pobjnm="전공기초", course_year=year)
         if (random.choice(prob) == 0):
             rand_credits = random.randint(requirements[year]["majorBasicCredits"],
                                           requirements[year]["majorBasicCredits"])
@@ -1342,11 +1339,9 @@ def index(request):
                 takeList.append(dict)
                 checkCourse(dict, checkUser, year)
 
-
-
-        #교양 학점
+        # 교양 학점
         sInfo = Subject.objects.filter(course_pobjnm="교양", course_year=year)
-        rand_credits = random.randint(35,45)
+        rand_credits = random.randint(35, 45)
 
         while (checkUser.totalGECredits < rand_credits):
             temp = random.choice(sInfo)
@@ -1383,25 +1378,169 @@ def index(request):
                 takeList.append(dict)
                 checkCourse(dict, checkUser, year)
 
-
-
         checkGdRequire(year, userData, takeList)
-        response = userData.avgGrade
         userGraduInfo[ID] = userData
         test_idx += 1
 
-        st += "학번: " + userData.st_id + "\n" + "수강한 과목:\n"
+        st += "학번: " + userGraduInfo[ID].st_id + "\n" + "수강한 과목:\n"
         for i in range(0, len(takeList)):
             st += takeList[i]["kor_nm"] + "(" + takeList[i]["acq_pnt"] + "학점)" + ": " + takeList[i]["g_grd"] + "\n"
 
-
-
     message = "makingStudent"
-    response = ""
 
     if message == "makingStudent":
         response = "생성 완료\n"
         response += st
+
+    message = "totalCredits"
+    if message == "totalCredits":
+        response = "해당 학번의 학생은 총 " + str(requirements[userGraduInfo[ID].year]["totalCredits"]) + " 학점 이상을 수강해야 합니다. \n"
+        if userGraduInfo[ID].totalCreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].totalCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].totalCredits) + " 학점을 수강하였고 " + str(userGraduInfo[ID].totalCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
+
+    message = "exclusiveGECredits"
+    if message == "exclusiveGECredits":
+        response = "해당 학번의 학생은 전문 교양을 " + str(requirements[userGraduInfo[ID].year]["exclusiveGECredits"]) + " 학점 이상을 수강해야 합니다. \n"
+        if userGraduInfo[ID].exclusiveGECreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].exclusiveGECredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].exclusiveGECredits) + " 학점을 수강하였고 " + str(userGraduInfo[ID].exclusiveGECreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
+
+    message = "BSMCredits"
+    if message == "BSMCredits":
+        response = "해당 학번의 학생은 BSM 과목을 " + str(requirements[userGraduInfo[ID].year]["bsmCredits"]) + " 학점 이상을 수강해야 합니다. \n"
+        if userGraduInfo[ID].bsmCreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].bsmCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].bsmCredits) + " 학점을 수강하였고 " + str(userGraduInfo[ID].bsmCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
+
+    message = "coreGECredits"
+    if message == "coreGECredits":
+        if int(userGraduInfo[ID].year) <= 2014:
+            response = "해당 학번의 학생은 핵심 교양을 " + str(requirements[userGraduInfo[ID].year]["numCoreGE"]) + " 과목 이상 수강해야 합니다.\n"
+            if userGraduInfo[ID].numCoreGESatisfied:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].numCoreGE) + " 과목을 수강하였으므로 위 조건을 만족합니다.\n"
+            else:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].numCoreGE) + " 과목을 수강하였고 " + str(
+                    userGraduInfo[ID].numCoreGEMore) + "과목을 더 수강해야 위 조건을 만족합니다.\n"
+        elif int(userGraduInfo[ID].year) == 2015:
+            response = "해당 학번의 학생은 토대기반, 존재구축, 소통융합, 실천 영역의 핵심 교양을 각각 1과목 이상 수강해야 합니다.\n"
+            if  userGraduInfo[ID].coreGE15_satisfied:
+                response += "이 학생은 모든 영역의 핵심 교양을 수강하였습니다.\n"
+            else:
+                response += "이 학생은 4가지 영역 중 "
+                if userGraduInfo[ID].coreGE15["토대기반"] == False:
+                    response += "[토대기반]"
+                if userGraduInfo[ID].coreGE15["존재구축"] == False:
+                    response += "[존재구축]"
+                if userGraduInfo[ID].coreGE15["소통융합"] == False:
+                    response += "[소통융합]"
+                if userGraduInfo[ID].coreGE15["실천"] == False:
+                    response += "[실천]"
+                response += " 영역의 핵심 교양을 수강해야 위 조건을 만족합니다.\n"
+
+        else:
+            response = "해당 학번의 학생은 도전, 창의, 융합, 신뢰, 소통 영역의 핵심 교양을 각각 1과목 이상 수강해야 합니다.\n"
+            if  userGraduInfo[ID].coreGE16to20_satisfied:
+                response += "이 학생은 모든 영역의 핵심 교양을 수강하였습니다.\n"
+            else:
+                response += "이 학생은 5가지 영역 중 "
+                try:
+                    if userGraduInfo[ID].coreGE16to20["도전"] == False:
+                        response += "[도전]"
+                    if userGraduInfo[ID].coreGE16to20["창의"] == False:
+                        response += "[창의]"
+                    if userGraduInfo[ID].coreGE16to20["융합"] == False:
+                        response += "[융합]"
+                    if userGraduInfo[ID].coreGE16to20["신뢰"] == False:
+                        response += "[신뢰]"
+                    if userGraduInfo[ID].coreGE16to20["소통"] == False:
+                        response += "[소통]"
+                except Exception as e:
+                    str(e)
+                    #response = userGraduInfo[ID].coreGE16to20["도전"]
+
+
+                response += " 영역의 핵심 교양을 수강해야 위 조건을 만족합니다.\n"
+
+    message = "majorCredits"
+    if message == "majorCredits":
+        response = "해당 학번의 학생은 전공 과목을 " + str(requirements[userGraduInfo[ID].year]["majorCredits"]) + " 학점 이상을 수강해야 합니다. \n"
+        if userGraduInfo[ID].majorCreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorCredits) + " 학점을 수강하였고 " + str(userGraduInfo[ID].majorCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
+
+    message = "majorBasicCredits"
+    if message == "majorBasicCredits":
+        response = "해당 학번의 학생은 전공 기초 과목을 " + str(requirements[userGraduInfo[ID].year]["majorBasicCredits"]) + " 학점 이상을 수강해야 합니다. \n"
+        if userGraduInfo[ID].majorBasicCreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorBasicCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorBasicCredits) + " 학점을 수강하였고 " + str(userGraduInfo[ID].majorBasicCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
+
+    message = "majorCompulsoryCredits"
+    if message == "majorCompulsoryCredits":
+        response = "해당 학번의 학생은 전공 필수 과목을 " + str(requirements[userGraduInfo[ID].year]["majorCompulsoryCredits"]) + " 학점 수강해야 합니다. \n"
+        if userGraduInfo[ID].majorCompulsoryCreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorCompulsoryCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorCompulsoryCredits) + " 학점을 수강하였고 " + str(userGraduInfo[ID].majorCompulsoryCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
+
+    message = "designSubjectCredits"
+    if message == "designSubjectCredits":
+        response = "해당 학번의 학생은 수강한 설계 과목들의 설계 점수의 총합이 " + str(requirements[userGraduInfo[ID].year]["designSubjectCredits"]) + " 이상이 되어야 합니다. \n"
+        if userGraduInfo[ID].majorCompulsoryCreditsSatisfied:
+            response += "이 학생의 설계 점수는 총 " + str(userGraduInfo[ID].majorCompulsoryCredits) + " 점 이므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생의 설계 점수는 총 " + str(userGraduInfo[ID].majorCompulsoryCredits) + " 점이며 " + str(userGraduInfo[ID].majorCompulsoryCreditsMore) + " 점을 더 취득해야 위 조건을 만족합니다.\n"
+
+    message = "avgGrade"
+    if message == "avgGrade":
+        if int(userGraduInfo[ID].year) >= 2018:
+            response = "해당 학번의 학생은 평균 학점이 " + str(requirements[userGraduInfo[ID].year]["avgGrade"]) + " 이상이 되어야 합니다. \n"
+            if userGraduInfo[ID].majorCompulsoryCreditsSatisfied:
+                response += "이 학생의 평균 학점은 " + str(userGraduInfo[ID].avgGrade) + " 이므로 위 조건을 만족합니다.\n"
+            else:
+                response += "이 학생의 평균 학점은 " + str(userGraduInfo[ID].avgGrade) + " 이며 평균 학점을 " + str(userGraduInfo[ID].avgGradeMore) + " 만큼 더 올리셔야 위 조건을 만족합니다.\n"
+
+    message = "compulsoryNotTaken"
+    if message == "compulsoryNotTaken":
+        response = "해당 학번의 학생이 들어야하는 필수 과목 리스트는 다음과 같습니다.\n"
+        for item in requirements[userGraduInfo[ID].year]["compulsorySubjects"]:
+            response += item.course_title + "\n"
+
+        if userGraduInfo[ID].compulsorySatisfied:
+            response += "이 학생은 모든 필수 과목을 전부 수강했습니다.\n"
+        else:
+            response += "이 학생은 " + userGraduInfo[ID].compulsoryResult + "\n"
+
+    message = "machGE"
+    if message == "machGE":
+        if int(userGraduInfo[ID].year) >= 2015:
+            response = "해당 학번의 MACH 교양 과목을 " + str(requirements[userGraduInfo[ID].year]["MACHGE"]) + " 학점 이상 수강해야 합니다. \n"
+            if userGraduInfo[ID].machGECreditsSatisfied:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].machGECredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+            else:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].machGECredits) + " 학점을 수강하였고 " + str(userGraduInfo[ID].machGECreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다\n"
+
+
+    message = "machPrac"
+    if message == "machPrac":
+        if int(userGraduInfo[ID].year) >= 2015 and int(userGraduInfo[ID].year) < 2019:
+            response = "해당 학번의 MACH 교양 과목을 " + str(requirements[userGraduInfo[ID].year]["MACHPrac"]) + " 학점 이상 수강해야 합니다. \n"
+            if userGraduInfo[ID].machPracCreditsSatisfied:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].machPracCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+            else:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].machPracCredits) + " 학점을 수강하였고 " + str(userGraduInfo[ID].machPracCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다\n"
+
+    message = "others"
+    if message == "others":
+        response = "이에 더해,\n"
+        response += requirements[userGraduInfo[ID].year]["others"] + "\n"
+        response += "상기의 조건들을 만족해야 졸업이 가능합니다.\n"
 
     return HttpResponse(response)
 
@@ -1702,49 +1841,176 @@ def startTest(request, message):
         for i in range(0, len(takeList)):
             st += takeList[i]["kor_nm"] + "(" + takeList[i]["acq_pnt"] + "학점)" + ": " + takeList[i]["g_grd"] + "\n"
 
-
     if message == "makingStudent":
         response = "생성 완료\n"
         response += st
-    
+
+    #message = "totalCredits"
     if message == "totalCredits":
-        response = "총 학점 만족 또는 불만족"
-    
+        response = "해당 학번의 학생은 총 " + str(requirements[userGraduInfo[ID].year]["totalCredits"]) + " 학점 이상을 수강해야 합니다. \n"
+        if userGraduInfo[ID].totalCreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].totalCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].totalCredits) + " 학점을 수강하였고 " + str(
+                userGraduInfo[ID].totalCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
+
+    #message = "exclusiveGECredits"
     if message == "exclusiveGECredits":
-        response = "전문 교양 만족 또는 불만족"
+        response = "해당 학번의 학생은 전문 교양을 " + str(
+            requirements[userGraduInfo[ID].year]["exclusiveGECredits"]) + " 학점 이상을 수강해야 합니다. \n"
+        if userGraduInfo[ID].exclusiveGECreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].exclusiveGECredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].exclusiveGECredits) + " 학점을 수강하였고 " + str(
+                userGraduInfo[ID].exclusiveGECreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
 
+    #message = "BSMCredits"
     if message == "BSMCredits":
-        response = "BSM 만족 또는 불만족"
-    
+        response = "해당 학번의 학생은 BSM 과목을 " + str(
+            requirements[userGraduInfo[ID].year]["bsmCredits"]) + " 학점 이상을 수강해야 합니다. \n"
+        if userGraduInfo[ID].bsmCreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].bsmCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].bsmCredits) + " 학점을 수강하였고 " + str(
+                userGraduInfo[ID].bsmCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
+
+    #message = "coreGECredits"
     if message == "coreGECredits":
-        response = "핵심 교양 만족 또는 불만족"
+        if int(userGraduInfo[ID].year) <= 2014:
+            response = "해당 학번의 학생은 핵심 교양을 " + str(
+                requirements[userGraduInfo[ID].year]["numCoreGE"]) + " 과목 이상 수강해야 합니다.\n"
+            if userGraduInfo[ID].numCoreGESatisfied:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].numCoreGE) + " 과목을 수강하였으므로 위 조건을 만족합니다.\n"
+            else:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].numCoreGE) + " 과목을 수강하였고 " + str(
+                    userGraduInfo[ID].numCoreGEMore) + "과목을 더 수강해야 위 조건을 만족합니다.\n"
+        elif int(userGraduInfo[ID].year) == 2015:
+            response = "해당 학번의 학생은 토대기반, 존재구축, 소통융합, 실천 영역의 핵심 교양을 각각 1과목 이상 수강해야 합니다.\n"
+            if userGraduInfo[ID].coreGE15_satisfied:
+                response += "이 학생은 모든 영역의 핵심 교양을 수강하였습니다.\n"
+            else:
+                response += "이 학생은 4가지 영역 중 "
+                if userGraduInfo[ID].coreGE15["토대기반"] == False:
+                    response += "[토대기반]"
+                if userGraduInfo[ID].coreGE15["존재구축"] == False:
+                    response += "[존재구축]"
+                if userGraduInfo[ID].coreGE15["소통융합"] == False:
+                    response += "[소통융합]"
+                if userGraduInfo[ID].coreGE15["실천"] == False:
+                    response += "[실천]"
+                response += " 영역의 핵심 교양을 수강해야 위 조건을 만족합니다.\n"
 
+        else:
+            response = "해당 학번의 학생은 도전, 창의, 융합, 신뢰, 소통 영역의 핵심 교양을 각각 1과목 이상 수강해야 합니다.\n"
+            if userGraduInfo[ID].coreGE16to20_satisfied:
+                response += "이 학생은 모든 영역의 핵심 교양을 수강하였습니다.\n"
+            else:
+                response += "이 학생은 5가지 영역 중 "
+                try:
+                    if userGraduInfo[ID].coreGE16to20["도전"] == False:
+                        response += "[도전]"
+                    if userGraduInfo[ID].coreGE16to20["창의"] == False:
+                        response += "[창의]"
+                    if userGraduInfo[ID].coreGE16to20["융합"] == False:
+                        response += "[융합]"
+                    if userGraduInfo[ID].coreGE16to20["신뢰"] == False:
+                        response += "[신뢰]"
+                    if userGraduInfo[ID].coreGE16to20["소통"] == False:
+                        response += "[소통]"
+                except Exception as e:
+                    str(e)
+                    # response = userGraduInfo[ID].coreGE16to20["도전"]
+
+                response += " 영역의 핵심 교양을 수강해야 위 조건을 만족합니다.\n"
+
+    #message = "majorCredits"
     if message == "majorCredits":
-        response = "전공 만족 또는 불만족"
+        response = "해당 학번의 학생은 전공 과목을 " + str(
+            requirements[userGraduInfo[ID].year]["majorCredits"]) + " 학점 이상을 수강해야 합니다. \n"
+        if userGraduInfo[ID].majorCreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorCredits) + " 학점을 수강하였고 " + str(
+                userGraduInfo[ID].majorCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
 
+    #message = "majorBasicCredits"
     if message == "majorBasicCredits":
-        response = "전공 기초 만족 또는 불만족"
+        response = "해당 학번의 학생은 전공 기초 과목을 " + str(
+            requirements[userGraduInfo[ID].year]["majorBasicCredits"]) + " 학점 이상을 수강해야 합니다. \n"
+        if userGraduInfo[ID].majorBasicCreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorBasicCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorBasicCredits) + " 학점을 수강하였고 " + str(
+                userGraduInfo[ID].majorBasicCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
 
+    #message = "majorCompulsoryCredits"
     if message == "majorCompulsoryCredits":
-        response = "전공 필수 만족 또는 불만족"
+        response = "해당 학번의 학생은 전공 필수 과목을 " + str(
+            requirements[userGraduInfo[ID].year]["majorCompulsoryCredits"]) + " 학점 수강해야 합니다. \n"
+        if userGraduInfo[ID].majorCompulsoryCreditsSatisfied:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorCompulsoryCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생은 총 " + str(userGraduInfo[ID].majorCompulsoryCredits) + " 학점을 수강하였고 " + str(
+                userGraduInfo[ID].majorCompulsoryCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다.\n"
 
+    #message = "designSubjectCredits"
     if message == "designSubjectCredits":
-        response = "설계학점 만족 또는 불만족"
+        response = "해당 학번의 학생은 수강한 설계 과목들의 설계 점수의 총합이 " + str(
+            requirements[userGraduInfo[ID].year]["designSubjectCredits"]) + " 이상이 되어야 합니다. \n"
+        if userGraduInfo[ID].majorCompulsoryCreditsSatisfied:
+            response += "이 학생의 설계 점수는 총 " + str(userGraduInfo[ID].majorCompulsoryCredits) + " 점 이므로 위 조건을 만족합니다.\n"
+        else:
+            response += "이 학생의 설계 점수는 총 " + str(userGraduInfo[ID].majorCompulsoryCredits) + " 점이며 " + str(
+                userGraduInfo[ID].majorCompulsoryCreditsMore) + " 점을 더 취득해야 위 조건을 만족합니다.\n"
 
+    #message = "avgGrade"
     if message == "avgGrade":
-        response = "평균 학점 만족 또는 불만족"
+        if int(userGraduInfo[ID].year) >= 2018:
+            response = "해당 학번의 학생은 평균 학점이 " + str(requirements[userGraduInfo[ID].year]["avgGrade"]) + " 이상이 되어야 합니다. \n"
+            if userGraduInfo[ID].majorCompulsoryCreditsSatisfied:
+                response += "이 학생의 평균 학점은 " + str(userGraduInfo[ID].avgGrade) + " 이므로 위 조건을 만족합니다.\n"
+            else:
+                response += "이 학생의 평균 학점은 " + str(userGraduInfo[ID].avgGrade) + " 이며 평균 학점을 " + str(
+                    userGraduInfo[ID].avgGradeMore) + " 만큼 더 올리셔야 위 조건을 만족합니다.\n"
 
+    #message = "compulsoryNotTaken"
     if message == "compulsoryNotTaken":
-        response = "필수 과목 만족 또는 불만족"
+        response = "해당 학번의 학생이 들어야하는 필수 과목 리스트는 다음과 같습니다.\n"
+        for item in requirements[userGraduInfo[ID].year]["compulsorySubjects"]:
+            response += item.course_title + "\n"
 
+        if userGraduInfo[ID].compulsorySatisfied:
+            response += "이 학생은 모든 필수 과목을 전부 수강했습니다.\n"
+        else:
+            response += "이 학생은 " + userGraduInfo[ID].compulsoryResult + "\n"
+
+    #message = "machGE"
     if message == "machGE":
-        response = "MACH 교양 만족 또는 불만족"
+        if int(userGraduInfo[ID].year) >= 2015:
+            response = "해당 학번의 MACH 교양 과목을 " + str(
+                requirements[userGraduInfo[ID].year]["MACHGE"]) + " 학점 이상 수강해야 합니다. \n"
+            if userGraduInfo[ID].machGECreditsSatisfied:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].machGECredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+            else:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].machGECredits) + " 학점을 수강하였고 " + str(
+                    userGraduInfo[ID].machGECreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다\n"
 
+    #message = "machPrac"
     if message == "machPrac":
-        response = "MACH 실습 만족 또는 불만족"
+        if int(userGraduInfo[ID].year) >= 2015 and int(userGraduInfo[ID].year) < 2019:
+            response = "해당 학번의 MACH 교양 과목을 " + str(
+                requirements[userGraduInfo[ID].year]["MACHPrac"]) + " 학점 이상 수강해야 합니다. \n"
+            if userGraduInfo[ID].machPracCreditsSatisfied:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].machPracCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
+            else:
+                response += "이 학생은 총 " + str(userGraduInfo[ID].machPracCredits) + " 학점을 수강하였고 " + str(
+                    userGraduInfo[ID].machPracCreditsMore) + " 학점을 더 수강해야 위 조건을 만족합니다\n"
 
+    #message = "others"
     if message == "others":
-        response = requirements[userGraduInfo[ID].year]["others"]
+        response = "이에 더해,\n"
+        response += requirements[userGraduInfo[ID].year]["others"] + "\n"
+        response += "상기의 조건들을 만족해야 졸업이 가능합니다.\n"
 
 
     return JsonResponse({

@@ -99,22 +99,168 @@ class Chat extends Component {
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/makingStudent');
     		const posts = await res.json()
 	    	
-		var str = posts.content
-		str = str.replace(/\n/g,'\n\n')
-		addResponseMessage(str);
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
 	}
 	catch (e){
     		console.log(e)
 	}
-	
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/totalCredits');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/exclusiveGECredits');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/BSMCredits');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/coreGECredits');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/majorCredits');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/majorBasicCredits');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/majorCompulsoryCredits');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/avgGrade');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/compulsoryNotTaken');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/machGE');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/machPrac');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+	try {
+    		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/others');
+    		const posts = await res.json()
+
+		    var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+		    addResponseMessage(str);
+	}
+	catch (e){
+    		console.log(e)
+	}
+
+
 	
     } else {
 
     	try {
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/notfirst$' + this.user + "$" + newMessage);
     		const posts = await res.json();
-            
-    		addResponseMessage(posts.content);
+            var str = posts.content
+		    str = str.replace(/\n/g,'\n\n')
+    		addResponseMessage(str);
     	} 
     	catch (e) {
       		console.log(e);
