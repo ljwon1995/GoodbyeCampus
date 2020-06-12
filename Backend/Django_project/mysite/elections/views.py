@@ -1040,48 +1040,35 @@ def askCompul(argList):
     ID = argList[0]
     st = ""
 
-    st += "수강해야 할 필수 과목은 "
+    st += "수강해야 할 필수 과목은 \n"
     for i in range(0, len(requirements[userGraduInfo[ID].year]["compulsorySubjects"])):
-        if i == len(requirements[userGraduInfo[ID].year]["compulsorySubjects"]) - 1:
-            st += requirements[userGraduInfo[ID].year]["compulsorySubjects"][i].course_title
-        else:
-            st += requirements[userGraduInfo[ID].year]["compulsorySubjects"][i].course_title + ", "
+        st += requirements[userGraduInfo[ID].year]["compulsorySubjects"][i].course_title + "\n"
 
-    st += " 이며 이 중 전공필수 과목은 "
+    st += " 이며 이 중 전공필수 과목은 \n"
     for i in range(0, len(majorCompulsoryList)):
-        if i == len(majorCompulsoryList) - 1:
-            st += majorCompulsoryList[i][1]
-        else:
-            st += majorCompulsoryList[i][1] + ", "
+        st += majorCompulsoryList[i][1] + "\n"
+        
 
-    st += " 입니다.\n"
+    st += " 입니다.\n\n"
     if len(userGraduInfo[ID].compulsoryNotTaken) == 0:
         st += " 모든 필수 과목을 다 수강하셨습니다.\n"
     else:
         majorCompul = []
         for i in range(0, len(userGraduInfo[ID].compulsoryNotTaken)):
-            if i == len(userGraduInfo[ID].compulsoryNotTaken) - 1:
+            if True:
                 temp = Compulsory.objects.filter(course_id=userGraduInfo[ID].compulsoryNotTaken[i][0])
-                st += temp[0].course_title
-                for j in range(0, len(majorCompulsoryList)):
-                    if userGraduInfo[ID].compulsoryNotTaken[i][0] == majorCompulsoryList[j][0]:
-                        majorCompul.append(majorCompulsoryList[j][1])
-            else:
-                temp = Compulsory.objects.filter(course_id=userGraduInfo[ID].compulsoryNotTaken[i][0])
-                st += temp[0].course_title + ", "
+                st += temp[0].course_title + "\n"
                 for j in range(0, len(majorCompulsoryList)):
                     if userGraduInfo[ID].compulsoryNotTaken[i][0] == majorCompulsoryList[j][0]:
                         majorCompul.append(majorCompulsoryList[j][1])
 
-        st += " 과목을 수강하지 않으셨습니다. 이 중 전공필수 과목은 "
+        st += " 과목을 수강하지 않으셨습니다. \n이 중 전공필수 과목은 "
         if len(majorCompul) == 0:
             st += "없습니다."
         else:
             for i in range(len(majorCompul)):
-                if i == len(majorCompul) -1:
-                    st += majorCompul[i]
-                else:
-                    st += majorCompul[i] + ", "
+                if True:
+                    st += majorCompul[i] + "\n"
             st += "입니다."
     return st
 #TODO
@@ -1105,19 +1092,28 @@ def askGradPaper(argList):
 
 #TODO
 def askChinese(argList):
-    return graduationAssessment(argList)
+    graduationAssessment(argList)
+    
+    return st
+    
 
 #TODO
 def askEnglish(argList):
-    return graduationAssessment(argList)
+    graduationAssessment(argList)
+
+    return st
 
 #TODO
 def askTopcit(argList):
-    return graduationAssessment(argList)
+    graduationAssessment(argList)
+
+    return st
 
 #TODO
 def askGradTest(argList):
-    return graduationAssessment(argList)
+    graduationAssessment(argList)
+
+    return st
 
 
 def graduationAssessment(argList):
@@ -1542,7 +1538,7 @@ def index(request):
         response += requirements[userGraduInfo[ID].year]["others"] + "\n"
         response += "상기의 조건들을 만족해야 졸업이 가능합니다.\n"
 
-    return HttpResponse(response)
+    return ""
 
 def api(request, message):
     try:
@@ -1620,7 +1616,6 @@ def api(request, message):
             'content': "ERROR in api " + str(e)
         })
 
-testListDict = {}
 st = ""
 test_idx = 1
 ID = ""
@@ -1637,7 +1632,7 @@ def startTest(request, message):
     
     if message == "anal":
         response = "인격을 생성합니다."
-
+        st = ""
         userData = UserData()
         ID = "test" + str(test_idx)
         string_pool = "0123456789"
@@ -1842,11 +1837,11 @@ def startTest(request, message):
         for i in range(0, len(takeList)):
             st += takeList[i]["kor_nm"] + "(" + takeList[i]["acq_pnt"] + "학점)" + ": " + takeList[i]["g_grd"] + "\n"
 
-        testListDict[ID] = st
+        
 
     if message == "makingStudent":
         response = "생성 완료\n"
-        response += testListDict[ID]
+        response += st
 
     #message = "totalCredits"
     if message == "totalCredits":
@@ -1970,7 +1965,7 @@ def startTest(request, message):
     if message == "avgGrade":
         if int(userGraduInfo[ID].year) >= 2018:
             response = "해당 학번의 학생은 평균 학점이 " + str(requirements[userGraduInfo[ID].year]["avgGrade"]) + " 이상이 되어야 합니다. \n"
-            if userGraduInfo[ID].majorCompulsoryCreditsSatisfied:
+            if userGraduInfo[ID].avgGradeSatisfied:
                 response += "이 학생의 평균 학점은 " + str(userGraduInfo[ID].avgGrade) + " 이므로 위 조건을 만족합니다.\n"
             else:
                 response += "이 학생의 평균 학점은 " + str(userGraduInfo[ID].avgGrade) + " 이며 평균 학점을 " + str(

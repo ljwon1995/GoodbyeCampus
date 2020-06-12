@@ -57,8 +57,10 @@ class Chat extends Component {
     try {
             const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/start$'+ this.user);
             const posts = await res.json();
-            
-            addResponseMessage(posts.content);
+	    
+	    var str = posts.content
+	    str = str.replace(/\n/g,'\n\n')
+	    addResponseMessage(str);
           
         } 
     catch (e) {
