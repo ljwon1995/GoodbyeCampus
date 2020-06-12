@@ -1620,6 +1620,7 @@ def api(request, message):
             'content': "ERROR in api " + str(e)
         })
 
+testListDict = {}
 st = ""
 test_idx = 1
 ID = ""
@@ -1841,9 +1842,11 @@ def startTest(request, message):
         for i in range(0, len(takeList)):
             st += takeList[i]["kor_nm"] + "(" + takeList[i]["acq_pnt"] + "학점)" + ": " + takeList[i]["g_grd"] + "\n"
 
+        testListDict[ID] = st
+
     if message == "makingStudent":
         response = "생성 완료\n"
-        response += st
+        response += testListDict[ID]
 
     #message = "totalCredits"
     if message == "totalCredits":
