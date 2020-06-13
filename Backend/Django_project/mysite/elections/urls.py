@@ -7,6 +7,7 @@ path('message/<str:message>',views.api),
 path('course',views.course),
 path('delete',views.delete),
 path('add',views.add),
-path('test/<str:message>', views.startTest)
+path('test/<str:message>', views.startTest),
+path('refresh', views.refresh)
 ]
 

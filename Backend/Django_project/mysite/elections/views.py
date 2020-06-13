@@ -2079,3 +2079,13 @@ def checkCourse(dict, checkUser, year):
             checkUser.totalGECredits += int(sInfo[i].course_pnt.split("-")[0])
             break
 
+def refresh(request):
+
+    if request.method == 'POST':
+        tmp = request.body.data
+
+        for item in tmp:
+            if item in userGraduInfo.keys():
+                del userGraduInfo[item]
+
+    return HttpResponse('success')

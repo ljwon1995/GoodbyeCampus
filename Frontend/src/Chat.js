@@ -20,6 +20,8 @@ class Chat extends Component {
   user = "";
   userId = "";
   userPw = "";
+  idList = [];
+  flag = false;
 
 
 
@@ -50,6 +52,15 @@ class Chat extends Component {
 
   async componentDidMount() {
 
+  window.addEventListener("beforeunload", (event)=>{
+        fetch("http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/refresh",{
+            method: 'post',
+            body: JSON.stringify({
+                data: this.idList
+            })
+        })
+    })
+
 
     this.user = this._randomUser();
     
@@ -69,6 +80,10 @@ class Chat extends Component {
   }
 
   async handleNewUserMessage (newMessage) {
+
+    if(this.flag === true) {
+        this.idList.push(newMessage);
+    }
 
     if(newMessage === 'open') {
       this.setState({
@@ -269,6 +284,12 @@ class Chat extends Component {
     		const posts = await res.json();
             var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
+		    if(str === '중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요') {
+                this.flag = true;
+            }
+            else {
+                this.flag = false;
+            }
     		addResponseMessage(str);
     	} 
     	catch (e) {
