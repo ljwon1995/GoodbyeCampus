@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 from django.db.models import Q
 import random
+import time
 
 requirements = {}   #각 년도별 졸업요건
 requirements["2010"] = {}
@@ -1871,6 +1872,7 @@ def startTest(request, message):
 
     #message = "totalCredits"
     if message == "totalCredits":
+        time.sleep(1)
         response = "해당 학번의 학생은 총 " + str(requirements[userGraduInfo[ID].year]["totalCredits"]) + " 학점 이상을 수강해야 합니다. \n"
         if userGraduInfo[ID].totalCreditsSatisfied:
             response += "이 학생은 총 " + str(userGraduInfo[ID].totalCredits) + " 학점을 수강하였으므로 위 조건을 만족합니다.\n"
@@ -1880,6 +1882,7 @@ def startTest(request, message):
 
     #message = "exclusiveGECredits"
     if message == "exclusiveGECredits":
+        time.sleep(1)
         response = "해당 학번의 학생은 전문 교양을 " + str(
             requirements[userGraduInfo[ID].year]["exclusiveGECredits"]) + " 학점 이상을 수강해야 합니다. \n"
         if userGraduInfo[ID].exclusiveGECreditsSatisfied:
@@ -1890,6 +1893,7 @@ def startTest(request, message):
 
     #message = "BSMCredits"
     if message == "BSMCredits":
+        time.sleep(1)
         response = "해당 학번의 학생은 BSM 과목을 " + str(
             requirements[userGraduInfo[ID].year]["bsmCredits"]) + " 학점 이상을 수강해야 합니다. \n"
         if userGraduInfo[ID].bsmCreditsSatisfied:
@@ -1900,6 +1904,7 @@ def startTest(request, message):
 
     #message = "coreGECredits"
     if message == "coreGECredits":
+        time.sleep(1)
         if int(userGraduInfo[ID].year) <= 2014:
             response = "해당 학번의 학생은 핵심 교양을 " + str(
                 requirements[userGraduInfo[ID].year]["numCoreGE"]) + " 과목 이상 수강해야 합니다.\n"
@@ -1949,6 +1954,7 @@ def startTest(request, message):
 
     #message = "majorCredits"
     if message == "majorCredits":
+        time.sleep(1)
         response = "해당 학번의 학생은 전공 과목을 " + str(
             requirements[userGraduInfo[ID].year]["majorCredits"]) + " 학점 이상을 수강해야 합니다. \n"
         if userGraduInfo[ID].majorCreditsSatisfied:
@@ -1959,6 +1965,7 @@ def startTest(request, message):
 
     #message = "majorBasicCredits"
     if message == "majorBasicCredits":
+        time.sleep(1)
         response = "해당 학번의 학생은 전공 기초 과목을 " + str(
             requirements[userGraduInfo[ID].year]["majorBasicCredits"]) + " 학점 이상을 수강해야 합니다. \n"
         if userGraduInfo[ID].majorBasicCreditsSatisfied:
@@ -1969,6 +1976,7 @@ def startTest(request, message):
 
     #message = "majorCompulsoryCredits"
     if message == "majorCompulsoryCredits":
+        time.sleep(1)
         response = "해당 학번의 학생은 전공 필수 과목을 " + str(
             requirements[userGraduInfo[ID].year]["majorCompulsoryCredits"]) + " 학점 수강해야 합니다. \n"
         if userGraduInfo[ID].majorCompulsoryCreditsSatisfied:
@@ -1979,6 +1987,7 @@ def startTest(request, message):
 
     #message = "designSubjectCredits"
     if message == "designSubjectCredits":
+        time.sleep(1)
         response = "해당 학번의 학생은 수강한 설계 과목들의 설계 점수의 총합이 " + str(
             requirements[userGraduInfo[ID].year]["designSubjectCredits"]) + " 이상이 되어야 합니다. \n"
         if userGraduInfo[ID].majorCompulsoryCreditsSatisfied:
@@ -1989,6 +1998,7 @@ def startTest(request, message):
 
     #message = "avgGrade"
     if message == "avgGrade":
+        time.sleep(1)
         if int(userGraduInfo[ID].year) >= 2018:
             response = "해당 학번의 학생은 평균 학점이 " + str(requirements[userGraduInfo[ID].year]["avgGrade"]) + " 이상이 되어야 합니다. \n"
             if userGraduInfo[ID].avgGradeSatisfied:
@@ -1999,6 +2009,7 @@ def startTest(request, message):
 
     #message = "compulsoryNotTaken"
     if message == "compulsoryNotTaken":
+        time.sleep(1)
         response = "해당 학번의 학생이 들어야하는 필수 과목 리스트는 다음과 같습니다.\n"
         for item in requirements[userGraduInfo[ID].year]["compulsorySubjects"]:
             response += item.course_title + "\n"
@@ -2010,6 +2021,7 @@ def startTest(request, message):
 
     #message = "machGE"
     if message == "machGE":
+        time.sleep(1)
         if int(userGraduInfo[ID].year) >= 2015:
             response = "해당 학번의 MACH 교양 과목을 " + str(
                 requirements[userGraduInfo[ID].year]["MACHGE"]) + " 학점 이상 수강해야 합니다. \n"
@@ -2021,6 +2033,7 @@ def startTest(request, message):
 
     #message = "machPrac"
     if message == "machPrac":
+        time.sleep(1)
         if int(userGraduInfo[ID].year) >= 2015 and int(userGraduInfo[ID].year) < 2019:
             response = "해당 학번의 MACH 교양 과목을 " + str(
                 requirements[userGraduInfo[ID].year]["MACHPrac"]) + " 학점 이상 수강해야 합니다. \n"
@@ -2032,6 +2045,7 @@ def startTest(request, message):
 
     #message = "others"
     if message == "others":
+        time.sleep(1)
         response = "이에 더해,\n"
         response += requirements[userGraduInfo[ID].year]["others"] + "\n"
         response += "상기의 조건들을 만족해야 졸업이 가능합니다.\n"

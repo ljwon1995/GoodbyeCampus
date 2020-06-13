@@ -196,10 +196,13 @@ class Chat extends Component {
 	try {
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/avgGrade');
     		const posts = await res.json()
-
-		    var str = posts.content
+		
+		
+		var str = posts.content
+		if (str !== ""){    
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		}
 	}
 	catch (e){
     		console.log(e)
@@ -221,9 +224,11 @@ class Chat extends Component {
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/machGE');
     		const posts = await res.json()
 
-		    var str = posts.content
+		var str = posts.content
+		if (str !== "") {
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		}
 	}
 	catch (e){
     		console.log(e)
@@ -233,9 +238,11 @@ class Chat extends Component {
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/machPrac');
     		const posts = await res.json()
 
-		    var str = posts.content
+		var str = posts.content
+		if (str !== "") {
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		}
 	}
 	catch (e){
     		console.log(e)
