@@ -1085,15 +1085,26 @@ def askGradPaper(argList):
     graduationAssessment(argList)
 
     ID = argList[0]
-    st = requirements[userGraduInfo[ID].year]["others"] + "\n"
-    st += "위의 조항에 따라 졸업 시험을 응시하셔야 졸업이 가능합니다."
+    if int(userGraduInfo[ID].year) >= 2013:
+        st = requirements[userGraduInfo[ID].year]["others"] + "\n"
+        st += "위의 조항에 따라 TOPCIT 시험에서 일정 점수 이상을 취득하시면 졸업 논문 대체가 가능합니다.\n"
+    else:
+        st = requirements[userGraduInfo[ID].year]["others"] + "\n"
+        st = "위의 조항에 따라 졸업 논문을 제출하셔야 합니다.\n"
 
     return st
 
 #TODO
 def askChinese(argList):
     graduationAssessment(argList)
-    
+
+    ID = argList[0]
+    if int(userGraduInfo[ID].year) >= 2012:
+        st = requirements[userGraduInfo[ID].year]["others"] + "\n"
+        st += "위의 조항에 따라 한자 3급에 해당하는 자격이 필요합니다.\n"
+    else:
+        st = "한자 자격증을 취득하실 필요가 없습니다."
+
     return st
     
 
@@ -1101,17 +1112,32 @@ def askChinese(argList):
 def askEnglish(argList):
     graduationAssessment(argList)
 
+    ID = argList[0]
+    st = requirements[userGraduInfo[ID].year]["others"] + "\n"
+    st += "위의 조항에 따른 영어 시험 관련 성적이나 특정 영어 과목 수강이 필요합니다.\n"
+
     return st
 
 #TODO
 def askTopcit(argList):
     graduationAssessment(argList)
 
+    ID = argList[0]
+    if int(userGraduInfo[ID].year) >= 2013:
+        st = requirements[userGraduInfo[ID].year]["others"] + "\n"
+        st += "위의 조항에 따라 TOPCIT 시험에서 일정 점수 이상을 취득하셔야 졸업 논문이 대체 가능합니다.\n"
+    else:
+        st = "TOPCIT으로 졸업 논문 대체를 하실 수 없습니다.\n 졸업 논문을 제출하셔야 합니다.\n"
+
     return st
 
 #TODO
 def askGradTest(argList):
     graduationAssessment(argList)
+
+    ID = argList[0]
+    st = requirements[userGraduInfo[ID].year]["others"] + "\n"
+    st += "위의 조항에 따라 졸업 시험을 응시하셔야 졸업이 가능합니다."
 
     return st
 
