@@ -2082,9 +2082,10 @@ def checkCourse(dict, checkUser, year):
 def refresh(request):
 
     if request.method == 'POST':
-        tmp = json.loads(request.body.data)
+        tmp = json.loads(request.body)
+        data = tmp['data']
 
-        for item in tmp:
+        for item in data:
             if item in userGraduInfo.keys():
                 del userGraduInfo[item]
 
