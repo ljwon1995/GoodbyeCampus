@@ -35,6 +35,7 @@ class Chat extends Component {
     this.userPw = "";
   }
 
+
   _randomUser() {
     var data1 = String(Math.floor(Math.random()*100000)+1);
     var data2 = String(Math.floor(Math.random()*100000)+1);
@@ -48,6 +49,21 @@ class Chat extends Component {
     var result = data1+data2+data3+data4;
 
     return result;
+  }
+
+  async componentWillUnmount(){
+	 window.addEventListener("beforeunload", (event)=>{
+        fetch("http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/refresh",{
+            method: 'post',
+            body: JSON.stringify({
+                data: this.idList
+            })
+        })
+    })
+
+
+
+
   }
 
   async componentDidMount() {
