@@ -82,12 +82,20 @@ class Chat extends Component {
     
 
     try {
+	    var startTime;
+	    startTime = new Date();
             const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/start$'+ this.user);
             const posts = await res.json();
 	    
 	    var str = posts.content
 	    str = str.replace(/\n/g,'\n\n')
 	    addResponseMessage(str);
+	    
+	    var endTime;
+	    endTime = new Date();
+	    var timeDiff = endTime - startTime; //in ms
+	    timeDiff /= 1000;
+	    addResponseMessage(timeDiff.toString());
           
         } 
     catch (e) {
@@ -109,122 +117,210 @@ class Chat extends Component {
     
     if(newMessage === ':test') {
 	try {
+		var startTime;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/start');
     		const posts = await res.json()
 	   	 
 		addResponseMessage(posts.content);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/anal');
     		const posts = await res.json()
 	    
 		addResponseMessage(posts.content);
+
+
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/makingStudent');
     		const posts = await res.json()
 	    	
 		    var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+
+
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/totalCredits');
     		const posts = await res.json()
 
 		    var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+
+
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
+
+
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/exclusiveGECredits');
     		const posts = await res.json()
 
 		    var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+
+
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/BSMCredits');
     		const posts = await res.json()
 
 		    var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+
+
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
+
+
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/coreGECredits');
     		const posts = await res.json()
 
 		    var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
+
+
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/majorCredits');
     		const posts = await res.json()
 
 		    var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/majorBasicCredits');
     		const posts = await res.json()
 
 		    var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/majorCompulsoryCredits');
     		const posts = await res.json()
 
 		    var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/avgGrade');
     		const posts = await res.json()
 		
@@ -233,6 +329,11 @@ class Chat extends Component {
 		if (str !== ""){    
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 		}
 	}
 	catch (e){
@@ -240,18 +341,27 @@ class Chat extends Component {
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/compulsoryNotTaken');
     		const posts = await res.json()
 
 		    var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 	}
 	catch (e){
     		console.log(e)
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/machGE');
     		const posts = await res.json()
 
@@ -259,6 +369,11 @@ class Chat extends Component {
 		if (str !== "") {
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 		}
 	}
 	catch (e){
@@ -266,6 +381,8 @@ class Chat extends Component {
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/machPrac');
     		const posts = await res.json()
 
@@ -273,6 +390,11 @@ class Chat extends Component {
 		if (str !== "") {
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 		}
 	}
 	catch (e){
@@ -280,12 +402,19 @@ class Chat extends Component {
 	}
 
 	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/test/others');
     		const posts = await res.json()
 
 		    var str = posts.content
 		    str = str.replace(/\n/g,'\n\n')
 		    addResponseMessage(str);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
 	}
 	catch (e){
     		console.log(e)
@@ -296,6 +425,8 @@ class Chat extends Component {
     } else {
 
     	try {
+		var startTIme;
+		startTime = new Date();
     		const res = await fetch('http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/message/notfirst$' + this.user + "$" + newMessage);
     		const posts = await res.json();
             var str = posts.content
@@ -307,6 +438,11 @@ class Chat extends Component {
                 this.flag = false;
             }
     		addResponseMessage(str);
+		var endTime;
+		endTime = new Date();
+		var timeDiff = endTime - startTime; //in ms
+		timeDiff /= 1000;
+		addResponseMessage(timeDiff.toString());
     	} 
     	catch (e) {
       		console.log(e);

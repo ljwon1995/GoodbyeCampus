@@ -105,7 +105,7 @@ class Substitute extends Component {
                     }
 
                     else {
-                        fetch("http://localhost:8000/course", {
+                        fetch("http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/course", {
                             method: 'post',
                             body: JSON.stringify({
                                 data: this.state.search,
@@ -188,7 +188,7 @@ class Substitute extends Component {
                                     newList.splice(selected[0],1);
                                 }
 
-                                fetch("http://localhost:8000/delete", {
+                                fetch("http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/delete", {
                                     method: 'post',
                                     body: JSON.stringify({
                                         data: pass,
@@ -199,7 +199,8 @@ class Substitute extends Component {
                                 this.setState({
                                     options: [],
                                     subject: newList
-                                })                            
+                                })
+				alert("삭제되었습니다.");    
                             }
                         }
                     }>삭제</Button>
@@ -221,7 +222,7 @@ class Substitute extends Component {
                             pass.push(this.state.oldNm);
                             pass.push(this.state.newCode);
                             pass.push(this.state.newNm);
-                            fetch("http://localhost:8000/add", {
+                            fetch("http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/add", {
                                 method: 'post',
                                 body: JSON.stringify({
                                     data: pass,

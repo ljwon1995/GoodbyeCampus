@@ -29,16 +29,15 @@ class System extends Component{
         else if(this.state.value === 1) {
             content = <Substitute/>
         }
-        else {
-            content = <Requirement/>
-        }
+       // else {
+           // content = <Requirement/>
+        //}
         return(
             <div>
                 <AppBar position="static">
                     <Tabs value={this.state.value} onChange={this.handleChange} style={{'alignSelf' : 'center'}}>
                         <Tab label="전체 과목"/>
                         <Tab label="대체 과목"/>
-                        <Tab label="졸업 요건"/>
                     </Tabs>
                 </AppBar>
                 <div>{content}</div>

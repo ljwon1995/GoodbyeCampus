@@ -14,26 +14,26 @@ file: 0  /home/ubuntu/GoodbyeCampus/ChatScript/RAWDATA/GOODCAM/main.top
         rule: 5  ~introductions.0.0- t: 
           line: 5 0  # u/안녕하세요? 저는 Good
           Complexity of rule ~introductions.0.0- t: 1
-        rule: 8  ~introductions.1.0 u: 
-          line: 8 0  # ^keep ( ) ^repeat ( ) u/중앙
+        rule: 10  ~introductions.1.0 u: 
+          line: 10 0  # ^keep ( ) ^repeat ( ) u/중앙
           Complexity of rule ~introductions.1.0- u: 1
-        rule: 9  ~introductions.1.1 a: 
-          line: 9 0  # ^keep ( ) ^repeat ( ) u/아이
+        rule: 11  ~introductions.1.1 a: 
+          line: 11 0  # ^keep ( ) ^repeat ( ) u/아이
           Complexity of rule ~introductions.1.1- a: 1
-        rule: 10  ~introductions.1.2 b: 
-          line: 10 0  # ^keep ( ) ^repeat ( ) u/패스
+        rule: 12  ~introductions.1.2 b: 
+          line: 12 0  # ^keep ( ) ^repeat ( ) u/패스
           Complexity of rule ~introductions.1.2- b: 1
-        rule: 11  ~introductions.1.3 c: 
-          line: 11 0  # ^keep ( ) ^repeat ( ) u/패스
+        rule: 13  ~introductions.1.3 c: 
+          line: 13 0  # ^keep ( ) ^repeat ( ) u/패스
           Complexity of rule ~introductions.1.3- c: 1
-        rule: 12  ~introductions.1.4 d: 
-          line: 12 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+        rule: 14  ~introductions.1.4 d: 
+          line: 14 0  # ^keep ( ) ^repeat ( ) ^"f/more
           Complexity of rule ~introductions.1.4- d: 1
-        rule: 13  ~introductions.1.5 d: 
-          line: 13 0  # ^keep ( ) ^repeat ( ) u/다시
+        rule: 15  ~introductions.1.5 d: 
+          line: 15 0  # ^keep ( ) ^repeat ( ) u/다시
           Complexity of rule ~introductions.1.5- d: 1
-        rule: 14  ~introductions.1.6 b: 
-          line: 14 0  # ^keep ( ) ^repeat ( ) u/다시
+        rule: 16  ~introductions.1.6 b: 
+          line: 16 0  # ^keep ( ) ^repeat ( ) u/다시
           Complexity of rule ~introductions.1.6- b: 1
         rule: 18  ~introductions.2.0 u: 
           line: 18 0  # ^keep ( ) ^repeat ( ) u/중앙
@@ -48,7 +48,7 @@ file: 0  /home/ubuntu/GoodbyeCampus/ChatScript/RAWDATA/GOODCAM/main.top
           line: 21 0  # ^keep ( ) ^repeat ( ) u/패스
           Complexity of rule ~introductions.2.3- c: 1
         rule: 22  ~introductions.2.4 d: 
-          line: 22 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          line: 22 0  # ^keep ( ) ^repeat ( ) ^"f/more
           Complexity of rule ~introductions.2.4- d: 1
         rule: 23  ~introductions.2.5 d: 
           line: 23 0  # ^keep ( ) ^repeat ( ) u/다시
@@ -69,7 +69,7 @@ file: 0  /home/ubuntu/GoodbyeCampus/ChatScript/RAWDATA/GOODCAM/main.top
           line: 29 0  # ^keep ( ) ^repeat ( ) u/패스
           Complexity of rule ~introductions.3.3- c: 1
         rule: 30  ~introductions.3.4 d: 
-          line: 30 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          line: 30 0  # ^keep ( ) ^repeat ( ) ^"f/more
           Complexity of rule ~introductions.3.4- d: 1
         rule: 31  ~introductions.3.5 d: 
           line: 31 0  # ^keep ( ) ^repeat ( ) u/다시
@@ -77,227 +77,855 @@ file: 0  /home/ubuntu/GoodbyeCampus/ChatScript/RAWDATA/GOODCAM/main.top
         rule: 32  ~introductions.3.6 b: 
           line: 32 0  # ^keep ( ) ^repeat ( ) u/다시
           Complexity of rule ~introductions.3.6- b: 1
-        rule: 34  ~introductions.4.0 u: 
-          line: 34 0  # ^keep ( ) ^repeat ( ) u/중앙
+        rule: 33  ~introductions.4.0 u: 
+          line: 33 0  # ^keep ( ) ^repeat ( ) u/중앙
           Complexity of rule ~introductions.4.0- u: 1
-        rule: 35  ~introductions.4.1 a: 
-          line: 35 0  # ^keep ( ) ^repeat ( ) u/아이
+        rule: 34  ~introductions.4.1 a: 
+          line: 34 0  # ^keep ( ) ^repeat ( ) u/아이
           Complexity of rule ~introductions.4.1- a: 1
-        rule: 36  ~introductions.4.2 b: 
-          line: 36 0  # ^keep ( ) ^repeat ( ) u/패스
+        rule: 35  ~introductions.4.2 b: 
+          line: 35 0  # ^keep ( ) ^repeat ( ) u/패스
           Complexity of rule ~introductions.4.2- b: 1
-        rule: 37  ~introductions.4.3 c: 
-          line: 37 0  # ^keep ( ) ^repeat ( ) u/패스
+        rule: 36  ~introductions.4.3 c: 
+          line: 36 0  # ^keep ( ) ^repeat ( ) u/패스
           Complexity of rule ~introductions.4.3- c: 1
-        rule: 38  ~introductions.4.4 d: 
-          line: 38 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+        rule: 37  ~introductions.4.4 d: 
+          line: 37 0  # ^keep ( ) ^repeat ( ) ^"f/more
           Complexity of rule ~introductions.4.4- d: 1
-        rule: 39  ~introductions.4.5 d: 
-          line: 39 0  # ^keep ( ) ^repeat ( ) u/다시
+        rule: 38  ~introductions.4.5 d: 
+          line: 38 0  # ^keep ( ) ^repeat ( ) u/다시
           Complexity of rule ~introductions.4.5- d: 1
-        rule: 40  ~introductions.4.6 b: 
-          line: 40 0  # ^keep ( ) ^repeat ( ) u/다시
+        rule: 39  ~introductions.4.6 b: 
+          line: 39 0  # ^keep ( ) ^repeat ( ) u/다시
           Complexity of rule ~introductions.4.6- b: 1
-        rule: 42  ~introductions.5.0 u: 
-          line: 42 0  # ^keep ( ) ^repeat ( ) u/중앙
+        rule: 43  ~introductions.5.0 u: 
+          line: 43 0  # ^keep ( ) ^repeat ( ) u/중앙
           Complexity of rule ~introductions.5.0- u: 1
-        rule: 43  ~introductions.5.1 a: 
-          line: 43 0  # ^keep ( ) ^repeat ( ) u/아이
+        rule: 44  ~introductions.5.1 a: 
+          line: 44 0  # ^keep ( ) ^repeat ( ) u/아이
           Complexity of rule ~introductions.5.1- a: 1
-        rule: 44  ~introductions.5.2 b: 
-          line: 44 0  # ^keep ( ) ^repeat ( ) u/패스
-          Complexity of rule ~introductions.5.2- b: 1
-        rule: 45  ~introductions.5.3 c: 
+        rule: 45  ~introductions.5.2 b: 
           line: 45 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.5.2- b: 1
+        rule: 46  ~introductions.5.3 c: 
+          line: 46 0  # ^keep ( ) ^repeat ( ) u/패스
           Complexity of rule ~introductions.5.3- c: 1
-        rule: 46  ~introductions.5.4 d: 
-          line: 46 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+        rule: 47  ~introductions.5.4 d: 
+          line: 47 0  # ^keep ( ) ^repeat ( ) ^"f/askC
           Complexity of rule ~introductions.5.4- d: 1
-        rule: 47  ~introductions.5.5 d: 
-          line: 47 0  # ^keep ( ) ^repeat ( ) u/다시
-          Complexity of rule ~introductions.5.5- d: 1
-        rule: 48  ~introductions.5.6 b: 
+        rule: 48  ~introductions.5.5 d: 
           line: 48 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.5.5- d: 1
+        rule: 49  ~introductions.5.6 b: 
+          line: 49 0  # ^keep ( ) ^repeat ( ) u/다시
           Complexity of rule ~introductions.5.6- b: 1
-        rule: 54  ~introductions.6.0 u: 
-          line: 54 0  # ^keep ( ) ^repeat ( ) u/저는
+        rule: 52  ~introductions.6.0 u: 
+          line: 52 0  # ^keep ( ) ^repeat ( ) u/중앙
           Complexity of rule ~introductions.6.0- u: 1
-        rule: 55  ~introductions.7.0 u: 
-          line: 55 0  # ^keep ( ) ^repeat ( ) u/무엇
+        rule: 53  ~introductions.6.1 a: 
+          line: 53 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.6.1- a: 1
+        rule: 54  ~introductions.6.2 b: 
+          line: 54 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.6.2- b: 1
+        rule: 55  ~introductions.6.3 c: 
+          line: 55 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.6.3- c: 1
+        rule: 56  ~introductions.6.4 d: 
+          line: 56 0  # ^keep ( ) ^repeat ( ) ^"f/askC
+          Complexity of rule ~introductions.6.4- d: 1
+        rule: 57  ~introductions.6.5 d: 
+          line: 57 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.6.5- d: 1
+        rule: 58  ~introductions.6.6 b: 
+          line: 58 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.6.6- b: 1
+        rule: 62  ~introductions.7.0 u: 
+          line: 62 0  # ^keep ( ) ^repeat ( ) u/중앙
           Complexity of rule ~introductions.7.0- u: 1
-        rule: 56  ~introductions.8.0 u: 
-          line: 56 0  # ^keep ( ) ^repeat ( ) [ u/안�
+        rule: 63  ~introductions.7.1 a: 
+          line: 63 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.7.1- a: 1
+        rule: 64  ~introductions.7.2 b: 
+          line: 64 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.7.2- b: 1
+        rule: 65  ~introductions.7.3 c: 
+          line: 65 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.7.3- c: 1
+        rule: 66  ~introductions.7.4 d: 
+          line: 66 0  # ^keep ( ) ^repeat ( ) ^"f/askG
+          Complexity of rule ~introductions.7.4- d: 1
+        rule: 67  ~introductions.7.5 d: 
+          line: 67 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.7.5- d: 1
+        rule: 68  ~introductions.7.6 b: 
+          line: 68 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.7.6- b: 1
+        rule: 70  ~introductions.8.0 u: 
+          line: 70 0  # ^keep ( ) ^repeat ( ) u/중앙
           Complexity of rule ~introductions.8.0- u: 1
-        rule: 57  ~introductions.9.0 u: 
+        rule: 71  ~introductions.8.1 a: 
+          line: 71 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.8.1- a: 1
+        rule: 72  ~introductions.8.2 b: 
+          line: 72 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.8.2- b: 1
+        rule: 73  ~introductions.8.3 c: 
+          line: 73 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.8.3- c: 1
+        rule: 74  ~introductions.8.4 d: 
+          line: 74 0  # ^keep ( ) ^repeat ( ) ^"f/askC
+          Complexity of rule ~introductions.8.4- d: 1
+        rule: 75  ~introductions.8.5 d: 
+          line: 75 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.8.5- d: 1
+        rule: 76  ~introductions.8.6 b: 
+          line: 76 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.8.6- b: 1
+        rule: 77  ~introductions.9.0 u: 
+          line: 77 0  # ^keep ( ) ^repeat ( ) u/중앙
           Complexity of rule ~introductions.9.0- u: 1
+        rule: 78  ~introductions.9.1 a: 
+          line: 78 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.9.1- a: 1
+        rule: 79  ~introductions.9.2 b: 
+          line: 79 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.9.2- b: 1
+        rule: 80  ~introductions.9.3 c: 
+          line: 80 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.9.3- c: 1
+        rule: 81  ~introductions.9.4 d: 
+          line: 81 0  # ^keep ( ) ^repeat ( ) ^"f/askE
+          Complexity of rule ~introductions.9.4- d: 1
+        rule: 82  ~introductions.9.5 d: 
+          line: 82 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.9.5- d: 1
+        rule: 83  ~introductions.9.6 b: 
+          line: 83 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.9.6- b: 1
+        rule: 84  ~introductions.10.0 u: 
+          line: 84 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.10.0- u: 1
+        rule: 85  ~introductions.10.1 a: 
+          line: 85 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.10.1- a: 1
+        rule: 86  ~introductions.10.2 b: 
+          line: 86 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.10.2- b: 1
+        rule: 87  ~introductions.10.3 c: 
+          line: 87 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.10.3- c: 1
+        rule: 88  ~introductions.10.4 d: 
+          line: 88 0  # ^keep ( ) ^repeat ( ) ^"f/askT
+          Complexity of rule ~introductions.10.4- d: 1
+        rule: 89  ~introductions.10.5 d: 
+          line: 89 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.10.5- d: 1
+        rule: 90  ~introductions.10.6 b: 
+          line: 90 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.10.6- b: 1
+        rule: 91  ~introductions.11.0 u: 
+          line: 91 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.11.0- u: 1
+        rule: 92  ~introductions.11.1 a: 
+          line: 92 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.11.1- a: 1
+        rule: 93  ~introductions.11.2 b: 
+          line: 93 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.11.2- b: 1
+        rule: 94  ~introductions.11.3 c: 
+          line: 94 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.11.3- c: 1
+        rule: 95  ~introductions.11.4 d: 
+          line: 95 0  # ^keep ( ) ^repeat ( ) ^"f/askT
+          Complexity of rule ~introductions.11.4- d: 1
+        rule: 96  ~introductions.11.5 d: 
+          line: 96 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.11.5- d: 1
+        rule: 97  ~introductions.11.6 b: 
+          line: 97 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.11.6- b: 1
+        rule: 98  ~introductions.12.0 u: 
+          line: 98 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.12.0- u: 1
+        rule: 99  ~introductions.12.1 a: 
+          line: 99 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.12.1- a: 1
+        rule: 100  ~introductions.12.2 b: 
+          line: 100 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.12.2- b: 1
+        rule: 101  ~introductions.12.3 c: 
+          line: 101 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.12.3- c: 1
+        rule: 102  ~introductions.12.4 d: 
+          line: 102 0  # ^keep ( ) ^repeat ( ) ^"f/askT
+          Complexity of rule ~introductions.12.4- d: 1
+        rule: 103  ~introductions.12.5 d: 
+          line: 103 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.12.5- d: 1
+        rule: 104  ~introductions.12.6 b: 
+          line: 104 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.12.6- b: 1
+        rule: 106  ~introductions.13.0 u: 
+          line: 106 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.13.0- u: 1
+        rule: 107  ~introductions.13.1 a: 
+          line: 107 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.13.1- a: 1
+        rule: 108  ~introductions.13.2 b: 
+          line: 108 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.13.2- b: 1
+        rule: 109  ~introductions.13.3 c: 
+          line: 109 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.13.3- c: 1
+        rule: 110  ~introductions.13.4 d: 
+          line: 110 0  # ^keep ( ) ^repeat ( ) ^"f/askG
+          Complexity of rule ~introductions.13.4- d: 1
+        rule: 111  ~introductions.13.5 d: 
+          line: 111 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.13.5- d: 1
+        rule: 112  ~introductions.13.6 b: 
+          line: 112 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.13.6- b: 1
+        rule: 114  ~introductions.14.0 u: 
+          line: 114 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.14.0- u: 1
+        rule: 115  ~introductions.14.1 a: 
+          line: 115 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.14.1- a: 1
+        rule: 116  ~introductions.14.2 b: 
+          line: 116 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.14.2- b: 1
+        rule: 117  ~introductions.14.3 c: 
+          line: 117 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.14.3- c: 1
+        rule: 118  ~introductions.14.4 d: 
+          line: 118 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.14.4- d: 1
+        rule: 119  ~introductions.14.5 d: 
+          line: 119 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.14.5- d: 1
+        rule: 120  ~introductions.14.6 b: 
+          line: 120 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.14.6- b: 1
+        rule: 124  ~introductions.15.0 u: 
+          line: 124 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.15.0- u: 1
+        rule: 125  ~introductions.15.1 a: 
+          line: 125 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.15.1- a: 1
+        rule: 126  ~introductions.15.2 b: 
+          line: 126 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.15.2- b: 1
+        rule: 127  ~introductions.15.3 c: 
+          line: 127 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.15.3- c: 1
+        rule: 128  ~introductions.15.4 d: 
+          line: 128 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.15.4- d: 1
+        rule: 129  ~introductions.15.5 d: 
+          line: 129 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.15.5- d: 1
+        rule: 130  ~introductions.15.6 b: 
+          line: 130 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.15.6- b: 1
+        rule: 132  ~introductions.16.0 u: 
+          line: 132 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.16.0- u: 1
+        rule: 133  ~introductions.16.1 a: 
+          line: 133 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.16.1- a: 1
+        rule: 134  ~introductions.16.2 b: 
+          line: 134 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.16.2- b: 1
+        rule: 135  ~introductions.16.3 c: 
+          line: 135 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.16.3- c: 1
+        rule: 136  ~introductions.16.4 d: 
+          line: 136 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.16.4- d: 1
+        rule: 137  ~introductions.16.5 d: 
+          line: 137 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.16.5- d: 1
+        rule: 138  ~introductions.16.6 b: 
+          line: 138 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.16.6- b: 1
+        rule: 140  ~introductions.17.0 u: 
+          line: 140 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.17.0- u: 1
+        rule: 141  ~introductions.17.1 a: 
+          line: 141 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.17.1- a: 1
+        rule: 142  ~introductions.17.2 b: 
+          line: 142 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.17.2- b: 1
+        rule: 143  ~introductions.17.3 c: 
+          line: 143 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.17.3- c: 1
+        rule: 144  ~introductions.17.4 d: 
+          line: 144 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.17.4- d: 1
+        rule: 145  ~introductions.17.5 d: 
+          line: 145 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.17.5- d: 1
+        rule: 146  ~introductions.17.6 b: 
+          line: 146 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.17.6- b: 1
+        rule: 148  ~introductions.18.0 u: 
+          line: 148 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.18.0- u: 1
+        rule: 149  ~introductions.18.1 a: 
+          line: 149 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.18.1- a: 1
+        rule: 150  ~introductions.18.2 b: 
+          line: 150 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.18.2- b: 1
+        rule: 151  ~introductions.18.3 c: 
+          line: 151 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.18.3- c: 1
+        rule: 152  ~introductions.18.4 d: 
+          line: 152 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.18.4- d: 1
+        rule: 153  ~introductions.18.5 d: 
+          line: 153 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.18.5- d: 1
+        rule: 154  ~introductions.18.6 b: 
+          line: 154 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.18.6- b: 1
+        rule: 156  ~introductions.19.0 u: 
+          line: 156 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.19.0- u: 1
+        rule: 157  ~introductions.19.1 a: 
+          line: 157 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.19.1- a: 1
+        rule: 158  ~introductions.19.2 b: 
+          line: 158 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.19.2- b: 1
+        rule: 159  ~introductions.19.3 c: 
+          line: 159 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.19.3- c: 1
+        rule: 160  ~introductions.19.4 d: 
+          line: 160 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.19.4- d: 1
+        rule: 161  ~introductions.19.5 d: 
+          line: 161 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.19.5- d: 1
+        rule: 162  ~introductions.19.6 b: 
+          line: 162 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.19.6- b: 1
+        rule: 164  ~introductions.20.0 u: 
+          line: 164 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.20.0- u: 1
+        rule: 165  ~introductions.20.1 a: 
+          line: 165 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.20.1- a: 1
+        rule: 166  ~introductions.20.2 b: 
+          line: 166 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.20.2- b: 1
+        rule: 167  ~introductions.20.3 c: 
+          line: 167 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.20.3- c: 1
+        rule: 168  ~introductions.20.4 d: 
+          line: 168 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.20.4- d: 1
+        rule: 169  ~introductions.20.5 d: 
+          line: 169 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.20.5- d: 1
+        rule: 170  ~introductions.20.6 b: 
+          line: 170 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.20.6- b: 1
+        rule: 173  ~introductions.21.0 u: 
+          line: 173 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.21.0- u: 1
+        rule: 174  ~introductions.21.1 a: 
+          line: 174 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.21.1- a: 1
+        rule: 175  ~introductions.21.2 b: 
+          line: 175 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.21.2- b: 1
+        rule: 176  ~introductions.21.3 c: 
+          line: 176 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.21.3- c: 1
+        rule: 177  ~introductions.21.4 d: 
+          line: 177 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.21.4- d: 1
+        rule: 178  ~introductions.21.5 d: 
+          line: 178 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.21.5- d: 1
+        rule: 179  ~introductions.21.6 b: 
+          line: 179 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.21.6- b: 1
+        rule: 182  ~introductions.22.0 u: 
+          line: 182 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.22.0- u: 1
+        rule: 183  ~introductions.22.1 a: 
+          line: 183 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.22.1- a: 1
+        rule: 184  ~introductions.22.2 b: 
+          line: 184 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.22.2- b: 1
+        rule: 185  ~introductions.22.3 c: 
+          line: 185 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.22.3- c: 1
+        rule: 186  ~introductions.22.4 d: 
+          line: 186 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.22.4- d: 1
+        rule: 187  ~introductions.22.5 d: 
+          line: 187 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.22.5- d: 1
+        rule: 188  ~introductions.22.6 b: 
+          line: 188 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.22.6- b: 1
+        rule: 191  ~introductions.23.0 u: 
+          line: 191 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.23.0- u: 1
+        rule: 192  ~introductions.23.1 a: 
+          line: 192 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.23.1- a: 1
+        rule: 193  ~introductions.23.2 b: 
+          line: 193 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.23.2- b: 1
+        rule: 194  ~introductions.23.3 c: 
+          line: 194 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.23.3- c: 1
+        rule: 195  ~introductions.23.4 d: 
+          line: 195 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.23.4- d: 1
+        rule: 196  ~introductions.23.5 d: 
+          line: 196 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.23.5- d: 1
+        rule: 197  ~introductions.23.6 b: 
+          line: 197 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.23.6- b: 1
+        rule: 199  ~introductions.24.0 u: 
+          line: 199 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.24.0- u: 1
+        rule: 200  ~introductions.24.1 a: 
+          line: 200 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.24.1- a: 1
+        rule: 201  ~introductions.24.2 b: 
+          line: 201 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.24.2- b: 1
+        rule: 202  ~introductions.24.3 c: 
+          line: 202 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.24.3- c: 1
+        rule: 203  ~introductions.24.4 d: 
+          line: 203 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.24.4- d: 1
+        rule: 204  ~introductions.24.5 d: 
+          line: 204 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.24.5- d: 1
+        rule: 205  ~introductions.24.6 b: 
+          line: 205 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.24.6- b: 1
+        rule: 209  ~introductions.25.0 u: 
+          line: 209 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.25.0- u: 1
+        rule: 210  ~introductions.25.1 a: 
+          line: 210 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.25.1- a: 1
+        rule: 211  ~introductions.25.2 b: 
+          line: 211 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.25.2- b: 1
+        rule: 212  ~introductions.25.3 c: 
+          line: 212 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.25.3- c: 1
+        rule: 213  ~introductions.25.4 d: 
+          line: 213 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.25.4- d: 1
+        rule: 214  ~introductions.25.5 d: 
+          line: 214 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.25.5- d: 1
+        rule: 215  ~introductions.25.6 b: 
+          line: 215 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.25.6- b: 1
+        rule: 218  ~introductions.26.0 u: 
+          line: 218 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.26.0- u: 1
+        rule: 219  ~introductions.26.1 a: 
+          line: 219 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.26.1- a: 1
+        rule: 220  ~introductions.26.2 b: 
+          line: 220 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.26.2- b: 1
+        rule: 221  ~introductions.26.3 c: 
+          line: 221 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.26.3- c: 1
+        rule: 222  ~introductions.26.4 d: 
+          line: 222 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.26.4- d: 1
+        rule: 223  ~introductions.26.5 d: 
+          line: 223 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.26.5- d: 1
+        rule: 224  ~introductions.26.6 b: 
+          line: 224 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.26.6- b: 1
+        rule: 225  ~introductions.27.0 u: 
+          line: 225 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.27.0- u: 1
+        rule: 226  ~introductions.27.1 a: 
+          line: 226 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.27.1- a: 1
+        rule: 227  ~introductions.27.2 b: 
+          line: 227 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.27.2- b: 1
+        rule: 228  ~introductions.27.3 c: 
+          line: 228 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.27.3- c: 1
+        rule: 229  ~introductions.27.4 d: 
+          line: 229 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.27.4- d: 1
+        rule: 230  ~introductions.27.5 d: 
+          line: 230 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.27.5- d: 1
+        rule: 231  ~introductions.27.6 b: 
+          line: 231 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.27.6- b: 1
+        rule: 235  ~introductions.28.0 u: 
+          line: 235 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.28.0- u: 1
+        rule: 236  ~introductions.28.1 a: 
+          line: 236 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.28.1- a: 1
+        rule: 237  ~introductions.28.2 b: 
+          line: 237 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.28.2- b: 1
+        rule: 238  ~introductions.28.3 c: 
+          line: 238 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.28.3- c: 1
+        rule: 239  ~introductions.28.4 d: 
+          line: 239 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.28.4- d: 1
+        rule: 240  ~introductions.28.5 d: 
+          line: 240 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.28.5- d: 1
+        rule: 241  ~introductions.28.6 b: 
+          line: 241 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.28.6- b: 1
+        rule: 243  ~introductions.29.0 u: 
+          line: 243 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.29.0- u: 1
+        rule: 244  ~introductions.29.1 a: 
+          line: 244 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.29.1- a: 1
+        rule: 245  ~introductions.29.2 b: 
+          line: 245 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.29.2- b: 1
+        rule: 246  ~introductions.29.3 c: 
+          line: 246 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.29.3- c: 1
+        rule: 247  ~introductions.29.4 d: 
+          line: 247 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.29.4- d: 1
+        rule: 248  ~introductions.29.5 d: 
+          line: 248 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.29.5- d: 1
+        rule: 249  ~introductions.29.6 b: 
+          line: 249 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.29.6- b: 1
+        rule: 250  ~introductions.30.0 u: 
+          line: 250 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.30.0- u: 1
+        rule: 251  ~introductions.30.1 a: 
+          line: 251 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.30.1- a: 1
+        rule: 252  ~introductions.30.2 b: 
+          line: 252 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.30.2- b: 1
+        rule: 253  ~introductions.30.3 c: 
+          line: 253 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.30.3- c: 1
+        rule: 254  ~introductions.30.4 d: 
+          line: 254 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.30.4- d: 1
+        rule: 255  ~introductions.30.5 d: 
+          line: 255 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.30.5- d: 1
+        rule: 256  ~introductions.30.6 b: 
+          line: 256 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.30.6- b: 1
+        rule: 257  ~introductions.31.0 u: 
+          line: 257 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.31.0- u: 1
+        rule: 258  ~introductions.31.1 a: 
+          line: 258 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.31.1- a: 1
+        rule: 259  ~introductions.31.2 b: 
+          line: 259 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.31.2- b: 1
+        rule: 260  ~introductions.31.3 c: 
+          line: 260 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.31.3- c: 1
+        rule: 261  ~introductions.31.4 d: 
+          line: 261 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.31.4- d: 1
+        rule: 262  ~introductions.31.5 d: 
+          line: 262 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.31.5- d: 1
+        rule: 263  ~introductions.31.6 b: 
+          line: 263 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.31.6- b: 1
+        rule: 264  ~introductions.32.0 u: 
+          line: 264 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.32.0- u: 1
+        rule: 265  ~introductions.32.1 a: 
+          line: 265 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.32.1- a: 1
+        rule: 266  ~introductions.32.2 b: 
+          line: 266 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.32.2- b: 1
+        rule: 267  ~introductions.32.3 c: 
+          line: 267 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.32.3- c: 1
+        rule: 268  ~introductions.32.4 d: 
+          line: 268 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.32.4- d: 1
+        rule: 269  ~introductions.32.5 d: 
+          line: 269 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.32.5- d: 1
+        rule: 270  ~introductions.32.6 b: 
+          line: 270 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.32.6- b: 1
+        rule: 272  ~introductions.33.0 u: 
+          line: 272 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.33.0- u: 1
+        rule: 273  ~introductions.33.1 a: 
+          line: 273 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.33.1- a: 1
+        rule: 274  ~introductions.33.2 b: 
+          line: 274 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.33.2- b: 1
+        rule: 275  ~introductions.33.3 c: 
+          line: 275 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.33.3- c: 1
+        rule: 276  ~introductions.33.4 d: 
+          line: 276 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.33.4- d: 1
+        rule: 277  ~introductions.33.5 d: 
+          line: 277 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.33.5- d: 1
+        rule: 278  ~introductions.33.6 b: 
+          line: 278 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.33.6- b: 1
+        rule: 280  ~introductions.34.0 u: 
+          line: 280 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.34.0- u: 1
+        rule: 281  ~introductions.34.1 a: 
+          line: 281 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.34.1- a: 1
+        rule: 282  ~introductions.34.2 b: 
+          line: 282 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.34.2- b: 1
+        rule: 283  ~introductions.34.3 c: 
+          line: 283 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.34.3- c: 1
+        rule: 284  ~introductions.34.4 d: 
+          line: 284 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.34.4- d: 1
+        rule: 285  ~introductions.34.5 d: 
+          line: 285 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.34.5- d: 1
+        rule: 286  ~introductions.34.6 b: 
+          line: 286 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.34.6- b: 1
+        rule: 287  ~introductions.35.0 u: 
+          line: 287 0  # ^keep ( ) ^repeat ( ) u/중앙
+          Complexity of rule ~introductions.35.0- u: 1
+        rule: 288  ~introductions.35.1 a: 
+          line: 288 0  # ^keep ( ) ^repeat ( ) u/아이
+          Complexity of rule ~introductions.35.1- a: 1
+        rule: 289  ~introductions.35.2 b: 
+          line: 289 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.35.2- b: 1
+        rule: 290  ~introductions.35.3 c: 
+          line: 290 0  # ^keep ( ) ^repeat ( ) u/패스
+          Complexity of rule ~introductions.35.3- c: 1
+        rule: 291  ~introductions.35.4 d: 
+          line: 291 0  # ^keep ( ) ^repeat ( ) ^"f/grad
+          Complexity of rule ~introductions.35.4- d: 1
+        rule: 292  ~introductions.35.5 d: 
+          line: 292 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.35.5- d: 1
+        rule: 293  ~introductions.35.6 b: 
+          line: 293 0  # ^keep ( ) ^repeat ( ) u/다시
+          Complexity of rule ~introductions.35.6- b: 1
+        rule: 296  ~introductions.36.0 u: 
+          line: 296 0  # ^keep ( ) ^repeat ( ) u/저는
+          Complexity of rule ~introductions.36.0- u: 1
+        rule: 297  ~introductions.37.0 u: 
+          line: 297 0  # ^keep ( ) ^repeat ( ) u/무엇
+          Complexity of rule ~introductions.37.0- u: 1
+        rule: 298  ~introductions.38.0 u: 
+          line: 298 0  # ^keep ( ) ^repeat ( ) [ u/안�
+          Complexity of rule ~introductions.38.0- u: 1
+        rule: 299  ~introductions.39.0 u: 
+          Complexity of rule ~introductions.39.0- u: 1
 file: 0  /home/ubuntu/GoodbyeCampus/ChatScript/RAWDATA/GOODCAM/concepts.top
     concept: 1  ~긍정대답
     concept: 2  ~부정대답
 file: 0  /home/ubuntu/GoodbyeCampus/ChatScript/RAWDATA/GOODCAM/simplecontrol.top
     macro: 6  ^harry
-          line: 8 0  # $cs_token = 4096 | 255 | 512 |
-          line: 9 53  # $cs_token += 67108864 | 65536 
-          line: 10 93  # $cs_token -= 8 
-          line: 13 108  # ^addtopic ( ~introductions ) 
-          line: 15 137  # $cs_control_main = ~control 
-          line: 18 165  # $userprompt = ^"%user: >" 
-          line: 19 191  # $botprompt = ^"GoodCam: " 
-          line: 24 217  # $singleresponse = 1 
-          line: 27 237  # $shutup = 1 
+          line: 9 0  # $cs_token = 256 
+          line: 12 16  # ^addtopic ( ~introductions ) 
+          line: 14 45  # $cs_control_main = ~control 
+          line: 17 73  # $userprompt = ^"%user: >" 
+          line: 18 99  # $botprompt = ^"GoodCam: " 
+          line: 23 125  # $singleresponse = 1 
+          line: 26 145  # $shutup = 1 
           Complexity of ^harry: 1
-    topic: 38  ~control
-        rule: 41  ~control.0.0 u: 
-          line: 42 0  # ^gambit ( ~introductions ) 
+    topic: 37  ~control
+        rule: 40  ~control.0.0 u: 
+          line: 41 0  # ^gambit ( ~introductions ) 
           Complexity of rule ~control.0.0- u: 1
-        rule: 45  ~control.1.0 u: 
-          line: 45 0  # $shutup = 1 
+        rule: 44  ~control.1.0 u: 
+          line: 44 0  # $shutup = 1 
           Complexity of rule ~control.1.0- u: 1
-        rule: 47  ~control.2.0 u: 
-          line: 47 0  # $shutup = null 
+        rule: 46  ~control.2.0 u: 
+          line: 46 0  # $shutup = null 
           Complexity of rule ~control.2.0- u: 1
-        rule: 50  ~control.3.0 u: 
-          line: 50 0  # Callback seen. 
+        rule: 49  ~control.3.0 u: 
+          line: 49 0  # Callback seen. 
           Complexity of rule ~control.3.0- u: 1
-        rule: 51  ~control.4.0 u: 
-          line: 51 0  # Loopback seen. 
+        rule: 50  ~control.4.0 u: 
+          line: 50 0  # Loopback seen. 
           Complexity of rule ~control.4.0- u: 1
-        rule: 52  ~control.5.0 u: 
-          line: 52 0  # Alarm seen. 
+        rule: 51  ~control.5.0 u: 
+          line: 51 0  # Alarm seen. 
           Complexity of rule ~control.5.0- u: 1
-        rule: 53  ~control.6.0 u: 
-          line: 53 0  # \[ loopback=1000 \] Loopback r
+        rule: 52  ~control.6.0 u: 
+          line: 52 0  # \[ loopback=1000 \] Loopback r
           Complexity of rule ~control.6.0- u: 1
-        rule: 54  ~control.7.0 u: 
-          line: 54 0  # \[ callback=1000 \] Callback r
+        rule: 53  ~control.7.0 u: 
+          line: 53 0  # \[ callback=1000 \] Callback r
           Complexity of rule ~control.7.0- u: 1
-        rule: 55  ~control.8.0 u: 
-          line: 55 0  # \[ alarm=5000 \] Alarm request
+        rule: 54  ~control.8.0 u: 
+          line: 54 0  # \[ alarm=5000 \] Alarm request
           Complexity of rule ~control.8.0- u: 1
-        rule: 57  ~control.9.0 u: 
-          line: 58 0  # $_responsecount = %response 
-          if 62 32  
-          ifend 62 85  
-          line: 62 28  # ^if 00n( $singleresponse ) 00v
-          line: 64 86  # $$currenttopic = %topic 
-          if 66 114  
-          ifend 66 193  
-          line: 66 110  # ^if 00A( %response == $_respon
-          if 68 198  
-          line: 68 194  # ^if 00R( %length == 0 and %res
-          line: 69 254  # { 
-          line: 70 256  # ^nofail ( TOPIC ^gambit ( $$cu
-          ifend 71 306  
-          line: 71 301  # } 004 
-          if 73 311  
-          ifend 73 403  
-          line: 73 307  # ^if 00A( %response == $_respon
-          if 75 408  
-          line: 75 404  # ^if 00A( %response == $_respon
-          line: 76 447  # { 
-          line: 77 449  # @8 = ^keywordtopics ( ) 
-          loop 78 479  
-          line: 78 473  # ^loop ( -1 ) aaa 
-          line: 79 490  # { 
-          line: 80 492  # $$topic = ^first ( @8subject )
-          line: 81 523  # ^nofail ( TOPIC ^respond ( $$t
-          if 82 566  
-          line: 82 562  # ^if 00A( %response != $_respon
-          line: 83 605  # { 
-          line: 84 607  # ^end ( RULE ) 
-          ifend 85 626  
-          line: 85 621  # } 004 
-          loopend 86 629  
-          line: 86 627  # } 
-          ifend 87 634  
-          line: 87 629  # } 004 
-          if 90 639  
-          line: 90 635  # ^if 00A( %response == $_respon
-          line: 91 678  # { 
-          line: 92 680  # ^nofail ( TOPIC ^respond ( ~ke
-          ifend 93 729  
-          line: 93 724  # } 004 
-          if 98 734  
-          line: 98 730  # ^if 00P( %response == $_respon
-          line: 99 788  # { 
-          line: 100 790  # ^nofail ( TOPIC ^respond ( ~qu
-          ifend 101 839  
-          line: 101 834  # } 004 
-          if 104 844  
-          line: 104 840  # ^if 00F( %outputrejoinder or %
-          line: 105 888  # { 
-          line: 106 890  # ^end ( TOPIC ) 
-          ifend 107 910  
-          line: 107 905  # } 004 
-          if 109 915  
-          ifend 109 1037  
-          line: 109 911  # ^if 00%( %response == $_respon
-          if 111 1042  
-          line: 111 1038  # ^if 00A( %response == $_respon
-          line: 112 1081  # { 
-          line: 113 1083  # @8 = ^keywordtopics ( ) 
-          loop 114 1113  
-          line: 114 1107  # ^loop ( -1 ) aaa 
-          line: 115 1124  # { 
-          line: 116 1126  # $$topic = ^first ( @8subject )
-          line: 117 1157  # ^nofail ( TOPIC ^gambit ( $$to
-          if 118 1199  
-          line: 118 1195  # ^if 00A( %response != $_respon
-          line: 119 1238  # { 
-          line: 120 1240  # ^end ( RULE ) 
-          ifend 121 1259  
-          line: 121 1254  # } 004 
-          loopend 122 1262  
-          line: 122 1260  # } 
-          ifend 123 1267  
-          line: 123 1262  # } 004 
-          if 124 1272  
-          ifend 124 1363  
-          line: 124 1268  # ^if 00A( %response == $_respon
-          if 126 1368  
-          line: 126 1364  # ^if 00A( %response == $_respon
-          line: 127 1407  # { 
-          line: 128 1409  # @8 = ^gambittopics ( ) 
-          loop 129 1438  
-          line: 129 1432  # ^loop ( -1 ) aaa 
-          line: 130 1449  # { 
-          line: 131 1451  # $$topic = ^pick ( @8subject ) 
-          line: 132 1481  # ^nofail ( TOPIC ^gambit ( $$to
-          if 133 1523  
-          line: 133 1519  # ^if 00A( %response != $_respon
-          line: 134 1562  # { 
-          line: 135 1564  # ^end ( RULE ) 
-          ifend 136 1583  
-          line: 136 1578  # } 004 
-          loopend 137 1586  
-          line: 137 1584  # } 
-          ifend 138 1591  
-          line: 138 1586  # } 004 
-          if 140 1596  
-          line: 140 1592  # ^if 00A( %response == $_respon
-          line: 141 1635  # { 
-          line: 142 1637  # ^repeat ( ) 
-          line: 143 1649  # 무슨 말인지 모르겠어�
-          ifend 144 1726  
-          line: 144 1721  # } 004 
+        rule: 56  ~control.9.0 u: 
+          line: 57 0  # $_responsecount = %response 
+          if 61 32  
+          ifend 61 85  
+          line: 61 28  # ^if 00n( $singleresponse ) 00v
+          line: 63 86  # $$currenttopic = %topic 
+          if 65 114  
+          ifend 65 193  
+          line: 65 110  # ^if 00A( %response == $_respon
+          if 67 198  
+          line: 67 194  # ^if 00R( %length == 0 and %res
+          line: 68 254  # { 
+          line: 69 256  # ^nofail ( TOPIC ^gambit ( $$cu
+          ifend 70 306  
+          line: 70 301  # } 004 
+          if 72 311  
+          ifend 72 403  
+          line: 72 307  # ^if 00A( %response == $_respon
+          if 74 408  
+          line: 74 404  # ^if 00A( %response == $_respon
+          line: 75 447  # { 
+          line: 76 449  # @8 = ^keywordtopics ( ) 
+          loop 77 479  
+          line: 77 473  # ^loop ( -1 ) aaa 
+          line: 78 490  # { 
+          line: 79 492  # $$topic = ^first ( @8subject )
+          line: 80 523  # ^nofail ( TOPIC ^respond ( $$t
+          if 81 566  
+          line: 81 562  # ^if 00A( %response != $_respon
+          line: 82 605  # { 
+          line: 83 607  # ^end ( RULE ) 
+          ifend 84 626  
+          line: 84 621  # } 004 
+          loopend 85 629  
+          line: 85 627  # } 
+          ifend 86 634  
+          line: 86 629  # } 004 
+          if 89 639  
+          line: 89 635  # ^if 00A( %response == $_respon
+          line: 90 678  # { 
+          line: 91 680  # ^nofail ( TOPIC ^respond ( ~ke
+          ifend 92 729  
+          line: 92 724  # } 004 
+          if 97 734  
+          line: 97 730  # ^if 00P( %response == $_respon
+          line: 98 788  # { 
+          line: 99 790  # ^nofail ( TOPIC ^respond ( ~qu
+          ifend 100 839  
+          line: 100 834  # } 004 
+          if 103 844  
+          line: 103 840  # ^if 00F( %outputrejoinder or %
+          line: 104 888  # { 
+          line: 105 890  # ^end ( TOPIC ) 
+          ifend 106 910  
+          line: 106 905  # } 004 
+          if 108 915  
+          ifend 108 1037  
+          line: 108 911  # ^if 00%( %response == $_respon
+          if 110 1042  
+          line: 110 1038  # ^if 00A( %response == $_respon
+          line: 111 1081  # { 
+          line: 112 1083  # @8 = ^keywordtopics ( ) 
+          loop 113 1113  
+          line: 113 1107  # ^loop ( -1 ) aaa 
+          line: 114 1124  # { 
+          line: 115 1126  # $$topic = ^first ( @8subject )
+          line: 116 1157  # ^nofail ( TOPIC ^gambit ( $$to
+          if 117 1199  
+          line: 117 1195  # ^if 00A( %response != $_respon
+          line: 118 1238  # { 
+          line: 119 1240  # ^end ( RULE ) 
+          ifend 120 1259  
+          line: 120 1254  # } 004 
+          loopend 121 1262  
+          line: 121 1260  # } 
+          ifend 122 1267  
+          line: 122 1262  # } 004 
+          if 123 1272  
+          ifend 123 1363  
+          line: 123 1268  # ^if 00A( %response == $_respon
+          if 125 1368  
+          line: 125 1364  # ^if 00A( %response == $_respon
+          line: 126 1407  # { 
+          line: 127 1409  # @8 = ^gambittopics ( ) 
+          loop 128 1438  
+          line: 128 1432  # ^loop ( -1 ) aaa 
+          line: 129 1449  # { 
+          line: 130 1451  # $$topic = ^pick ( @8subject ) 
+          line: 131 1481  # ^nofail ( TOPIC ^gambit ( $$to
+          if 132 1523  
+          line: 132 1519  # ^if 00A( %response != $_respon
+          line: 133 1562  # { 
+          line: 134 1564  # ^end ( RULE ) 
+          ifend 135 1583  
+          line: 135 1578  # } 004 
+          loopend 136 1586  
+          line: 136 1584  # } 
+          ifend 137 1591  
+          line: 137 1586  # } 004 
+          if 139 1596  
+          line: 139 1592  # ^if 00A( %response == $_respon
+          line: 140 1635  # { 
+          line: 141 1637  # ^repeat ( ) 
+          line: 142 1649  # 무슨 말인지 모르겠어�
+          ifend 143 1726  
+          line: 143 1721  # } 004 
           Complexity of rule ~control.9.0- u: 17
-    topic: 147  ~xpostprocess
-        rule: 149  ~xpostprocess.0.0 t: 
-          loop 150 6  
-          line: 150 0  # ^loop ( -1 ) aaa 
-          line: 151 17  # { 
-          line: 152 19  # $$tmp = ^last ( @9subject ) 
-          if 153 51  
-          line: 153 47  # ^if 00O( ! %server and %os == 
-          line: 154 104  # { 
-          line: 155 106  # $$tmp = ^"talk \"$$tmp\" " 
-          line: 156 133  # ^popen ( $$tmp null ) 
-          ifend 157 160  
-          line: 157 155  # } 004 
-          if 158 165  
-          line: 158 161  # ^if 00K( ! %server and %os == 
-          line: 159 214  # { 
-          line: 160 216  # $$shellerror = ^system ( "^say
-          ifend 161 266  
-          line: 161 261  # } 004 
-          loopend 163 269  
+    topic: 146  ~xpostprocess
+        rule: 148  ~xpostprocess.0.0 t: 
+          loop 149 6  
+          line: 149 0  # ^loop ( -1 ) aaa 
+          line: 150 17  # { 
+          line: 151 19  # $$tmp = ^last ( @9subject ) 
+          if 152 51  
+          line: 152 47  # ^if 00O( ! %server and %os == 
+          line: 153 104  # { 
+          line: 154 106  # $$tmp = ^"talk \"$$tmp\" " 
+          line: 155 133  # ^popen ( $$tmp null ) 
+          ifend 156 160  
+          line: 156 155  # } 004 
+          if 157 165  
+          line: 157 161  # ^if 00K( ! %server and %os == 
+          line: 158 214  # { 
+          line: 159 216  # $$shellerror = ^system ( "^say
+          ifend 160 266  
+          line: 160 261  # } 004 
+          loopend 162 269  
           Complexity of rule ~xpostprocess.0.0- t: 3

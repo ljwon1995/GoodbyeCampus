@@ -5,6 +5,112 @@ topic: ~introductions []
 t: u/안녕하세요? 저는 GoodBye Campus 입니다. 졸업 관련 질문에 답을 해 드릴게요!
 
 
+
+
+u: ( [전공학점 "전공 학점"] *남* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/moreMajorCredit/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+
+u: ( [전공학점 "전공 학점"] ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/moreMajorCredit/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+
+u: ( *학점*  남*  ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/moreTotCredit/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+u: ( *학점* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/moreTotCredit/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+
+
+
+u: ( *필수* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/askCompul/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+
+
+u: ( *상담* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/askConsult/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+
+
+
+u: ( *논문* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/askGradPaper/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+
+u: ( *한자* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/askChinese/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+u: ( *영어* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/askEnglish/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+u: ( *topcit* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/askTopcit/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+u: ( *탑씻* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/askTopcit/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+u: ( *탑싯* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/askTopcit/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+
+u: ( *시험* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
+	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
+		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
+            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
+                		d: (~긍정대답) ^keep() ^repeat() ^"f/askGradTest/$ID/'_0" $PW = _0
+                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
+
 u: (나 졸업 가능해?) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
 	a: ( _* ) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
 		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
@@ -176,111 +282,6 @@ u: ( *졸업* *가능* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드
 		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
             		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
                 		d: (~긍정대답) ^keep() ^repeat() ^"f/graduationAvailability/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-
-
-u: ( [전공학점 "전공 학점"] *남* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/moreMajorCredit/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-
-u: ( [전공학점 "전공 학점"] ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/moreMajorCredit/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-
-u: ( *학점*  남*  ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/moreTotCredit/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-u: ( *학점* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/moreTotCredit/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-
-
-
-u: ( *필수* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/askCompul/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-
-
-u: ( *상담* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/askConsult/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-
-
-
-u: ( *논문* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/askGradPaper/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-
-u: ( *한자* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/askChinese/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-u: ( *영어* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/askEnglish/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-u: ( *topcit* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/askTopcit/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-u: ( *탑씻* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/askTopcit/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-u: ( *탑싯* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/askTopcit/$ID/'_0" $PW = _0
-                		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
-
-u: ( *시험* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요
-	a: (_*) ^keep() ^repeat() u/아이디가 '_0 맞나요? 
-		b: (~긍정대답) ^keep() ^repeat() u/패스워드를 입력 해 주세요 $ID = '_0
-            		c: (_*) ^keep() ^repeat() u/패스워드가 '_0 맞나요? 
-                		d: (~긍정대답) ^keep() ^repeat() ^"f/askGradTest/$ID/'_0" $PW = _0
                 		d: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
 		b: (~부정대답) ^keep() ^repeat() u/다시 질문 해 주세요
 u: ( *졸업* ) ^keep() ^repeat() u/중앙대학교 포탈 패스워드, 아이디가 필요합니다. 아이디를 입력 해 주세요

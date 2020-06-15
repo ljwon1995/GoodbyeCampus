@@ -933,7 +933,7 @@ def graduationAvailability(argList):
 
     # BSM 학점 언급
     if userGraduInfo[ID].bsmCreditsSatisfied == False:
-        st += "BSM 학점 조건을 만족하시지 못합니다.\n 전문 교양 학점을 " + str(userGraduInfo[ID].bsmCreditsMore) + "만큼 더 취득하셔야 합니다.\n"
+        st += "BSM 학점 조건을 만족하시지 못합니다.\n BSM 학점을 " + str(userGraduInfo[ID].bsmCreditsMore) + "만큼 더 취득하셔야 합니다.\n"
 
     # 핵심 교양 학점 언급
     if int(userGraduInfo[ID].year) <= 2014:
@@ -2079,6 +2079,7 @@ def checkCourse(dict, checkUser, year):
             checkUser.totalGECredits += int(sInfo[i].course_pnt.split("-")[0])
             break
 
+@csrf_exempt
 def refresh(request):
 
     if request.method == 'POST':

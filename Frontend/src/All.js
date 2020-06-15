@@ -180,7 +180,7 @@ class All extends Component {
                             pass.push(this.state.sub);
                             pass.push(this.state.s_title);
                             
-                            fetch("http://localhost:8000/course", {
+                            fetch("http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/course", {
                                 method : 'post',
                                 body : JSON.stringify({
                                     data : pass,
@@ -273,7 +273,7 @@ class All extends Component {
                                     newList.splice(selected[0],1)
                                 }     
 
-                                fetch("http://localhost:8000/delete", {
+                                fetch("http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/delete", {
                                 method: 'post',
                                 body: JSON.stringify({
                                     data: pass,
@@ -285,6 +285,7 @@ class All extends Component {
                                     options: [],
                                     subject: newList
                                 })
+				alert("삭제되었습니다.");
                             }
                         }                 
                     }
@@ -351,7 +352,7 @@ class All extends Component {
                                     }
                                 }
 
-                                fetch("http://localhost:8000/add",
+                                fetch("http://ec2-3-21-126-101.us-east-2.compute.amazonaws.com:8888/add",
                                 {
                                     method: 'post',
                                     body: JSON.stringify({
